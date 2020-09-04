@@ -36,3 +36,39 @@
     transform: rotate(360deg);
   }
 }
+
+/*Login page*/
+
+.login {
+  display: block;
+  border-color: black;
+  background-color: rgb(208, 211, 214);
+}
+
+.logo-img-container {
+  padding: 2em;
+  padding-top: 4em;
+}
+
+.logo-img {
+  width: 250px;
+  height: 200px;
+}
+.login-title {
+  text-align: center;
+  margin-top: 1em;
+}
+.loginform {
+  padding-right: 1em;
+  padding-bottom: 1em;
+}
+.forget-password-link {
+  text-align: right;
+  float: right;
+}
+.login-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 7em;
+}
