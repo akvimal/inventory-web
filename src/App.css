@@ -72,3 +72,186 @@
   align-items: center;
   margin-top: 7em;
 }
+
+.dashboardheader {
+  display: inline-block;
+}
+
+.p-menubar {
+  position: fixed !important;
+  background-color: #000000 !important;
+  border-color: #000000 !important;
+  top: 0px !important;
+  left: 0px !important;
+  width: 99vmax !important;
+  height: 60px !important;
+  opacity: 100% !important;
+}
+.p-button {
+  background-color: white !important;
+  color: #f7b924 !important;
+  border-color: white !important;
+}
+.title {
+  margin-top: 16px !important;
+  margin-left: 263px !important;
+  width: 261px !important;
+  height: 27px !important;
+  text-align: left !important;
+  /* font: normal normal normal 22px/27px Montserrat !important; */
+  letter-spacing: 0px !important;
+  color: #f7b924 !important;
+  opacity: 1 !important;
+}
+.p-splitbutton {
+  background-color: white !important;
+  color: #f7b924 !important;
+  border-color: white !important;
+}
+
+.p-sidebar-left {
+  top: 0px !important;
+  left: 0px !important;
+  width: 245px !important;
+  height: 766px !important;
+  background-color: #000000 !important;
+  opacity: 100% !important;
+}
+.porklogic-img {
+  margin-top: -16px;
+  margin-right: -16px;
+  left: 0px;
+  width: 245px;
+  height: 60px;
+  background: var(--unnamed-color-29313a) 0% 0% no-repeat padding-box;
+  background: #29313a 0% 0% no-repeat padding-box;
+  box-shadow: 0px 2px 12px #00000029;
+  /* opacity: 0.36; */
+  float: right !important;
+  /* padding-top: 2% !important; */
+  /* padding-right: 16% !important; */
+}
+.homepagebody {
+  background: #29313a;
+  margin-top: 60px;
+  /* margin-left: -195px; */
+}
+.p-card {
+  margin-top: 42px !important;
+  margin-left: 275px !important;
+  width: 485px !important;
+  height: 137px !important;
+  background: var(--unnamed-color-29313a) 0% 0% no-repeat padding-box !important;
+  border: 1px solid var(--unnamed-color-f7b924) !important;
+  background: #29313a 0% 0% no-repeat padding-box !important;
+  box-shadow: 0px 0px 8px #00000029 !important;
+  border: 1px solid #f7b924 !important;
+  opacity: 1 !important;
+}
+.p-sidebar-close-icon,
+.pi-times {
+  display: none !important;
+}
+
+/* .p-sidebar-close:hover {
+  display: none !important;
+} */
+/* .p-sidebar-icon:hover {
+  display: none !important;
+} */
+.p-sidebar-close {
+  display: none !important;
+}
+/* .p-sidebar-icon {
+  display: none !important;
+} */
+.p-link:hover {
+  display: none !important;
+}
+.device {
+  margin-top: 20px !important;
+  margin-left: 275px !important;
+  width: 63px !important;
+  height: 19px !important;
+  color: var(--unnamed-color-ffffff) !important;
+  text-align: left !important;
+  /* font: normal normal 600 16px/19px Montserrat; */
+  letter-spacing: 0px !important;
+  color: #ffffff !important;
+  text-transform: uppercase !important;
+  opacity: 1 !important;
+}
+.divider {
+  margin-top: 25px !important;
+  margin-left: 276px !important;
+  width: 79vw !important;
+  height: 0px !important;
+  border: 1px solid #cacaca !important;
+  opacity: 1 !important;
+}
+/* y */
+.sidenavbar {
+  top: 0px;
+  float: left;
+  left: 0px;
+  width: 245px;
+  height: 766px;
+  background-color: #000000 !important;
+  opacity: 100%;
+}
+
+.sideNav {
+  width: 15vw !important;
+  /* font: normal normal 600 12px/15px Montserrat !important; */
+  /* font-weight: 'SemiBold' !important;
+  font-family: 'Montserrat' !important; */
+  font-size: 12px !important;
+  letter-spacing: 1px !important;
+  text-transform: uppercase;
+  height: 100vh;
+  background: #000000 0% 0% no-repeat padding-box !important;
+  box-shadow: 0px 2px 15px #00000029;
+  opacity: 1;
+  position: fixed;
+}
+.SideNavText {
+  margin-left: 1cm;
+
+  text-decoration: none;
+}
+
+.SideNavColo {
+  color: #ebaf00 !important;
+  background-color: #000000 !important;
+  border-color: #000000 !important;
+}
+.SideNavColo:hover {
+  color: white !important;
+  background-color: #ebaf00 !important;
+  /* background-size: 300px 100px;
+  text-decoration: none;
+  width: 3cm;
+  height: 2cm;
+  padding-right: 10mm;
+  padding-top: 2mm;
+  padding-bottom: 2mm;
+  padding-left: 3mm;
+  border-radius: 2%; */
+}
+/* .installed {
+  margin-top: 189px !important;
+  margin-left: 290px !important;
+  width: 87px !important;
+  height: 62px !important;
+  background: #20272e 0% 0% no-repeat padding-box !important;
+  border-radius: 3px !important;
+  opacity: 1 !important;
+} */
+.cardButton {
+  background: #29313a 0% 0% no-repeat padding-box !important;
+  box-shadow: 0px 0px 8px #00000029 !important;
+  border: 1px solid #f7b924 !important;
+}
+.cardname {
+  color: #ffffff !important;
+}

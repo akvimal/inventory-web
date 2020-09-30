@@ -1,0 +1,38 @@
+import React, { Component } from 'react';
+import { Sidebar } from 'primereact/sidebar';
+import { Button } from 'primereact/button'
+
+export default class SideNav extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            visibleLeft: true,
+            visibleRight: false,
+            visibleTop: false,
+            visibleBottom: false,
+            visibleFullScreen: false,
+            visibleCustomToolbar: false
+        };
+    }
+    render() {
+        const customIcons = (
+            <>
+
+            </>
+        );
+        return (
+            <div>
+                <div className="card sidenavbar SideNav">
+                    <Sidebar visible={this.state.visibleLeft} icons={customIcons}>
+                        <img src="assets/Porklogic logo.svg" className="porklogic-img"></img>
+                        {/* <h1 style={{ fontWeight: 'normal' }}>Left Sidebar</h1> */}
+                        <Button type="button" label="DEVICE" className="p-button-success SideNavColo" style={{ marginRight: '.25em' }} /><br></br>
+                        <Button type="button" label="COMPANY" className="p-button-secondary SideNavColo" /><br></br>
+                        <Button type="button" label="WEIGHT SCALE" className="p-button-secondary SideNavColo" /><br></br>
+                        <Button type="button" label="IOT GATEWAY" className="p-button-secondary SideNavColo" /><br></br>
+                    </Sidebar>
+                </div>
+            </div>
+        )
+    }
+}

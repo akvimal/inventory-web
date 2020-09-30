@@ -1,0 +1,35 @@
+[0915/163506.135:ERROR:process_reader_win.cc(123)] NtOpenThread: {Access Denied} A process has requested access to an object, but has not been granted those access rights. (0xc0000022)
+[0915/163506.198:ERROR:exception_snapshot_win.cc(99)] thread ID 13308 not found in process
+[0915/163506.979:ERROR:process_reader_win.cc(123)] NtOpenThread: {Access Denied} A process has requested access to an object, but has not been granted those access rights. (0xc0000022)
+[0915/163506.979:ERROR:exception_snapshot_win.cc(99)] thread ID 7452 not found in process
+[0915/163507.370:ERROR:process_reader_win.cc(123)] NtOpenThread: {Access Denied} A process has requested access to an object, but has not been granted those access rights. (0xc0000022)
+[0915/163507.370:ERROR:exception_snapshot_win.cc(99)] thread ID 7552 not found in process
+[0915/163507.657:ERROR:process_reader_win.cc(123)] NtOpenThread: {Access Denied} A process has requested access to an object, but has not been granted those access rights. (0xc0000022)
+[0915/163507.657:ERROR:exception_snapshot_win.cc(99)] thread ID 13216 not found in process
+[0915/163508.095:ERROR:process_reader_win.cc(123)] NtOpenThread: {Access Denied} A process has requested access to an object, but has not been granted those access rights. (0xc0000022)
+[0915/163508.095:ERROR:exception_snapshot_win.cc(99)] thread ID 11388 not found in process
+[0915/163509.485:ERROR:process_info.cc(329)] VirtualQueryEx: Access is denied. (0x5)
+[0915/163509.485:ERROR:process_info.cc(556)] ReadMemoryInfo failed
+[0915/163509.485:ERROR:process_memory_win.cc(39)] Failed to initialize ProcessInfo.
+[0915/163509.485:ERROR:scoped_process_suspend.cc(40)] NtResumeProcess: An attempt was made to access an exiting process. (0xc000010a)
+[0917/130018.318:ERROR:process_info.cc(329)] VirtualQueryEx: Access is denied. (0x5)
+[0917/130018.287:ERROR:process_info.cc(329)] VirtualQueryEx: Access is denied. (0x5)
+[0917/130018.428:ERROR:process_info.cc(556)] ReadMemoryInfo failed
+[0917/130018.428:ERROR:process_info.cc(556)] ReadMemoryInfo failed
+[0917/130018.287:ERROR:process_reader_win.cc(123)] NtOpenThread: {Access Denied} A process has requested access to an object, but has not been granted those access rights. (0xc0000022)
+[0917/130018.287:ERROR:process_reader_win.cc(123)] NtOpenThread: {Access Denied} A process has requested access to an object, but has not been granted those access rights. (0xc0000022)
+[0917/130018.303:ERROR:process_reader_win.cc(123)] NtOpenThread: {Access Denied} A process has requested access to an object, but has not been granted those access rights. (0xc0000022)
+[0917/130018.287:ERROR:process_reader_win.cc(123)] NtOpenThread: {Access Denied} A process has requested access to an object, but has not been granted those access rights. (0xc0000022)
+[0917/130018.459:ERROR:exception_snapshot_win.cc(99)] thread ID 14916 not found in process
+[0917/130018.459:ERROR:exception_snapshot_win.cc(99)] thread ID 9500 not found in process
+[0917/130018.459:ERROR:exception_snapshot_win.cc(99)] thread ID 14376 not found in process
+[0917/130018.287:ERROR:process_reader_win.cc(123)] NtOpenThread: {Access Denied} A process has requested access to an object, but has not been granted those access rights. (0xc0000022)
+[0917/130018.443:ERROR:scoped_process_suspend.cc(40)] NtResumeProcess: An attempt was made to access an exiting process. (0xc000010a)
+[0917/130018.443:ERROR:scoped_process_suspend.cc(40)] NtResumeProcess: An attempt was made to access an exiting process. (0xc000010a)
+[0917/130018.459:ERROR:exception_snapshot_win.cc(99)] thread ID 9420 not found in process
+[0917/130018.459:ERROR:exception_snapshot_win.cc(99)] thread ID 15152 not found in process
+[0917/130018.459:ERROR:scoped_process_suspend.cc(40)] NtResumeProcess: An attempt was made to access an exiting process. (0xc000010a)
+[0917/130018.459:ERROR:scoped_process_suspend.cc(40)] NtResumeProcess: An attempt was made to access an exiting process. (0xc000010a)
+[0917/130018.459:ERROR:scoped_process_suspend.cc(40)] NtResumeProcess: An attempt was made to access an exiting process. (0xc000010a)
+[0917/130018.459:ERROR:scoped_process_suspend.cc(40)] NtResumeProcess: An attempt was made to access an exiting process. (0xc000010a)
+[0917/130018.459:ERROR:scoped_process_suspend.cc(40)] NtResumeProcess: An attempt was made to access an exiting process. (0xc000010a)

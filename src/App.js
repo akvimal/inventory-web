@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import "./App.css";
@@ -17,6 +17,10 @@ import LoginPage from "./pages/Login";
 
 import { appMiddleware } from "./middlewares/app";
 import { apiMiddleware } from "./middlewares/core";
+
+import "primereact/resources/themes/saga-blue/theme.css";
+import "primereact/resources/primereact.min.css";
+import "primeicons/primeicons.css";
 
 const createStoreWithMiddleware = applyMiddleware(
   appMiddleware,
