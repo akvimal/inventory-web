@@ -1,16 +1,47 @@
 import React, { Component } from 'react';
 import { Card } from 'primereact/card';
-import { Button } from 'primereact/button';
-
 export default class RasperryPig extends Component {
     render() {
         return (
             <div>
-                <Card>
-                    <p className="cardname">RasperryPig</p>
-                    <Button type="button" label="Installed" className="cardButton"></Button>
-                    <Button type="button" label="Available" className="cardButton"></Button>
-                    <Button type="button" label="Bioclean" className="cardButton"></Button>
+                <Card className="Card">
+                    <p className="CardTitle">Rasperry Pig</p>
+                    <div className="p-grid">
+                        <div className="p-col grid">
+                            Installed
+                            <br></br>
+                            <div className="grid-Content">
+                                100
+                            </div>
+                        </div>
+                        <div className="p-col grid">
+                            Available
+                            <br></br>
+                            <div className="grid-Content">
+                                25
+                            </div>
+                        </div>
+                        <div className="p-col grid">
+                            Bioclean
+                            <br></br>
+                            <div className="grid-Content">
+                                25</div>
+                        </div>
+                        <div className="p-col grid">
+                            Repair
+                            <br></br>
+                            <div className="grid-Content">
+                                25
+                            </div>
+                        </div>
+                        <div className="p-col grid">
+                            Disconnected
+                            <br></br>
+                            <div className="grid-Content">
+                                25
+                            </div>
+                        </div>
+                    </div>
                 </Card>
             </div>
         )

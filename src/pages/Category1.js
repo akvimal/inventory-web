@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 import { Card } from 'primereact/card';
-export default class BaconBit extends Component {
+
+export default class Category1 extends Component {
     render() {
         return (
             <div>
                 <Card className="Card">
-                    <p className="CardTitle">Bacon Bit</p>
-                    <div className="p-grid p-align-center">
+                    <p className="CardTitle">Category 1</p>
+                    <div className="p-grid">
                         <div className="p-col grid">
                             Installed
                             <br></br>
@@ -25,7 +26,8 @@ export default class BaconBit extends Component {
                             Bioclean
                             <br></br>
                             <div className="grid-Content">
-                                25</div>
+                                25
+                                </div>
                         </div>
                         <div className="p-col grid">
                             Repair

@@ -21,6 +21,7 @@ import { apiMiddleware } from "./middlewares/core";
 import "primereact/resources/themes/saga-blue/theme.css";
 import "primereact/resources/primereact.min.css";
 import "primeicons/primeicons.css";
+import 'primeflex/primeflex.css';
 
 const createStoreWithMiddleware = applyMiddleware(
   appMiddleware,
@@ -31,7 +32,7 @@ const store = createStoreWithMiddleware(reducer);
 
 const IndexPage = () => (
   <>
-    <h3>Welcome to the App</h3>
+    {/* <h3>Welcome to the App</h3> */}
   </>
 );
 
@@ -40,7 +41,7 @@ export default function App() {
     <Provider store={store}>
       <Router>
         <NavBar />
-        <div className="container">
+        <div>
           <Switch>
             <AuthRoute path="/login" type="guest">
               <LoginPage />
