@@ -91,12 +91,18 @@
   background-color: white !important;
   color: #f7b924 !important;
   border-color: white !important;
+  margin: 7px !important;
 }
+
+
 .title {
   margin-top: 16px !important;
   margin-left: 263px !important;
+  opacity: 1;
+  /* font-family: "Montserrat" !important; */
+  font: normal normal normal 22px/27px Montserrat;
   width: 261px !important;
-  height: 27px !important;
+  height: 45px !important;
   text-align: left !important;
   /* font: normal normal normal 22px/27px Montserrat !important; */
   letter-spacing: 0px !important;
@@ -134,6 +140,9 @@
 .homepagebody {
   background: #181d23;
   margin-top: 60px;
+  height: 55vmax;
+  /* overflow: auto; */
+  /* font-family: "Montserrat" !important; */
   /* margin-left: -195px; */
 }
 .p-card {
@@ -173,10 +182,11 @@
   display: none !important;
 }
 .device {
-  margin-top: 20px !important;
+  margin-top: -5px !important;
   margin-left: 275px !important;
   width: 63px !important;
-  height: 19px !important;
+  height: 12px !important;
+  font: normal normal 600 16px/19px Montserrat;
   color: var(--unnamed-color-ffffff) !important;
   text-align: left !important;
   /* font: normal normal 600 16px/19px Montserrat; */
@@ -190,8 +200,8 @@
   margin-left: 276px !important;
   width: 79vw !important;
   height: 0px !important;
-  border: 1px solid #cacaca !important;
-  opacity: 1 !important;
+  border: 1px solid hsl(0, 0%, 79%) !important;
+  opacity: 0.5 !important;
 }
 /* y */
 .sidenavbar {
@@ -199,7 +209,7 @@
   float: left;
   left: 0px;
   width: 245px;
-  height: 766px;
+  height: 100vh;
   background-color: #000000 !important;
   opacity: 100%;
 }
@@ -226,12 +236,27 @@
 
 .SideNavColo {
   color: #ebaf00 !important;
+  /* font-family: "Montserrat" !important; */
   background-color: #000000 !important;
+  margin-top: 25px !important;
+  text-align: left;
+  font: normal normal 600 12px/15px Montserrat !important;
+  letter-spacing: 0px;
+  /* color: #FFFFFF; */
+  text-transform: uppercase;
+  opacity: 1;
   border-color: #000000 !important;
 }
 .SideNavColo:hover {
   color: white !important;
   background-color: #ebaf00 !important;
+  text-align: left;
+  font: normal normal 600 12px/15px Montserrat !important;
+  letter-spacing: 0px;
+  opacity: 1;
+  border-radius: 3px !important;
+  width: 205px;
+  height: 40px;
   /* background-size: 300px 100px;
   text-decoration: none;
   width: 3cm;
@@ -285,7 +310,7 @@
 
 .scrollpanel-demo .p-scrollpanel p {
   padding: 0.5rem;
-  line-height: 1.5;
+  line-height: 0.5;
   margin: 0;
 }
 
@@ -305,14 +330,15 @@
 
 /* .scrollpanel-demo .p-scrollpanel.custombar2 .p-scrollpanel-wrapper {
   border-right: 10px solid var(--surface-b);
-  border-bottom: 10px solid var(--surface-b);
+  border-bottom: 10px solid var(--surface-d);
 } */
 
 .scrollpanel-demo .p-scrollpanel.custombar2 .p-scrollpanel-bar {
   background-color: var(--surface-d);
-  border-radius: 0;
+  border-radius: 6px;
   opacity: 0.2;
   background-color: #ffffff;
+  /* border-color: aqua !important; */
   transition: background-color 0.2s;
 }
 .scrollpanel-demo .p-scrollpanel.custombar2 .p-scrollpanel-bar-y {
@@ -323,14 +349,45 @@
   padding: 2rem;
 }
 
-.p-toolbar{
+.p-toolbar {
   background-color: #000000 !important;
   opacity: 0.5 !important;
-  border: 5px;
+  border: none !important;
+  height: 50px !important;
+  /* width: 965px !important; */
+  margin-left: 275px !important;
 }
-.p-toolbar-group-left{
+.p-toolbar-group-left {
   color: #f7b924;
 }
-/* .Bar-leftcontent{
-  
-} */
+.toolbar-inputtext {
+  width: 213px;
+  height: 30px;
+  opacity: 20%;
+  background-color: #ffffff !important;
+}
+.p-datatable-thead > tr > th {
+  background-color: #29313a !important;
+  color: #f7b924 !important;
+}
+.p-datatable-tbody > tr > td {
+  background-color: #29313a;
+  color: #ffffff !important;
+}
+
+.table-data {
+  opacity: 0.5 !important;
+}
+
+.p-datatable {
+  left: 25px;
+  /* width: 1199px; */
+  width: 79vmax;
+  height: 369px;
+}
+.tablecard {
+  background-color: #181d23 !important;
+}
+.pi{
+  font-size: 25px !important;
+}

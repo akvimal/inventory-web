@@ -1,6 +1,7 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="88.875" height="50.983" viewBox="0 0 88.875 50.983">
 <defs>
-<style>.a{fill:rgba(255,255,255,0.4);}.b,.c,.d,.e{fill:#fff;}.c{fill-rule:evenodd;}.d{font-size:16px;}.d,.e{font-family:Montserrat-SemiBold, Montserrat;font-weight:600;}.e{font-size:7px;}
+<style>
+.a{fill:rgba(255,255,255,0.4);}.b,.c,.d,.e{fill:#fff;}.c{fill-rule:evenodd;}.d{font-size:16px;}.d,.e{font-family:Montserrat-SemiBold, Montserrat;font-weight:600;}.e{font-size:7px;}
 </style>
 </defs>
 <g transform="translate(-3238 584.874)">
@@ -15,6 +16,7 @@
 </g></g>
 <g transform="translate(3238 -555.363)">
 <text class="d" transform="translate(0 17.472)">
-<tspan x="0" y="0">Porklogic</tspan>
+
+<tspan x="0" y="0" >Porklogic</tspan>
 </text><text class="e" transform="translate(77.875 7)">
 <tspan x="0" y="0">TM</tspan></text></g></g></svg>

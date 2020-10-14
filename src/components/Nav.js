@@ -19,13 +19,13 @@ class NavBar extends Component {
 
     const end = (
       <>
-        <Button icon="pi pi-question" className="p-button-rounded p-button-info" />
-        <Button icon="pi pi-user" className="p-button-rounded p-button-info" />
-        <Button icon="pi pi-bell" className="p-button-rounded p-button-info" />
+        <Button icon="pi pi-question" className="p-button-rounded p-button-info p-button-outlined" />
+        <Button icon="pi pi-bell" className="p-button-rounded p-button-info p-button-outlined" />
+        <Button icon="pi pi-user" className="p-button-rounded p-button-info p-button-outlined" />
       </>
     );
 
-    const start = <><div className="title">INVENTORY MANAGEMENT</div></>;
+    const start = <><div className="title">Inventory Management</div></>;
 
     return (
       <div>

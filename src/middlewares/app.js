@@ -1,7 +1,7 @@
 import { apiRequest } from "../actions/api";
 import { LOGIN } from "../actions/auth";
 
-const SERVER_URL = `https://localhost:3000`;
+const SERVER_URL = `https://localhost:3001`;
 
 export const appMiddleware = () => next => action => {
   next(action);
@@ -20,3 +20,5 @@ export const appMiddleware = () => next => action => {
       break;
   }
 };
+
+

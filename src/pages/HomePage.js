@@ -5,7 +5,8 @@ import Category1 from '../pages/Category1';
 import { ScrollPanel } from 'primereact/scrollpanel';
 import { Toolbar } from 'primereact/toolbar';
 import { InputText } from 'primereact/inputtext';
-
+import Table from '../components/table';
+import {Get_Clients} from '../middlewares/app';
 const leftContents = (
   <React.Fragment>
     <div className="Bar-leftcontent">
@@ -22,13 +23,15 @@ const leftContents = (
 
 const rightContents = (
   <React.Fragment>
-<InputText placeholder="Search" type="text"/>
+    <InputText placeholder="Search" type="text" className="toolbar-inputtext" />
   </React.Fragment>
 );
 
 const HomePage = (props) => {
   return (
+    <React.Fragment>
     <div className="homepagebody">
+      <br></br>
       <div >
         <p className="device">Device</p>
       </div>
@@ -37,7 +40,7 @@ const HomePage = (props) => {
 
         <div className="p-grid">
           <div className="p-col-12 p-md-4">
-            <ScrollPanel style={{ width: '325%', height: '160px' }} className="custombar2">
+            <ScrollPanel style={{ width: '325%', height: '170px'}} className="custombar2">
               <div style={{ lineHeight: '1.5', width: '1525px' }}>
                 <div className="p-grid p-align-center ">
                   <div className="p-col"><BaconBit /></div>
@@ -50,7 +53,10 @@ const HomePage = (props) => {
         </div>
       </div>
       <Toolbar left={leftContents} right={rightContents} />
+      <br></br>
+      <Table/>
     </div>
+    </React.Fragment>
   );
 };
 

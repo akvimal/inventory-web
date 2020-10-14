@@ -22,9 +22,11 @@
     "react-transition-group": "^2.5.1",
     "reactstrap": "^7.1.0",
     "redux": "^4.0.5",
+    "redux-thunk": "^2.3.0",
     "sass": "^1.26.11",
     "sass-loader": "^10.0.2",
     "store": "^2.0.12",
+    "typeface-montserrat": "^1.1.13",
     "webpack": "^4.44.2"
   },
   "scripts": {

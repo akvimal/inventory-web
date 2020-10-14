@@ -22,10 +22,12 @@ import "primereact/resources/themes/saga-blue/theme.css";
 import "primereact/resources/primereact.min.css";
 import "primeicons/primeicons.css";
 import 'primeflex/primeflex.css';
+import thunk from 'redux-thunk';
 
 const createStoreWithMiddleware = applyMiddleware(
   appMiddleware,
-  apiMiddleware
+  apiMiddleware,
+  thunk
 )(createStore);
 
 const store = createStoreWithMiddleware(reducer);
