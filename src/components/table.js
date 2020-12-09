@@ -11,10 +11,10 @@ class table extends Component {
         this.state = {
             products: [
                 { customer_name: "Company 1", location: "BeaverCrick", status: "Installed", count: 20 },
-                { customer_name: "Company 2", location: "Loaction 1", status: "Installed", count: 20 },
-                { customer_name: "Company 3", location: "Loaction 1", status: "Available", count: 20 },
-                { customer_name: "Company 4", location: "Loaction 1", status: "Bioclean", count: 20 },
-                { customer_name: "Company 5", location: "Loaction 1", status: "Repair", count: 20 },
+                { customer_name: "Company 2", location: "Location 1", status: "Installed", count: 20 },
+                { customer_name: "Company 3", location: "Location 1", status: "Available", count: 20 },
+                { customer_name: "Company 4", location: "Location 1", status: "Bioclean", count: 20 },
+                { customer_name: "Company 5", location: "Location 1", status: "Repair", count: 20 },
             ]
         };
     }
