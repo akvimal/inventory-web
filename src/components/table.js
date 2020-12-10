@@ -34,10 +34,10 @@ class table extends Component {
         return (
             <div >
                 <div className="card tablecard">
-                    <DataTable value={this.props.clients}  >
-                        <Column field="name" header="Customer Name" ></Column>
+                    <DataTable value={this.state.products}  >
+                        <Column field="customer_name" header="Customer Name" ></Column>
                         <Column field="location" header="Location"></Column>
-                        <Column field="type" header="Status"></Column>
+                        <Column field="status" header="Status"></Column>
                         <Column field="count" header="Count"></Column>
                     </DataTable>
                 </div>
