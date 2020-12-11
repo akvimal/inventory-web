@@ -6,8 +6,11 @@ import SideNav from "./components/SideNav";
 export default function App() {
   return (
     <>
-      <SideNav />
-      <Nav />
+      <div className="p-grid">
+        <div className="p-col-12">
+          <Nav />
+        </div>
+      </div>
     </>
   );
 }
