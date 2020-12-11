@@ -5,4 +5,13 @@ body {
 .p-menubar {
   margin: 0 !important;
   background: black !important;
+  height: 5vmin !important;
+  border: none !important;
+  border-radius: 0 !important;
+}
+
+.p-sidebar {
+  background: black !important;
+  width: 245px !important;
+  box-shadow: none !important;
 }
