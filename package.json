@@ -3,10 +3,14 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "primeflex": "^2.0.0",
+    "primeicons": "^4.1.0",
+    "primereact": "^5.0.2",
     "prop-types": "^15.7.2",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
-    "react-scripts": "3.4.3",
+    "react-scripts": "^4.0.1",
+    "react-transition-group": "^4.4.1",
     "redux": "^4.0.5",
     "store": "^2.0.12"
   },
