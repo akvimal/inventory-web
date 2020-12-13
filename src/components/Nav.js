@@ -1,18 +1,18 @@
 import React from "react";
 import { Menubar } from "primereact/menubar";
 import { Button } from "primereact/button";
-import SideNav from "./SideNav";
+// import SideNav from "./SideNav";
 
 export default function Nav() {
   const end = (
     <>
       <Button
         icon="pi pi-question"
-        className="p-button-rounded p-button-info p-button-outlined"
+        className="p-button-rounded p-button-info p-button-outlined mr-1"
       />
       <Button
         icon="pi pi-bell"
-        className="p-button-rounded p-button-info p-button-outlined"
+        className="p-button-rounded p-button-info p-button-outlined mr-1"
       />
       <Button
         icon="pi pi-user"
@@ -20,14 +20,14 @@ export default function Nav() {
       />
     </>
   );
-  const start = (
-    <>
-      <SideNav />
-    </>
-  );
+  // const start = (
+  //   <>
+  //     <SideNav />
+  //   </>
+  // );
   return (
     <>
-      <Menubar start={start} end={end}  />
+      <Menubar start={"Inventory Management"} end={end} />
     </>
   );
 }
