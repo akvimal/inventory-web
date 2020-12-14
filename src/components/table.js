@@ -37,7 +37,7 @@ export default function Table() {
 
   return (
     <>
-      <DataTable value={data} header="Header">
+      <DataTable value={data} header="INVENTORY LIST">
         {dynamicColumns}
       </DataTable>
     </>
