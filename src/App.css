@@ -118,7 +118,6 @@ body {
   color: #ffffff !important;
 }
 
-
 .sidenav-buttons .p-button-label {
   top: 97px !important;
   left: 37px !important;
@@ -323,6 +322,7 @@ hr.divider-line {
 .band-flex {
   display: inline-flex !important;
 }
+
 .band-search-div {
   float: right !important;
   padding-top: 10px !important ;
