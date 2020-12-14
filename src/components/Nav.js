@@ -8,15 +8,15 @@ export default function Nav() {
     <>
       <Button
         icon="pi pi-question"
-        className="p-button-rounded p-button-info p-button-outlined mr-1"
+        className="p-button-rounded p-button-warning p-button-outlined mr-1"
       />
       <Button
         icon="pi pi-bell"
-        className="p-button-rounded p-button-info p-button-outlined mr-1"
+        className="p-button-rounded p-button-warning p-button-outlined mr-1"
       />
       <Button
         icon="pi pi-user"
-        className="p-button-rounded p-button-info p-button-outlined"
+        className="p-button-rounded p-button-warning p-button-outlined"
       />
     </>
   );
