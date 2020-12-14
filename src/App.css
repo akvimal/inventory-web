@@ -56,6 +56,7 @@ body {
   width: 245px !important;
   background: var(--unnamed-color-000000) 0% 0% no-repeat padding-box !important;
   background: #000000 0% 0% no-repeat padding-box !important;
+  background-image: linear-gradient(to top, #000000 92%, #29313a 8%) !important;
   box-shadow: 0px 2px 15px #00000029 !important;
   opacity: 1 !important;
   box-shadow: none !important;
@@ -64,12 +65,16 @@ body {
   display: none !important;
 }
 
-.logo {
+/* .logo {
   background: var(--unnamed-color-29313a) 0% 0% no-repeat padding-box !important;
   background: #29313a 0% 0% no-repeat padding-box !important;
   box-shadow: 0px 2px 12px #00000029 !important;
-  opacity: 0.36 !important;
-}
+  height: -60px;
+} */
+
+/* .logo> img{
+  opacity: 1 !important;
+} */
 
 .p-menubar {
   top: 0px !important;
@@ -97,11 +102,11 @@ body {
   color: #f7b924 !important;
   opacity: 1 !important;
 }
-.p-button-warning {
+.sidenav-buttons {
   background: none !important;
   border: none !important;
 }
-.p-button-warning:hover {
+.sidenav-buttons:hover {
   width: 205px !important;
   height: 40px !important;
 
@@ -109,10 +114,12 @@ body {
   opacity: 1 !important;
   background: #ebaf00 0% 0% no-repeat padding-box !important;
 }
-.p-button-warning:hover > .p-button-label {
+.sidenav-buttons:hover > .p-button-label {
   color: #ffffff !important;
 }
-.p-button-warning .p-button-label {
+
+
+.sidenav-buttons .p-button-label {
   top: 97px !important;
   left: 37px !important;
   width: 47px !important;
@@ -171,7 +178,7 @@ hr.divider-line {
   opacity: 1 !important;
 }
 .p-scrollpanel {
-  width: 1412px !important;
+  width: 1212px !important;
 }
 .p-scrollpanel:hover .p-scrollpanel-bar,
 .p-scrollpanel:active .p-scrollpanel-bar {
