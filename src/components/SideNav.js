@@ -1,7 +1,7 @@
 import React from "react";
 import { Sidebar } from "primereact/sidebar";
 import { Button } from "primereact/button";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 export default function SideNav() {
   return (
