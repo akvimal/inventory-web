@@ -105,6 +105,7 @@ body {
 .sidenav-buttons {
   background: none !important;
   border: none !important;
+  text-decoration: none !important;
 }
 .sidenav-buttons:hover {
   width: 205px !important;
@@ -256,6 +257,12 @@ hr.divider-line {
   opacity: 1 !important;
 }
 
+.p-button-rounded {
+  background-color: #ffffff !important;
+  outline: none !important;
+  border: none !important;
+}
+
 .p-datatable-tbody > tr > td {
   background: var(--unnamed-color-29313a) 0% 0% no-repeat padding-box !important;
   background: #29313a 0% 0% no-repeat padding-box !important;
@@ -343,6 +350,11 @@ hr.divider-line {
   color: #cccccc !important;
   opacity: 1 !important;
 }
+
+Link{
+  text-emphasis: none !important;
+}
+
 @media only screen and (max-width: 550px) {
   .app-container {
     grid-template-columns: 1fr;
