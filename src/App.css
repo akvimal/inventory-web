@@ -61,6 +61,15 @@ body {
   opacity: 1 !important;
   box-shadow: none !important;
 }
+
+@media only screen and (max-width: 1300px) {
+  .p-sidebar{
+    background-image: linear-gradient(to top, #000000 90%, #29313a 10%) !important;
+  }
+}
+
+
+
 .p-menubar-button {
   display: none !important;
 }
@@ -150,6 +159,11 @@ hr.divider-line {
   background: #29313a;
 }
 
+/* .p-scrollpanel-bar-x{
+  width: 30px !important;
+} */
+
+
 .title {
   top: 81px !important;
   left: 275px !important;
@@ -188,8 +202,19 @@ hr.divider-line {
   opacity: 1 !important;
 }
 .p-scrollpanel {
-  width: 100px !important;
+  width: 1230px !important;
 }
+
+@media only screen and (max-width: 1300px) {
+  .p-scrollpanel {
+    width: 925px !important;
+  }
+  .band-search-div{
+    padding-top: 50px !important;
+  }
+
+}
+
 .p-scrollpanel:hover .p-scrollpanel-bar,
 .p-scrollpanel:active .p-scrollpanel-bar {
   opacity: none !important;
@@ -381,4 +406,8 @@ Link {
   .p-menubar-start {
     padding-bottom: 50px !important;
   }
+}
+
+.p-paginator {
+  background-color: #29313a !important;
 }
