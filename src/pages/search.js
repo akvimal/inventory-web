@@ -1,5 +1,4 @@
 import React from "react";
-import DataCard from "../components/DataCard";
 import Table from "../components/table";
 import Band from "../components/band";
 

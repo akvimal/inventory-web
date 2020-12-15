@@ -73,10 +73,6 @@ body {
   padding-left: 10px !important;
 }
 
-/* .logo> img{
-  opacity: 1 !important;
-} */
-
 .p-menubar {
   top: 0px !important;
   left: 0px !important;
@@ -103,6 +99,7 @@ body {
   color: #f7b924 !important;
   opacity: 1 !important;
 }
+
 .sidenav-buttons {
   background: none !important;
   border: none !important;
@@ -140,10 +137,6 @@ hr.divider-line {
   height: 1px !important;
   opacity: 1 !important;
 }
-
-/* .p-scrollpanel-bar-x::-webkit-scrollbar-track {
-  background: #f1f1f1; 
-} */
 
 ::-webkit-scrollbar {
   width: 8px;
@@ -195,7 +188,7 @@ hr.divider-line {
   opacity: 1 !important;
 }
 .p-scrollpanel {
-  width: 1212px !important;
+  width: 100px !important;
 }
 .p-scrollpanel:hover .p-scrollpanel-bar,
 .p-scrollpanel:active .p-scrollpanel-bar {
@@ -368,7 +361,7 @@ hr.divider-line {
   opacity: 1 !important;
 }
 
-Link{
+Link {
   text-emphasis: none !important;
 }
 
