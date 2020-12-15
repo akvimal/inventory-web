@@ -1,51 +1,10 @@
 import React, { useState } from "react";
 import { Card } from "primereact/card";
 import { ScrollPanel } from "primereact/scrollpanel";
+import { useSelector } from "react-redux";
 
 export default function DataCard(props) {
-  const [data] = useState([
-    {
-      name: "BaconBit",
-      status: [
-        { name: "Installed", count: 10 },
-        { name: "Available", count: 15 },
-        { name: "BioClean", count: 25 },
-        { name: "repair", count: 40 },
-        { name: "Disconnected", count: 41 },
-      ],
-    },
-    {
-      name: "RasperryPig",
-      status: [
-        { name: "Installed", count: 10 },
-        { name: "Available", count: 15 },
-        { name: "BioClean", count: 25 },
-        { name: "repair", count: 40 },
-        { name: "Disconnected", count: 41 },
-      ],
-    },
-    {
-      name: "Category1",
-      status: [
-        { name: "Installed", count: 10 },
-        { name: "Available", count: 15 },
-        { name: "BioClean", count: 25 },
-        { name: "repair", count: 40 },
-        { name: "Disconnected", count: 41 },
-      ],
-    },
-    {
-      name: "Device",
-      status: [
-        { name: "Installed", count: 10 },
-        { name: "Available", count: 15 },
-        { name: "BioClean", count: 25 },
-        { name: "repair", count: 40 },
-        { name: "Disconnected", count: 41 },
-      ],
-    },
-  ]);
-
+  const data = useSelector((state) => state.dataCard.data);
   return (
     <>
       <p className="title">{props.name}</p>
@@ -59,7 +18,7 @@ export default function DataCard(props) {
                   <div className="p-d-flex" key={name}>
                     {status.map((e) => {
                       return (
-                        <div className="inner-content mr-2">
+                        <div className="inner-content mr-2" key={e.name}>
                           <p className="inner-content-title m-0">{e.name}</p>
                           <p className="inner-content-title-1 m-1 ml-0">
                             {e.count}

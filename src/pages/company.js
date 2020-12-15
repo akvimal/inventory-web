@@ -1,9 +1,17 @@
-import React from "react";
+import React, { useEffect } from "react";
 import DataCard from "../components/DataCard";
 import Table from "../components/table";
 import Band from "../components/band";
+import { useDispatch } from "react-redux";
+import { fetchDataCard } from "../redux/action";
 
-export default function company() {
+export default function Company() {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(fetchDataCard("company"));
+  }, []);
+
   return (
     <>
       <div id="scroll-cards">
