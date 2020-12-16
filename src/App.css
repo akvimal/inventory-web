@@ -455,3 +455,10 @@ Link {
   border-radius: 1px !important;
   
 }
+
+.inline-table>span{
+  /* paddingRight:"100px" */
+  padding-right: 100px !important;
+  padding-left: 10px !important;
+  color: var(--unnamed-color-f7b924) !important;
+}
