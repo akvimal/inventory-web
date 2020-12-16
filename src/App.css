@@ -209,13 +209,6 @@ hr.divider-line {
   .p-scrollpanel {
     width: 925px !important;
   }
-<<<<<<< HEAD
-  .band-search-div{
-    padding-top: 50px !important;
-  }
-
-=======
->>>>>>> origin/dev-vimalesh
 }
 
 .p-scrollpanel:hover .p-scrollpanel-bar,
@@ -421,8 +414,6 @@ Link {
 .p-paginator {
   background-color: #29313a !important;
 }
-<<<<<<< HEAD
-=======
 
 .search-text{
   color: var(--unnamed-color-7c828a);
@@ -464,4 +455,3 @@ Link {
   border-radius: 1px !important;
   
 }
->>>>>>> origin/dev-vimalesh
