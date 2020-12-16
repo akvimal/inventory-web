@@ -13,9 +13,9 @@ export default function band(props) {
       <div className="band-text-1">
         {props.status}: <p> ALL</p>
       </div>
-      {/* <div className="band-search-div band-flex">
+      <div className="band-search-div band-flex">
         <input type="text" className="band-search" placeholder="Search" />
-      </div> */}
+      </div>
     </div>
   );
 }
