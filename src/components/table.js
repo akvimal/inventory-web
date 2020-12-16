@@ -190,6 +190,17 @@ export default function Table() {
     
   ];
 
+ const information =[
+   {
+     model:"Model No.",
+     manufacturer: "manufacturer",
+     hardware_version: "Hardware Version",
+     commission_date: "Commission Date",
+     decommission_date: "Decommission Date",
+     cost:"$900"
+   }
+ ]
+
   const [rows, setRows] = useState(null);
 
   const columns = [
@@ -201,7 +212,7 @@ export default function Table() {
   ];
 
   const dynamicColumns = columns.map((col, i) => {
-    return <Column key={col.field} field={col.field} header={col.header} />;
+    return <Column key={col.field} field={col.field} header={col.header} sortable />;
   });
 
   const columns1 = [
@@ -214,23 +225,29 @@ export default function Table() {
   ];
 
   const dynamicColumns1 = columns1.map((col, i) => {
-    return <Column key={col.field} field={col.field} header={col.header} sortable/>
+    return <Column className="data-column" key={col.field} field={col.field} header={col.header} sortable/>
   });
 
+  const columns2 = [
+    {field: "model", header: "Model"},
+    {field: "manufacturer", header: "Manufacturer"},
+    { field: "hardware_version", header: "Hardware Version"},
+    { field: "commission_date", header: "Commission Date"},
+    { field: "decommission_date", header: "Decommission Date"},
+    { field: "cost", header: "Cost"}
+  ];
 
+  const dynamicColumns2 = columns2.map((col, i) => {
+    return <Column key={col.field} field={col.field} header={col.header} />
+  })
 
   const rowExpansionTemplate= (data)=> { 
     return (
         <div className="orders-subtable">
-          {/* <div className="inline-table">
-            <span>Model</span>
-            <span>Manufacturer</span>
-            <span>Hardware Version</span>
-            <span>Comission Date</span>
-            <span>Decommision Date</span>
-            <span>Cost</span>
-          </div> */}
-            <DataTable value={data.history}>
+          <DataTable className="information" value={information}>
+              {dynamicColumns2}
+          </DataTable>
+            <DataTable className="data-table" value={data.history}>
                 {dynamicColumns1}
             </DataTable>
         </div>

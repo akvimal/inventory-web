@@ -279,6 +279,12 @@ hr.divider-line {
   height: 43px !important;
 }
 
+.data-table{
+  border-top: 1px solid rgba(255, 255, 255, 0.719) !important;
+  border-left: 1px solid rgba(255, 255, 255, 0.719) !important;
+  border-right: 1px solid rgba(255, 255, 255, 0.719) !important;
+}
+
 .p-column-title {
   color: var(--unnamed-color-f7b924) !important;
   text-align: left !important;
@@ -454,6 +460,14 @@ Link {
   background-color: #464a4f !important;
   border-radius: 1px !important;
   
+}
+
+.p-row-toggler:hover{
+background-color: #373e47 !important;
+}
+
+.p-row-toggler-icon{
+  color: #7c828a !important;
 }
 
 .inline-table>span{
