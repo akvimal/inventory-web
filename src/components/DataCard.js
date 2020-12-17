@@ -18,7 +18,7 @@ export default function DataCard(props) {
                   <div className="p-d-flex" key={name}>
                     {status.map((e) => {
                       return (
-                        <div className="inner-content mr-2" key={e.name}>
+                        <div className="inner-content mr-2 mt-3" key={e.name}>
                           <p className="inner-content-title m-0">{e.name}</p>
                           <p className="inner-content-title-1 m-1 ml-0">
                             {e.count}
