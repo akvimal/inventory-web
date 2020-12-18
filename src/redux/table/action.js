@@ -28,7 +28,17 @@ import {
   export const fetchTable = (identify) => {
     const path =
       identify === "device"
-        ? dispatch(fetchTableSuccess(data1))
-        : dispatch(fetchTableSuccess(data2));
+        ? `dashboard/company/status`
+        :  `dashboard/company/status`;
+    return (dispatch) => {
+      dispatch(fetchTableRequest);
+      API.post(path)
+        .then(({ data }) => {
+          identify === "device"? dispatch(fetchTableSuccess(data)):dispatch(fetchTableSuccess(data2))
+        })
+        .catch((err) => {
+          dispatch(fetchTableFailure(err.message));
+        });
+    };
   };
   
