@@ -142,9 +142,7 @@ body {
   text-transform: uppercase !important;
 }
 
-.link{
-  text-decoration: none !important;
-}
+
 
 .sidenav-buttons:hover {
   width: 205px !important;
@@ -218,11 +216,24 @@ hr.divider-line {
   width: fit-content !important;
   height: 137px !important;
   background: var(--unnamed-color-29313a) 0% 0% no-repeat padding-box !important;
+  /* border: 1px solid var(--unnamed-color-f7b924) !important; */
+  background: #29313a 0% 0% no-repeat padding-box !important;
+  box-shadow: 0px 0px 8px #00000029 !important;
+  opacity: 1 !important;
+}
+
+.card-active{
+top: 142px !important;
+  left: 275px !important;
+  width: fit-content !important;
+  height: 137px !important;
+  background: var(--unnamed-color-29313a) 0% 0% no-repeat padding-box !important;
   border: 1px solid var(--unnamed-color-f7b924) !important;
   background: #29313a 0% 0% no-repeat padding-box !important;
   box-shadow: 0px 0px 8px #00000029 !important;
   opacity: 1 !important;
 }
+
 .p-card-title {
   top: 155px !important;
   left: 290px !important;
@@ -439,8 +450,8 @@ hr.divider-line {
   opacity: 1 !important;
 }
 
-Link {
-  text-emphasis: none !important;
+.link{
+  text-decoration: none !important;
 }
 
 @media only screen and (max-width: 550px) {
