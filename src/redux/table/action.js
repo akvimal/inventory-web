@@ -25,10 +25,26 @@ import {
     };
   };
   
-  export const fetchTable = (identify) => {
+  export const fetchTable = (identify,device) => {
+
+    console.log(identify,device);
     const path =
       identify === "device"
-        ? dispatch(fetchTableSuccess(data1))
-        : dispatch(fetchTableSuccess(data2));
+        ?`dashboard/device/status`
+        :  `dashboard/company/status` ;
+    return (dispatch) => {
+      dispatch(fetchTableRequest);
+      API.post(path,identify==="device"?{
+          company:device
+      }:{
+        device:device
+      })
+        .then(({ data }) => {
+          dispatch(fetchTableSuccess(data))
+        })
+        .catch((err) => {
+          dispatch(fetchTableFailure(err.message));
+        });
+    };
   };
   
