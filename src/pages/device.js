@@ -4,16 +4,16 @@ import Table from "../components/table";
 import Band from "../components/band";
 import { useDispatch } from "react-redux";
 import { fetchDataCard } from "../redux/action";
-import { Redirect, Route, Switch, useRouteMatch } from "react-router-dom";
+import { Route, Switch,  } from "react-router-dom";
 
 export default function Device() {
 
-  let match = useRouteMatch();
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(fetchDataCard("device"));
-  }, []);
+  }, [dispatch]);
+
 
   return (
     <>
@@ -25,7 +25,9 @@ export default function Device() {
       <div id="table">
         <div className=" mt-3 ml-4 mr-4">
           <Band name="Company Name" location="location" status="status" />
-          <Table />
+          <Switch>
+          <Route path="/device" component={Table} />
+        </Switch>
         </div>
       </div>
     </>

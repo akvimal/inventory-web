@@ -1,8 +1,6 @@
 import React, { useState } from "react";
 import { DataTable } from "primereact/datatable";
 import { Column } from "primereact/column";
-import { Row } from "primereact/row";
-import { Button } from "primereact/button";
 
 export default function Table() {
   const data = [
