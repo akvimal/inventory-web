@@ -8,7 +8,7 @@ import {
     state = {
       isLoading: false,
       error: null,
-      data: [],
+      data:[]
     },
     action
   ) => {

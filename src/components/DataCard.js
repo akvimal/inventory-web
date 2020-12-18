@@ -1,10 +1,14 @@
 import React from "react";
 import { Card } from "primereact/card";
 import { ScrollPanel } from "primereact/scrollpanel";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Link, useLocation, useRouteMatch } from "react-router-dom";
+import { fetchTable } from "../redux/action"
 
 export default function DataCard(props) {
+
+  const dispatch = useDispatch()
+
   const data = useSelector((state) => state.dataCard.data);
   let match = useRouteMatch();
   const location = useLocation();
@@ -22,6 +26,7 @@ export default function DataCard(props) {
                 to={{ pathname: `${match.url}/${name}` }}
                 className="link"
                 key={name}
+                onClick={()=>dispatch(fetchTable(props.id,name))}
               >
                 <div className="p-mr-4" key={name}>
                   <Card
