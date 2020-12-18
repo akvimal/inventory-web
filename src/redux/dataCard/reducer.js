@@ -25,50 +25,9 @@ export default (
     case FETCH_DATACARD_FAILURE:
       return {
         ...state,
-        // isLoading: false,
-        // error: action.payload,
-        data: [
-          {
-            name: "BaconBit",
-            status: [
-              { name: "Installed", count: 10 },
-              { name: "Available", count: 15 },
-              { name: "BioClean", count: 25 },
-              { name: "repair", count: 40 },
-              { name: "Disconnected", count: 41 },
-            ],
-          },
-          {
-            name: "RasperryPig",
-            status: [
-              { name: "Installed", count: 10 },
-              { name: "Available", count: 15 },
-              { name: "BioClean", count: 25 },
-              { name: "repair", count: 40 },
-              { name: "Disconnected", count: 41 },
-            ],
-          },
-          {
-            name: "Category1",
-            status: [
-              { name: "Installed", count: 10 },
-              { name: "Available", count: 15 },
-              { name: "BioClean", count: 25 },
-              { name: "repair", count: 40 },
-              { name: "Disconnected", count: 41 },
-            ],
-          },
-          {
-            name: "Device",
-            status: [
-              { name: "Installed", count: 10 },
-              { name: "Available", count: 15 },
-              { name: "BioClean", count: 25 },
-              { name: "repair", count: 40 },
-              { name: "Disconnected", count: 41 },
-            ],
-          },
-        ],
+        isLoading: false,
+        error: action.payload,
+        data: [],
       };
     default:
       return state;
