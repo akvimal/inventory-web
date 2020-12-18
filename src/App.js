@@ -1,7 +1,9 @@
 import React from "react";
 import "./App.css";
 import HomePage from "./pages/HomePage";
+
 import { BrowserRouter as Router, Switch, Route, Redirect } from "react-router-dom";
+
 import Device from "./pages/device";
 import Company from "./pages/company";
 import Search from "./pages/search";
