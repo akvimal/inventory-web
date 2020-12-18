@@ -28,13 +28,13 @@ import {
   export const fetchTable = (identify) => {
     const path =
       identify === "device"
-        ? `dashboard/company/status`
-        :  `dashboard/company/status`;
+        ?`dashboard/company/status` 
+        : `dashboard/device/status` ;
     return (dispatch) => {
       dispatch(fetchTableRequest);
       API.post(path)
         .then(({ data }) => {
-          identify === "device"? dispatch(fetchTableSuccess(data)):dispatch(fetchTableSuccess(data2))
+          dispatch(fetchTableSuccess(data))
         })
         .catch((err) => {
           dispatch(fetchTableFailure(err.message));
