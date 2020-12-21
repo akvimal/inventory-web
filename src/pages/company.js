@@ -11,7 +11,7 @@ export default function Company() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(fetchDataCard("company"));
+    dispatch(fetchDataCard("dashboard/company/devices"));
     dispatch(fetchTable("device","AUBURN UNIVERSITY"))
   }, [dispatch]);
 
