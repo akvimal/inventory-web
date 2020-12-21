@@ -3,8 +3,13 @@ import { DataTable } from "primereact/datatable";
 import { Column } from "primereact/column";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchTable } from "../redux/action";
+import { useHistory } from "react-router-dom";
 
 export default function Table(props) {
+
+  console.log(props);
+
+  const history = useHistory();
 
   const dispatch = useDispatch();
 
@@ -266,6 +271,11 @@ export default function Table(props) {
   //   );
   // };
 
+  const onRowSelect=(e)=>{
+    console.log(e);
+    history.push("/device/innertable")
+  }
+
   return (
     <>
       <DataTable
@@ -278,6 +288,8 @@ export default function Table(props) {
         // expandedRows={rows}
         // onRowToggle={(e) => setRows(e.data)}
         // rowExpansionTemplate={rowExpansionTemplate}
+        selectionMode="single"
+        onRowSelect={(e)=> onRowSelect(e) }
       >
         {dynamicColumns}
         {/* <Column expander style={{ width: "3em" }} /> */}

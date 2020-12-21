@@ -12,7 +12,7 @@ export default function Company() {
 
   useEffect(() => {
     dispatch(fetchDataCard("dashboard/company/devices"));
-    dispatch(fetchTable("device","AUBURN UNIVERSITY"))
+    dispatch(fetchTable("dashboard/device/status",{company:"AUBURN UNIVERSITY"}))
   }, [dispatch]);
 
   const columns= [

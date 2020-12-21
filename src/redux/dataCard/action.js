@@ -26,10 +26,6 @@ const fetchDataCardFailure = (error) => {
 };
 
 export const fetchDataCard = (path) => {
-  // const path =
-  //   identify === "device"
-  //     ? `dashboard/device/inventory`
-  //     : `dashboard/company/devices`;
   return (dispatch) => {
     dispatch(fetchDataCardRequest);
     API.post(path)

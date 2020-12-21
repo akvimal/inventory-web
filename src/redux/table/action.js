@@ -25,20 +25,13 @@ import {
     };
   };
   
-  export const fetchTable = (identify,device) => {
+  export const fetchTable = (path,value) => {
 
-    console.log(identify,device);
-    const path =
-      identify === "device"
-        ?`dashboard/device/status`
-        :  `dashboard/company/status` ;
+    console.log(path,value);
+
     return (dispatch) => {
       dispatch(fetchTableRequest);
-      API.post(path,identify==="device"?{
-          company:device
-      }:{
-        device:device
-      })
+      API.post(path,value)
         .then(({ data }) => {
           dispatch(fetchTableSuccess(data))
         })

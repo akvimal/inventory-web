@@ -13,7 +13,7 @@ export default function Device() {
 
   useEffect(() => {
     dispatch(fetchDataCard("dashboard/device/inventory"));
-    dispatch(fetchTable("company","BaconBit"))
+    dispatch(fetchTable("dashboard/company/status", {device:"BaconBit"}))
   }, [dispatch]);
 
   const data = useSelector((state) =>state.table.data)
@@ -23,6 +23,13 @@ export default function Device() {
     { field: "location", header: "Location" },
     { field: "status", header: "Status" },
     { field: "count", header: "Count" },
+  ]
+
+  const columns1= [
+    { field: "machineid", header: "machineid" },
+    { field: "instqllationid", header: "instqllationid" },
+    { field: "uninstallationdate", header: "uninstallationdate" },
+    { field: "status", header: "status" },
   ]
 
   return (
@@ -36,7 +43,8 @@ export default function Device() {
         <div className=" mt-3 ml-4 mr-4">
           <Band name="Company Name" location="location" status="status" />
           <Switch>
-          <Route path="/device" render={props=><Table {...props} columns={columns}/>} />
+          <Route exact path="/device" render={props=><Table {...props} columns={columns}/>} />
+          <Route path="/device/innertable" render={props=><Table {...props}columns={columns1}/>} />
         </Switch>
         </div>
       </div>
