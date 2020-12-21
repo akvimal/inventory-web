@@ -12,7 +12,7 @@ export default function Device() {
    const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(fetchDataCard("device"));
+    dispatch(fetchDataCard("dashboard/device/inventory"));
     dispatch(fetchTable("company","BaconBit"))
   }, [dispatch]);
 
