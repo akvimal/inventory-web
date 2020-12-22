@@ -12,16 +12,25 @@ export default function Company() {
 
   useEffect(() => {
     dispatch(fetchDataCard("dashboard/company/devices"));
-    dispatch(fetchTable("dashboard/device/status",{company:"AUBURN UNIVERSITY"}))
+    dispatch(
+      fetchTable("dashboard/device/status", { company: "AUBURN UNIVERSITY" })
+    );
   }, [dispatch]);
 
-  const columns= [
+  const columns = [
     { field: "location", header: "Location" },
     { field: "device_name", header: "Device Name" },
     { field: "status", header: "Status" },
     { field: "count", header: "Count" },
-  ]
+  ];
 
+  const columns1 = [
+    { field: "machine_id", header: "Machine Id" },
+    { field: "installation_id", header: "Installation Id" },
+    { field: "installation_date", header: "Uninstallation Date" },
+    { field: "location", header: "Location" },
+    { field: "uninstallation_date", header: "Uninstallation Date" },
+  ];
 
   return (
     <>
@@ -34,8 +43,15 @@ export default function Company() {
         <div className="mt-3 ml-4 mr-4">
           <Band name="Company Name" location="location" status="status" />
           <Switch>
-          <Route path="/company" render={props=><Table {...props} columns={columns}/>} />
-        </Switch>
+            <Route
+              path="/company/:companyname"
+              render={(props) => <Table {...props} columns={columns} />}
+            />
+            <Route
+              path="/:device/:innertable"
+              render={(props) => <Table {...props} columns={columns1} />}
+            />
+          </Switch>
         </div>
       </div>
     </>

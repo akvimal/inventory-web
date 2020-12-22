@@ -45,11 +45,11 @@ export default function Device() {
           <Switch>
             <Route
               exact
-              path="/device"
+              path="/device/:BaconBit"
               render={(props) => <Table {...props} columns={columns} />}
             />
             <Route
-              path="/device/innertable"
+              path="/:device/:innertable"
               render={(props) => <Table {...props} columns={columns1} />}
             />
           </Switch>

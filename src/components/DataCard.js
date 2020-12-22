@@ -3,11 +3,10 @@ import { Card } from "primereact/card";
 import { ScrollPanel } from "primereact/scrollpanel";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useLocation, useRouteMatch } from "react-router-dom";
-import { fetchTable } from "../redux/action"
+import { fetchTable } from "../redux/action";
 
 export default function DataCard(props) {
-
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
 
   const data = useSelector((state) => state.dataCard.data);
   let match = useRouteMatch();
@@ -26,7 +25,18 @@ export default function DataCard(props) {
                 to={{ pathname: `${match.url}/${name}` }}
                 className="link"
                 key={name}
-                onClick={()=>dispatch(fetchTable(props.id,name))}
+                onClick={() => {
+                  dispatch(
+                    fetchTable("dashboard/company/status", {
+                      device: name,
+                    })
+                  );
+                  dispatch(
+                    fetchTable("dashboard/device/status", {
+                      company: name,
+                    })
+                  );
+                }}
               >
                 <div className="p-mr-4" key={name}>
                   <Card

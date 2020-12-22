@@ -12,6 +12,7 @@ const fetchDataCardRequest = () => {
 };
 
 const fetchDataCardSuccess = (data) => {
+  
   return {
     type: FETCH_DATACARD_SUCCESS,
     payload: data,

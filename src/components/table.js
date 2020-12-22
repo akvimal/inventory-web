@@ -265,13 +265,13 @@ export default function Table(props) {
   //     </div>
   //   );
   // };
-
+  console.log(props);
   const onRowSelect = (e) => {
     console.log(e);
-    history.push("/device/innertable");
+    history.push(`${props.match.url}/${e.data.name}`);
     dispatch(
       fetchTable("dashboard/device/location", {
-        company: "AUBURN UNIVERSITY",
+        company: e.data.name,
         device: "BaconBit",
       })
     );
