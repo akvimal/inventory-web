@@ -6,15 +6,14 @@ import { fetchTable } from "../redux/action";
 import { useHistory } from "react-router-dom";
 
 export default function Table(props) {
-
   console.log(props);
 
   const history = useHistory();
 
   const dispatch = useDispatch();
 
- const data = useSelector((state) =>state.table.data)
-//  const columns = useSelector((state) =>state.table.device)
+  const data = useSelector((state) => state.table.data);
+  //  const columns = useSelector((state) =>state.table.device)
 
   // const data = [
   //   {
@@ -23,10 +22,10 @@ export default function Table(props) {
   //     installation_date: "18-09-2020",
   //     location: "Auburn",
   //     uninstallation_date: "18-09-2020",
-      // name: "company1",
-      // location: "Beavercreek",
-      // status: "installed",
-      // count: 20,
+  // name: "company1",
+  // location: "Beavercreek",
+  // status: "installed",
+  // count: 20,
   //     history: [
   //       {
   //         installation_id: 1,
@@ -217,12 +216,8 @@ export default function Table(props) {
 
   // const [rows, setRows] = useState(null);
 
-
-
   const dynamicColumns = props.columns.map((col, i) => {
-    return (
-      <Column key={col.field} field={col.field} header={col.header}  />
-    );
+    return <Column key={col.field} field={col.field} header={col.header} />;
   });
 
   // const columns1 = [
@@ -271,10 +266,16 @@ export default function Table(props) {
   //   );
   // };
 
-  const onRowSelect=(e)=>{
+  const onRowSelect = (e) => {
     console.log(e);
-    history.push("/device/innertable")
-  }
+    history.push("/device/innertable");
+    dispatch(
+      fetchTable("dashboard/device/location", {
+        company: "AUBURN UNIVERSITY",
+        device: "BaconBit",
+      })
+    );
+  };
 
   return (
     <>
@@ -289,7 +290,7 @@ export default function Table(props) {
         // onRowToggle={(e) => setRows(e.data)}
         // rowExpansionTemplate={rowExpansionTemplate}
         selectionMode="single"
-        onRowSelect={(e)=> onRowSelect(e) }
+        onRowSelect={(e) => onRowSelect(e)}
       >
         {dynamicColumns}
         {/* <Column expander style={{ width: "3em" }} /> */}
