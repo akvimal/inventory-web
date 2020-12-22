@@ -2,20 +2,34 @@ import React, { useEffect } from "react";
 import DataCard from "../components/DataCard";
 import Table from "../components/table";
 import Band from "../components/band";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { fetchDataCard } from "../redux/action";
-import { Route, Switch } from "react-router-dom";
+import { Route, Switch, useHistory } from "react-router-dom";
 import { fetchTable } from "../redux/table/action";
+import _ from "lodash"
 
 export default function Company() {
+  const history = useHistory();
   const dispatch = useDispatch();
-
   useEffect(() => {
     dispatch(fetchDataCard("dashboard/company/devices"));
-    dispatch(
-      fetchTable("dashboard/device/status", { company: "AUBURN UNIVERSITY" })
-    );
+    // dispatch(
+    //   fetchTable("dashboard/device/status", { company: "AUBURN UNIVERSITY" })
+    // );
   }, [dispatch]);
+
+  const cardData = useSelector((state) => state.dataCard.data);
+  // let match = useRouteMatch();
+
+  useEffect(() => {
+    if (_.isEmpty(cardData)) {
+      
+    } else {
+      dispatch(fetchTable("dashboard/device/status",{company:cardData[0].name}))
+      history.push(`/company/${cardData[0].name}`)
+    }
+  
+  }, [cardData])
 
   const columns = [
     { field: "location", header: "Location" },
@@ -36,7 +50,7 @@ export default function Company() {
     <>
       <div id="scroll-cards">
         <div className="mt-3 ml-4 mr-4">
-          <DataCard name="company" id="device" />
+          <DataCard name="company" id="device" url="dashboard/device/status"/>
         </div>
       </div>
       <div id="table">

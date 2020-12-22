@@ -4,6 +4,7 @@ import { Column } from "primereact/column";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchTable } from "../redux/action";
 import { useHistory } from "react-router-dom";
+import { MultiSelect } from 'primereact/multiselect';
 
 export default function Table(props) {
   console.log(props);
@@ -217,7 +218,7 @@ export default function Table(props) {
   // const [rows, setRows] = useState(null);
 
   const dynamicColumns = props.columns.map((col, i) => {
-    return <Column key={col.field} field={col.field} header={col.header} />;
+    return <Column key={col.field} field={col.field} header={col.header}  filter/>;
   });
 
   // const columns1 = [
@@ -271,8 +272,8 @@ export default function Table(props) {
     history.push(`${props.match.url}/${e.data.name}`);
     dispatch(
       fetchTable("dashboard/device/location", {
-        company: e.data.name,
-        device: "BaconBit",
+        company: e.data.name || "Auburn",
+        device: "BaconBit"|| e.data.device_name,
       })
     );
   };
@@ -293,7 +294,7 @@ export default function Table(props) {
         onRowSelect={(e) => onRowSelect(e)}
       >
         {dynamicColumns}
-        {/* <Column expander style={{ width: "3em" }} /> */}
+        <Column expander style={{ width: "3em" }} />
       </DataTable>
     </>
   );

@@ -20,7 +20,7 @@ export default function App() {
         <HomePage />
         <Switch>
           <Route exact path="/">
-            <Redirect to="/device/BaconBit" />
+            <Redirect to="/device" />
           </Route>
           <Route path="/device" component={Device} />
           <Route path="/company" component={Company} />

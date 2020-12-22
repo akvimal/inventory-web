@@ -4,18 +4,30 @@ import Table from "../components/table";
 import Band from "../components/band";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchDataCard } from "../redux/action";
-import { Route, Switch } from "react-router-dom";
+import { Route, Switch, useHistory } from "react-router-dom";
 import { fetchTable } from "../redux/action";
+import _ from "lodash"
 
 export default function Device() {
   const dispatch = useDispatch();
+  const history = useHistory();
 
   useEffect(() => {
     dispatch(fetchDataCard("dashboard/device/inventory"));
-    dispatch(fetchTable("dashboard/company/status", { device: "BaconBit" }));
   }, [dispatch]);
 
   const data = useSelector((state) => state.table.data);
+  const cardData = useSelector((state) => state.dataCard.data);
+
+  useEffect(() => {
+    if (_.isEmpty(cardData)) {
+      
+    } else {
+      dispatch(fetchTable("dashboard/company/status",{device:cardData[0].name}))
+      history.push(`/device/${cardData[0].name}`)
+    }
+  
+  }, [cardData])
 
   const columns = [
     { field: "name", header: "Name" },
@@ -36,7 +48,7 @@ export default function Device() {
     <>
       <div id="scroll-cards">
         <div className="mt-3 ml-4 mr-4">
-          <DataCard name="device" id="company" />
+          <DataCard name="device" id="company" url="dashboard/company/status"/>
         </div>
       </div>
       <div id="table">
@@ -46,7 +58,7 @@ export default function Device() {
             <Route
               exact
               path="/device/:BaconBit"
-              render={(props) => <Table {...props} columns={columns} />}
+              render={(props) => <Table {...props}  columns={columns} />}
             />
             <Route
               path="/:device/:innertable"

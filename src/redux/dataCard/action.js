@@ -12,7 +12,6 @@ const fetchDataCardRequest = () => {
 };
 
 const fetchDataCardSuccess = (data) => {
-  
   return {
     type: FETCH_DATACARD_SUCCESS,
     payload: data,
@@ -30,7 +29,7 @@ export const fetchDataCard = (path) => {
   return (dispatch) => {
     dispatch(fetchDataCardRequest);
     API.post(path)
-      .then(({ data }) => {
+      .then(({ data })  => {
         dispatch(fetchDataCardSuccess(data));
       })
       .catch((err) => {
