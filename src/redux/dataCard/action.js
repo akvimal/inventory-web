@@ -25,15 +25,11 @@ const fetchDataCardFailure = (error) => {
   };
 };
 
-export const fetchDataCard = (identify) => {
-  const path =
-    identify === "device"
-      ? `dashboard/device/inventory`
-      : `dashboard/company/devices`;
+export const fetchDataCard = (path) => {
   return (dispatch) => {
     dispatch(fetchDataCardRequest);
     API.post(path)
-      .then(({ data }) => {
+      .then(({ data })  => {
         dispatch(fetchDataCardSuccess(data));
       })
       .catch((err) => {

@@ -107,6 +107,12 @@ body {
   letter-spacing: 0px !important;
   color: #f7b924 !important;
   opacity: 1 !important;
+  /* padding-left: 10px !important; */
+  margin-left: 12px !important;
+}
+
+.p-menubar-end {
+  margin-right: 12px !important;
 }
 
 .sidenav-buttons {
@@ -118,6 +124,8 @@ body {
   margin-top: 1vmax !important;
   margin-bottom: 1vmax !important;
   text-transform: uppercase !important;
+  height: 40px !important;
+  width: 205px !important;
 }
 .sidenav-buttons-active {
   color: white !important;
@@ -134,9 +142,7 @@ body {
   text-transform: uppercase !important;
 }
 
-.link{
-  text-decoration: none !important;
-}
+
 
 .sidenav-buttons:hover {
   width: 205px !important;
@@ -207,7 +213,19 @@ hr.divider-line {
 .p-card {
   top: 142px !important;
   left: 275px !important;
-  width: 485px !important;
+  width: fit-content !important;
+  height: 137px !important;
+  background: var(--unnamed-color-29313a) 0% 0% no-repeat padding-box !important;
+  /* border: 1px solid var(--unnamed-color-f7b924) !important; */
+  background: #29313a 0% 0% no-repeat padding-box !important;
+  box-shadow: 0px 0px 8px #00000029 !important;
+  opacity: 1 !important;
+}
+
+.card-active{
+top: 142px !important;
+  left: 275px !important;
+  width: fit-content !important;
   height: 137px !important;
   background: var(--unnamed-color-29313a) 0% 0% no-repeat padding-box !important;
   border: 1px solid var(--unnamed-color-f7b924) !important;
@@ -215,14 +233,15 @@ hr.divider-line {
   box-shadow: 0px 0px 8px #00000029 !important;
   opacity: 1 !important;
 }
+
 .p-card-title {
   top: 155px !important;
   left: 290px !important;
-  width: 76px !important;
+  /* width: 76px !important; */
   height: 19px !important;
   color: var(--unnamed-color-ffffff) !important;
   text-align: left !important;
-  font: normal normal 600 16px/19px Montserrat !important;
+  font: normal normal 600 15px Montserrat !important;
   letter-spacing: 0px !important;
   color: #ffffff !important;
   opacity: 1 !important;
@@ -379,7 +398,7 @@ hr.divider-line {
 .band-text-1 {
   top: 322px !important;
   left: 424px !important;
-  width: 180px !important;
+  width: 20vmax !important;
   height: 13px !important;
   color: var(--unnamed-color-f7b924);
   text-align: left !important;
@@ -391,6 +410,11 @@ hr.divider-line {
   text-transform: capitalize !important;
   display: inline-flex !important;
 }
+
+/* .band-text-2{
+
+} */
+
 .band-text-1 > p {
   text-align: left !important;
   font: normal normal medium 10px/13px Montserrat !important;
@@ -431,8 +455,8 @@ hr.divider-line {
   opacity: 1 !important;
 }
 
-Link {
-  text-emphasis: none !important;
+.link{
+  text-decoration: none !important;
 }
 
 @media only screen and (max-width: 550px) {
@@ -518,3 +542,16 @@ background-color: #373e47 !important;
   background-color: #3ac47d !important;
   background: #3ac47d !important;
 } */
+
+.product-badge.status-installed{
+  color: #ffffff;
+  /* font-family: montserrat; */
+  border-left: 4px solid #3f6ad8;
+  font-weight: lighter;
+  outline: none;
+  background: #545a61;
+}
+
+.p-column-filter{
+  width: 13vmax !important;
+}
