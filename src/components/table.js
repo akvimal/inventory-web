@@ -4,7 +4,8 @@ import { Column } from "primereact/column";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchTable } from "../redux/action";
 import { useHistory } from "react-router-dom";
-import { MultiSelect } from 'primereact/multiselect';
+import { MultiSelect } from "primereact/multiselect";
+import { Dropdown } from "primereact/dropdown";
 
 export default function Table(props) {
   console.log(props);
@@ -15,244 +16,6 @@ export default function Table(props) {
 
   const data = useSelector((state) => state.table.data);
   //  const columns = useSelector((state) =>state.table.device)
-
-  // const data = [
-  //   {
-  //     machine_id: "F4:5A:5C:F8:59:BC",
-  //     installation_id: "AU-T0001",
-  //     installation_date: "18-09-2020",
-  //     location: "Auburn",
-  //     uninstallation_date: "18-09-2020",
-  // name: "company1",
-  // location: "Beavercreek",
-  // status: "installed",
-  // count: 20,
-  //     history: [
-  //       {
-  //         installation_id: 1,
-  //         installation_date: "20/10/2020",
-  //         location: "Rio De Janeiro",
-  //         status: "Installed",
-  //         uninstallation_date: "30/10/2020",
-  //         company: "Nulla Tempor Odio",
-  //       },
-  //       {
-  //         installation_id: 2,
-  //         installation_date: "20/10/2020",
-  //         location: "Tokiyo",
-  //         status: "Installed",
-  //         uninstallation_date: "30/10/2020",
-  //         company: "Nulla Tempor Odio",
-  //       },
-  //       {
-  //         installation_id: 3,
-  //         installation_date: "20/10/2020",
-  //         location: "Manila",
-  //         status: "Installed",
-  //         uninstallation_date: "30/10/2020",
-  //         company: "Nulla Tempor Odio",
-  //       },
-  //     ],
-  //   },
-  //   {
-  //     machine_id: "B4:5A:5C:F8:59:BC",
-  //     installation_id: "AU-T0002",
-  //     installation_date: "13-09-2020",
-  //     location: "Auburn",
-  //     uninstallation_date: "19-09-2020",
-  //     // name: "company1",
-  //     // location: "Beavercreek",
-  //     // status: "installed",
-  //     // count: 20,
-  //     history: [
-  //       {
-  //         installation_id: 4,
-  //         installation_date: "20/10/2020",
-  //         location: "Rio De Janeiro",
-  //         status: "Installed",
-  //         uninstallation_date: "30/10/2020",
-  //         company: "Nulla Tempor Odio",
-  //       },
-  //       {
-  //         installation_id: 5,
-  //         installation_date: "20/10/2020",
-  //         location: "Tokiyo",
-  //         status: "Installed",
-  //         uninstallation_date: "30/10/2020",
-  //         company: "Nulla Tempor Odio",
-  //       },
-  //       {
-  //         installation_id: 6,
-  //         installation_date: "20/10/2020",
-  //         location: "Manila",
-  //         status: "Installed",
-  //         uninstallation_date: "30/10/2020",
-  //         company: "Nulla Tempor Odio",
-  //       },
-  //     ],
-  //   },
-  //   {
-  //     machine_id: "P4:5A:5C:F8:59:BC",
-  //     installation_id: "AU-T0003",
-  //     installation_date: "18-09-2020",
-  //     location: "Auburn",
-  //     uninstallation_date: "18-09-2020",
-  //     // name: "company1",
-  //     // location: "Beavercreek",
-  //     // status: "installed",
-  //     // count: 20,
-  //     history: [
-  //       {
-  //         installation_id: 7,
-  //         installation_date: "20/10/2020",
-  //         location: "Rio De Janeiro",
-  //         status: "Installed",
-  //         uninstallation_date: "30/10/2020",
-  //         company: "Nulla Tempor Odio",
-  //       },
-  //       {
-  //         installation_id: 8,
-  //         installation_date: "20/10/2020",
-  //         location: "Tokiyo",
-  //         status: "Installed",
-  //         uninstallation_date: "30/10/2020",
-  //         company: "Nulla Tempor Odio",
-  //       },
-  //       {
-  //         installation_id: 9,
-  //         installation_date: "20/10/2020",
-  //         location: "Manila",
-  //         status: "Installed",
-  //         uninstallation_date: "30/10/2020",
-  //         company: "Nulla Tempor Odio",
-  //       },
-  //     ],
-  //   },
-  //   {
-  //     machine_id: "A4:5A:5C:F8:59:BC",
-  //     installation_id: "AU-T0001",
-  //     installation_date: "18-09-2020",
-  //     location: "Auburn",
-  //     uninstallation_date: "18-09-2020",
-  //     // name: "company1",
-  //     // location: "Beavercreek",
-  //     // status: "installed",
-  //     // count: 20,
-  //     history: [
-  //       {
-  //         installation_id: 10,
-  //         installation_date: "20/10/2020",
-  //         location: "Rio De Janeiro",
-  //         status: "Installed",
-  //         uninstallation_date: "30/10/2020",
-  //         company: "Nulla Tempor Odio",
-  //       },
-  //       {
-  //         installation_id: 11,
-  //         installation_date: "20/10/2020",
-  //         location: "Tokiyo",
-  //         status: "Installed",
-  //         uninstallation_date: "30/10/2020",
-  //         company: "Nulla Tempor Odio",
-  //       },
-  //       {
-  //         installation_id: 12,
-  //         installation_date: "20/10/2020",
-  //         location: "Manila",
-  //         status: "Installed",
-  //         uninstallation_date: "30/10/2020",
-  //         company: "Nulla Tempor Odio",
-  //       },
-  //     ],
-  //   },
-  //   {
-  //     machine_id: "Q4:5A:5C:F8:59:BC",
-  //     installation_id: "AU-T0001",
-  //     installation_date: "18-09-2020",
-  //     location: "Auburn",
-  //     uninstallation_date: "18-09-2020",
-  //     // name: "company1",
-  //     // location: "Beavercreek",
-  //     // status: "installed",
-  //     // count: 20,
-  //     history: [
-  //       {
-  //         installation_id: 13,
-  //         installation_date: "20/10/2020",
-  //         location: "Rio De Janeiro",
-  //         status: "Installed",
-  //         uninstallation_date: "30/10/2020",
-  //         company: "Nulla Tempor Odio",
-  //       },
-  //       {
-  //         installation_id: 14,
-  //         installation_date: "20/10/2020",
-  //         location: "Tokiyo",
-  //         status: "Installed",
-  //         uninstallation_date: "30/10/2020",
-  //         company: "Nulla Tempor Odio",
-  //       },
-  //       {
-  //         installation_id: 15,
-  //         installation_date: "20/10/2020",
-  //         location: "Manila",
-  //         status: "Installed",
-  //         uninstallation_date: "30/10/2020",
-  //         company: "Nulla Tempor Odio",
-  //       },
-  //     ],
-  //   },
-  // ];
-
-  // const information = [
-  //   {
-  //     model: "Model No.",
-  //     manufacturer: "manufacturer",
-  //     hardware_version: "Hardware Version",
-  //     commission_date: "Commission Date",
-  //     decommission_date: "Decommission Date",
-  //     cost: "$900",
-  //   },
-  // ];
-
-  // const [rows, setRows] = useState(null);
-
-  const dynamicColumns = props.columns.map((col, i) => {
-    return <Column key={col.field} field={col.field} header={col.header}  filter/>;
-  });
-
-  // const columns1 = [
-  //   { field: "installation_id", header: "Installation ID" },
-  //   { field: "installation_date", header: "Installation Date" },
-  //   { field: "location", header: "Location" },
-  //   { field: "status", header: "Status"},
-  //   { field: "uninstallation_date", header: "Uninstallation date" },
-  //   { field: "company", header: "Company" },
-  // ];
-
-  // const dynamicColumns1 = columns1.map((col, i) => {
-  //   return (
-  //     <Column
-  //       className="data-column"
-  //       key={col.field}
-  //       field={col.field}
-  //       header={col.header}
-  //     />
-  //   );
-  // });
-
-  // const columns2 = [
-  //   { field: "model", header: "Model" },
-  //   { field: "manufacturer", header: "Manufacturer" },
-  //   { field: "hardware_version", header: "Hardware Version" },
-  //   { field: "commission_date", header: "Commission Date" },
-  //   { field: "decommission_date", header: "Decommission Date" },
-  //   { field: "cost", header: "Cost" },
-  // ];
-
-  // const dynamicColumns2 = columns2.map((col, i) => {
-  //   return <Column key={col.field} field={col.field} header={col.header} />;
-  // });
 
   // const rowExpansionTemplate = (data) => {
   //   return (
@@ -266,16 +29,51 @@ export default function Table(props) {
   //     </div>
   //   );
   // };
-  console.log(props);
+  const [filter, setFilter] = useState(false);
+
+  const nameBodyTemplate = (rowData) => {
+    return (
+      <React.Fragment>
+        <span className="p-column-title">
+          {rowData}
+          <i
+            className="pi pi-filter"
+            style={{
+              fontSize: "10px",
+              cursor: "pointer",
+              paddingLeft: "50px",
+            }}
+            onClick={() => setFilter(!filter)}
+          ></i>
+        </span>
+      </React.Fragment>
+    );
+  };
+  const dynamicColumns = props.columns.map((col, i) => {
+    return (
+      <Column
+        key={col.field}
+        field={col.field}
+        header={nameBodyTemplate(col.header)}
+        filter={filter}
+        filterElement={col.filterElement}
+        // body={nameBodyTemplate}
+      />
+    );
+  });
+
+  const ex = localStorage.getItem("device name");
+
   const onRowSelect = (e) => {
     console.log(e);
-    history.push(`${props.match.url}/${e.data.name}`);
+    history.push(`${props.match.url}/${e.data.device_name}`);
     dispatch(
       fetchTable("dashboard/device/location", {
-        company: e.data.name || "Auburn",
-        device: "BaconBit"|| e.data.device_name,
+        company: e.data.name || ex,
+        device: "BaconBit" || e.data.device_name,
       })
     );
+    props.select(e);
   };
 
   return (
@@ -290,7 +88,7 @@ export default function Table(props) {
         // expandedRows={rows}
         // onRowToggle={(e) => setRows(e.data)}
         // rowExpansionTemplate={rowExpansionTemplate}
-        selectionMode="single"
+        selectionMode={props.type}
         onRowSelect={(e) => onRowSelect(e)}
       >
         {dynamicColumns}
