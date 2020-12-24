@@ -22,7 +22,8 @@ export default function Device() {
       setDstatus(e.data.status)
     );
   };
-  // console.log(cname, clocation, cstatus);
+
+  const [row, setRows] = useState(null);
 
   const dispatch = useDispatch();
   const history = useHistory();

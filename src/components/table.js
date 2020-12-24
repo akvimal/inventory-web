@@ -29,6 +29,7 @@ export default function Table(props) {
   //     </div>
   //   );
   // };
+  // const [row, setRows] = useState(null);
   const [filter, setFilter] = useState(false);
 
   const nameBodyTemplate = (rowData) => {
@@ -36,7 +37,7 @@ export default function Table(props) {
       <React.Fragment>
         <span className="p-column-title">
           {rowData}
-          <i
+          {/* <i
             className="pi pi-filter"
             style={{
               fontSize: "10px",
@@ -44,7 +45,7 @@ export default function Table(props) {
               paddingLeft: "50px",
             }}
             onClick={() => setFilter(!filter)}
-          ></i>
+          ></i> */}
         </span>
       </React.Fragment>
     );
@@ -70,7 +71,7 @@ export default function Table(props) {
     dispatch(
       fetchTable("dashboard/device/location", {
         company: e.data.name || ex,
-        device: "BaconBit" || e.data.device_name,
+        device: "BaconBit" ||  e.data.device_name,
       })
     );
     props.select(e);
