@@ -4,7 +4,7 @@ import { ScrollPanel } from "primereact/scrollpanel";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useLocation, useRouteMatch } from "react-router-dom";
 import { fetchTable } from "../redux/action";
-import _ from "lodash"
+import _ from "lodash";
 
 export default function DataCard(props) {
   const dispatch = useDispatch();
@@ -15,8 +15,6 @@ export default function DataCard(props) {
   const pathItems = location.pathname.split("/");
   const currentCard = pathItems.length === 3 ? pathItems[2] : "";
 
- 
-
   return (
     <>
       <p className="title">{props.name}</p>
@@ -24,20 +22,22 @@ export default function DataCard(props) {
       <ScrollPanel>
         <div className="p-d-flex mt-3">
           {data.map(({ name, status }) => {
-            const check = props.name==="device"? {
-              device: name,
-            } : {
-              company: name,
-            }
+            const check =
+              props.name === "device"
+                ? {
+                    device: name,
+                  }
+                : {
+                    company: name,
+                  };
             return (
               <Link
                 to={{ pathname: `${match.url}/${name}` }}
                 className="link"
                 key={name}
                 onClick={() => {
-                  dispatch(
-                    fetchTable(props.url, check)
-                  );
+                  dispatch(fetchTable(props.url, check));
+                  localStorage.setItem("device name", name);
                 }}
               >
                 <div className="p-mr-4" key={name}>

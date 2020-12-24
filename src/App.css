@@ -398,7 +398,7 @@ top: 142px !important;
 .band-text-1 {
   top: 322px !important;
   left: 424px !important;
-  width: 180px !important;
+  width: 20vmax !important;
   height: 13px !important;
   color: var(--unnamed-color-f7b924);
   text-align: left !important;
@@ -410,6 +410,11 @@ top: 142px !important;
   text-transform: capitalize !important;
   display: inline-flex !important;
 }
+
+/* .band-text-2{
+
+} */
+
 .band-text-1 > p {
   text-align: left !important;
   font: normal normal medium 10px/13px Montserrat !important;
@@ -545,4 +550,8 @@ background-color: #373e47 !important;
   font-weight: lighter;
   outline: none;
   background: #545a61;
+}
+
+.p-column-filter{
+  width: 13vmax !important;
 }
