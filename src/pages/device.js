@@ -1,4 +1,4 @@
-import React, { useEffect,useRef,useState  } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import DataCard from "../components/DataCard";
 import Table from "../components/table";
 import Band from "../components/band";
@@ -10,14 +10,11 @@ import _ from "lodash";
 import { Dropdown } from "primereact/dropdown";
 
 export default function Device() {
-
   let dt = useRef(null);
 
   const [dname, setDname] = useState(null);
   const [dlocation, setDlocation] = useState(null);
   const [dstatus, setDstatus] = useState(null);
-
-
 
   const rowClick = (e) => {
     return (
@@ -34,7 +31,6 @@ export default function Device() {
     dispatch(fetchDataCard("dashboard/device/inventory"));
   }, [dispatch]);
 
-
   const cardData = useSelector((state) => state.dataCard.data);
   const tableData = useSelector((state) => state.table.data);
 
@@ -50,7 +46,6 @@ export default function Device() {
 
   const [item, setItem] = useState(null);
 
-
   const getUnique = (arr, comp) => {
     const unique = arr
       .map((e) => e[comp])
@@ -64,7 +59,6 @@ export default function Device() {
   const uniqueLoc = getUnique(tableData, "location");
   const uniqueStatus = getUnique(tableData, "status");
 
-
   const name = uniqueName.map((a) => {
     return a.name;
   });
@@ -77,35 +71,51 @@ export default function Device() {
     return status.status;
   });
 
-
   const onFilterNameChange = (event) => {
-    dt.current.filter(event.value, 'name', 'equals');
+    dt.current.filter(event.value, "name", "equals");
     setItem(event.value);
-}
-const onFilterLocationChange = (event) => {
-  dt.current.filter(event.value, 'location', 'equals');
-  setItem(event.value);
-}
-const onFilterStatusChange = (event) => {
-  dt.current.filter(event.value, 'status', 'equals');
-  setItem(event.value);
-}
+  };
+  const onFilterLocationChange = (event) => {
+    dt.current.filter(event.value, "location", "equals");
+    setItem(event.value);
+  };
+  const onFilterStatusChange = (event) => {
+    dt.current.filter(event.value, "status", "equals");
+    setItem(event.value);
+  };
 
-  const dropDownFilter =(options,onChange)=>{
-    return  <Dropdown
-    value={item}
-    options={options}
-    onChange={onChange}
-    placeholder="search"
-    className="p-column-filter"
-    showClear
-  />
-  }
+  const dropDownFilter = (options, onChange) => {
+    return (
+      <Dropdown
+        value={item}
+        options={options}
+        onChange={onChange}
+        placeholder="search"
+        className="p-column-filter"
+        showClear
+      />
+    );
+  };
 
   const columns = [
-    { field: "name", header: "Name", filterElement: dropDownFilter(name,onFilterNameChange), filter:true},
-    { field: "location", header: "Location", filterElement: dropDownFilter(location,onFilterLocationChange) ,filter:true},
-    { field: "status", header: "Status", filterElement: dropDownFilter(status,onFilterStatusChange) ,filter:true},
+    {
+      field: "name",
+      header: "Name",
+      filterElement: dropDownFilter(name, onFilterNameChange),
+      filter: true,
+    },
+    {
+      field: "location",
+      header: "Location",
+      filterElement: dropDownFilter(location, onFilterLocationChange),
+      filter: true,
+    },
+    {
+      field: "status",
+      header: "Status",
+      filterElement: dropDownFilter(status, onFilterStatusChange),
+      filter: true,
+    },
     { field: "count", header: "Count" },
   ];
 

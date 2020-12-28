@@ -8,7 +8,8 @@ import {
     state = {
       isLoading: false,
       error: null,
-      data:[]
+      data:[],
+      data2:[]
     },
     action
   ) => {
@@ -20,6 +21,7 @@ import {
           ...state,
           isLoading: false,
           data: action.payload,
+          data2:action.payload,
           error: null,
         };
       case FETCH_TABLE_FAILURE:
