@@ -29,7 +29,7 @@ export default function Company() {
 
   useEffect(() => {
     if (_.isEmpty(cardData)) {
-      fetchTable("dashboard/device/status", { company: cardData[0].name });
+      return null
     } else {
       dispatch(
         fetchTable("dashboard/device/status", { company: cardData[0].name })
