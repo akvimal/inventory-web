@@ -4,8 +4,7 @@ import { Column } from "primereact/column";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchTable } from "../redux/action";
 import { useHistory } from "react-router-dom";
-import { MultiSelect } from "primereact/multiselect";
-import { Dropdown } from "primereact/dropdown";
+
 
 export default function Table(props) {
   console.log(props);

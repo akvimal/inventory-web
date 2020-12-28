@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect,useState  } from "react";
 import DataCard from "../components/DataCard";
 import Table from "../components/table";
 import Band from "../components/band";
@@ -7,7 +7,6 @@ import { fetchDataCard } from "../redux/action";
 import { Route, Switch, useHistory } from "react-router-dom";
 import { fetchTable } from "../redux/action";
 import _ from "lodash";
-import { useState } from "react";
 import { Dropdown } from "primereact/dropdown";
 
 export default function Device() {
@@ -22,7 +21,6 @@ export default function Device() {
       setDstatus(e.data.status)
     );
   };
-  // console.log(cname, clocation, cstatus);
 
   const dispatch = useDispatch();
   const history = useHistory();
@@ -75,58 +73,22 @@ export default function Device() {
     return count.count;
   });
 
-  // const statusItemTemplate = (option) => {
-  //   return <span className={`customer-badge status-${option}`}>{option}</span>;
-  // };
-  const nameFilter = (
-    <Dropdown
-      value={item}
-      options={name}
-      onChange={(e) => setItem(e.value)}
-      // itemTemplate={statusItemTemplate}
-      placeholder="search"
-      className="p-column-filter"
-      showClear
-    />
-  );
-  const locationFilter = (
-    <Dropdown
-      value={item}
-      options={location}
-      onChange={(e) => setItem(e.value)}
-      // itemTemplate={statusItemTemplate}
-      placeholder="search"
-      className="p-column-filter"
-      showClear
-    />
-  );
-  const statusFilter = (
-    <Dropdown
-      value={item}
-      options={status}
-      onChange={(e) => setItem(e.value)}
-      // itemTemplate={statusItemTemplate}
-      placeholder="search"
-      className="p-column-filter"
-      showClear
-    />
-  );
-  const countFilter = (
-    <Dropdown
-      value={item}
-      options={count}
-      onChange={(e) => setItem(e.value)}
-      // itemTemplate={statusItemTemplate}
-      placeholder="search"
-      className="p-column-filter"
-      showClear
-    />
-  );
+ 
+  const dropDownFilter =(options)=>{
+    return  <Dropdown
+    value={item}
+    options={options}
+    onChange={(e) => setItem(e.value)}
+    placeholder="search"
+    className="p-column-filter"
+    showClear
+  />
+  }
 
   const columns = [
-    { field: "name", header: "Name", filterElement: nameFilter },
-    { field: "location", header: "Location", filterElement: locationFilter },
-    { field: "status", header: "Status", filterElement: statusFilter },
+    { field: "name", header: "Name", filterElement: dropDownFilter(name)},
+    { field: "location", header: "Location", filterElement: dropDownFilter(location) },
+    { field: "status", header: "Status", filterElement: dropDownFilter(status) },
     { field: "count", header: "Count" },
   ];
 
