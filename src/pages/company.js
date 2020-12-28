@@ -29,7 +29,7 @@ export default function Company() {
 
   useEffect(() => {
     if (_.isEmpty(cardData)) {
-      return null
+      return null;
     } else {
       dispatch(
         fetchTable("dashboard/device/status", { company: cardData[0].name })
@@ -51,6 +51,15 @@ export default function Company() {
     { field: "installation_date", header: "Uninstallation Date" },
     { field: "location", header: "Location" },
     { field: "uninstallation_date", header: "Uninstallation Date" },
+  ];
+
+  const columns2 = [
+    { field: "installation_id", header: "Installation ID" },
+    { field: "installation_date", header: "Installation Date" },
+    { field: "location", header: "Location" },
+    { field: "status", header: "Status" },
+    { field: "uninstallation_date", header: "Uninstallation_date" },
+    { field: "company", header: "Company" },
   ];
 
   return (
@@ -78,6 +87,7 @@ export default function Company() {
                 <Table
                   {...props}
                   columns={columns}
+                  columns2={columns2}
                   type="single"
                   select={deviceClick}
                 />
@@ -85,7 +95,9 @@ export default function Company() {
             />
             <Route
               path="/:device/:innertable"
-              render={(props) => <Table {...props} columns={columns1} />}
+              render={(props) => (
+                <Table {...props} columns={columns1} columns2={columns2} />
+              )}
             />
           </Switch>
         </div>

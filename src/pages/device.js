@@ -126,6 +126,16 @@ export default function Device() {
     { field: "location", header: "Location" },
     { field: "uninstallation_date", header: "Uninstallation Date" },
   ];
+
+  const columns2 = [
+    { field: "installation_id", header: "Installation ID" },
+    { field: "installation_date", header: "Installation Date" },
+    { field: "location", header: "Location" },
+    { field: "status", header: "Status" },
+    { field: "uninstallation_date", header: "Uninstallation_date" },
+    { field: "company", header: "Company" },
+  ];
+
   return (
     <>
       <div id="scroll-cards">
@@ -152,6 +162,7 @@ export default function Device() {
                   {...props}
                   refs={dt}
                   columns={columns}
+                  columns2={columns2}
                   type="single"
                   select={rowClick}
                 />
@@ -159,7 +170,9 @@ export default function Device() {
             />
             <Route
               path="/:device/:innertable"
-              render={(props) => <Table {...props} columns={columns1} />}
+              render={(props) => (
+                <Table {...props} columns={columns1} columns2={columns2} />
+              )}
             />
           </Switch>
         </div>
