@@ -201,7 +201,7 @@ export default function Table(props) {
   const data = useSelector((state) => state.table.data);
   const data2 = useSelector((state) => state.table.data2);
 
-  const [filter, setFilter] = useState(false);
+  // const [filter, setFilter] = useState(false);
 
   const [state, setstate] = useState([]);
 
@@ -210,15 +210,7 @@ export default function Table(props) {
       <React.Fragment>
         <span className="p-column-title">
           {rowData}
-          <i
-            className="pi pi-filter"
-            style={{
-              fontSize: "10px",
-              cursor: "pointer",
-              paddingLeft: "50px",
-            }}
-            onClick={() => setFilter(!filter)}
-          ></i>
+          {props.filtericon}
         </span>
       </React.Fragment>
     );
@@ -229,7 +221,7 @@ export default function Table(props) {
         key={col.field}
         field={col.field}
         header={nameBodyTemplate(col.header)}
-        filter={filter}
+        filter={col.filter}
         filterElement={col.filterElement}
       />
     );
@@ -298,7 +290,7 @@ export default function Table(props) {
         onRowSelect={(e) => onRowSelect(e)}
       >
         {dynamicColumns}
-        <Column expander style={{ width: "3em" }} />
+        {props.rowExpander}
       </DataTable>
     </>
   );

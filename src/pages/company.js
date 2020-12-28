@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import DataCard from "../components/DataCard";
 import Table from "../components/table";
 import Band from "../components/band";
@@ -7,6 +7,8 @@ import { fetchDataCard } from "../redux/action";
 import { Route, Switch, useHistory } from "react-router-dom";
 import { fetchTable } from "../redux/table/action";
 import _ from "lodash";
+import { Column } from "primereact/column";
+import { Dropdown } from "primereact/dropdown";
 
 export default function Company() {
   const [cname, setCname] = useState(null);
@@ -26,10 +28,13 @@ export default function Company() {
   }, [dispatch]);
 
   const cardData = useSelector((state) => state.dataCard.data);
+  const tableData = useSelector((state) => state.table.data);
 
   useEffect(() => {
     if (_.isEmpty(cardData)) {
-      return null;
+      dispatch(
+        fetchTable("dashboard/device/status", { company: cardData[0].name })
+      );
     } else {
       dispatch(
         fetchTable("dashboard/device/status", { company: cardData[0].name })
@@ -37,11 +42,89 @@ export default function Company() {
       history.push(`/company/${cardData[0].name}`);
     }
   }, [cardData]);
+  const [item, setItem] = useState(null);
+  let dt = useRef(null);
+  const getUnique = (arr, comp) => {
+    const unique = arr
+      .map((e) => e[comp])
+      .map((e, i, final) => final.indexOf(e) === i && i)
+      .filter((e) => arr[e])
+      .map((e) => arr[e]);
+    return unique;
+  };
 
+  const uniqueName = getUnique(tableData, "name");
+  const uniqueLoc = getUnique(tableData, "location");
+  const uniqueStatus = getUnique(tableData, "status");
+
+  const location = uniqueName.map((a) => {
+    return a.location;
+  });
+
+  const deviceName = uniqueLoc.map((d) => {
+    return d.device_name;
+  });
+
+  const status = uniqueStatus.map((status) => {
+    return status.status;
+  });
+
+  const onFilterLocationChange = (event) => {
+    dt.current.filter(event.value, "location", "equals");
+    setItem(event.value);
+  };
+  const onFilterDeviceNameChange = (event) => {
+    dt.current.filter(event.value, "device_name", "equals");
+    setItem(event.value);
+  };
+  const onFilterStatusChange = (event) => {
+    dt.current.filter(event.value, "status", "equals");
+    setItem(event.value);
+  };
+  const dropDownFilter = (options, onChange) => {
+    return (
+      <Dropdown
+        value={item}
+        options={options}
+        onChange={onChange}
+        placeholder="search"
+        className="p-column-filter"
+        showClear
+      />
+    );
+  };
+  const expander = <Column expander style={{ width: "3em" }} />;
+  const [filter, setFilter] = useState(false);
+  const icon = (
+    <i
+      className="pi pi-filter"
+      style={{
+        fontSize: "10px",
+        cursor: "pointer",
+        paddingLeft: "50px",
+      }}
+      onClick={() => setFilter(!filter)}
+    ></i>
+  );
   const columns = [
-    { field: "location", header: "Location" },
-    { field: "device_name", header: "Device Name" },
-    { field: "status", header: "Status" },
+    {
+      field: "location",
+      header: "Location",
+      filter: filter,
+      filterElement: dropDownFilter(location, onFilterLocationChange),
+    },
+    {
+      field: "device_name",
+      header: "Device Name",
+      filter: filter,
+      filterElement: dropDownFilter(deviceName, onFilterDeviceNameChange),
+    },
+    {
+      field: "status",
+      header: "Status",
+      filter: filter,
+      filterElement: dropDownFilter(status, onFilterStatusChange),
+    },
     { field: "count", header: "Count" },
   ];
 
@@ -85,7 +168,9 @@ export default function Company() {
               path="/company/:companyname"
               render={(props) => (
                 <Table
+                  filtericon={icon}
                   {...props}
+                  refs={dt}
                   columns={columns}
                   columns2={columns2}
                   type="single"
@@ -96,7 +181,12 @@ export default function Company() {
             <Route
               path="/:device/:innertable"
               render={(props) => (
-                <Table {...props} columns={columns1} columns2={columns2} />
+                <Table
+                  {...props}
+                  columns={columns1}
+                  columns2={columns2}
+                  rowExpander={expander}
+                />
               )}
             />
           </Switch>

@@ -8,6 +8,7 @@ import { Route, Switch, useHistory } from "react-router-dom";
 import { fetchTable } from "../redux/action";
 import _ from "lodash";
 import { Dropdown } from "primereact/dropdown";
+import { Column } from "primereact/column";
 
 export default function Device() {
   let dt = useRef(null);
@@ -83,7 +84,7 @@ export default function Device() {
     dt.current.filter(event.value, "status", "equals");
     setItem(event.value);
   };
-
+  const expander = <Column expander style={{ width: "3em" }} />;
   const dropDownFilter = (options, onChange) => {
     return (
       <Dropdown
@@ -96,35 +97,55 @@ export default function Device() {
       />
     );
   };
+  const [filter, setFilter] = useState(false);
+  const icon = (
+    <i
+      className="pi pi-filter"
+      style={{
+        fontSize: "10px",
+        cursor: "pointer",
+        paddingLeft: "50px",
+      }}
+      onClick={() => setFilter(!filter)}
+    ></i>
+  );
 
   const columns = [
     {
       field: "name",
       header: "Name",
       filterElement: dropDownFilter(name, onFilterNameChange),
-      filter: true,
+      filter: filter,
     },
     {
       field: "location",
       header: "Location",
       filterElement: dropDownFilter(location, onFilterLocationChange),
-      filter: true,
+      filter: filter,
     },
     {
       field: "status",
       header: "Status",
       filterElement: dropDownFilter(status, onFilterStatusChange),
-      filter: true,
+      filter: filter,
     },
     { field: "count", header: "Count" },
   ];
 
   const columns1 = [
-    { field: "machine_id", header: "Machine Id" },
-    { field: "installation_id", header: "Installation Id" },
-    { field: "installation_date", header: "Uninstallation Date" },
-    { field: "location", header: "Location" },
-    { field: "uninstallation_date", header: "Uninstallation Date" },
+    { field: "machine_id", header: "Machine Id", filter: false },
+    { field: "installation_id", header: "Installation Id", filter: false },
+    {
+      field: "installation_date",
+      header: "Uninstallation Date",
+      filter: false,
+    },
+    { field: "location", header: "Location", filter: false },
+    {
+      field: "uninstallation_date",
+      header: "Uninstallation Date",
+      filter: false,
+    },
   ];
 
   const columns2 = [
@@ -159,6 +180,7 @@ export default function Device() {
               path="/device/:BaconBit"
               render={(props) => (
                 <Table
+                  filtericon={icon}
                   {...props}
                   refs={dt}
                   columns={columns}
@@ -171,7 +193,12 @@ export default function Device() {
             <Route
               path="/:device/:innertable"
               render={(props) => (
-                <Table {...props} columns={columns1} columns2={columns2} />
+                <Table
+                  {...props}
+                  columns={columns1}
+                  columns2={columns2}
+                  rowExpander={expander}
+                />
               )}
             />
           </Switch>

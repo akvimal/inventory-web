@@ -537,11 +537,13 @@ hr.divider-line {
   color: var(--unnamed-color-f7b924) !important;
 }
 
-/* .information>tbody>tr>td{
-  border: none !important;
+.information {
+  /* border: 0px solid black !important; */
+  border-right: 1px solid white !important;
+  border-left: 1px solid white !important;
   background-color: #3ac47d !important;
   background: #3ac47d !important;
-} */
+}
 
 .product-badge.status-installed {
   color: #ffffff;
@@ -560,7 +562,11 @@ hr.divider-line {
   background-color: #373e47 !important;
 }
 
-.p-dropdown-item{
+.p-dropdown-item {
   color: #ffffff !important;
   opacity: 0.7 !important;
+}
+
+.p-datatable-wrapper {
+  background-color: #ffffff !important;
 }
