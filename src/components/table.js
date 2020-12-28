@@ -13,8 +13,11 @@ export default function Table(props) {
   const dispatch = useDispatch();
 
   const data = useSelector((state) => state.table.data);
+  const data2= useSelector((state) => state.table.data2);
 
   const [filter, setFilter] = useState(false);
+
+  const [state, setstate] = useState([])
 
   const nameBodyTemplate = (rowData) => {
     return (
@@ -46,6 +49,29 @@ export default function Table(props) {
     );
   });
 
+  const dynamicColumns2 = props.columns.map((col, i) => {
+    return (
+      <Column
+        key={col.field}
+        field={col.field}
+        header={nameBodyTemplate(col.header)}
+        filter={col.filter}
+        filterElement={col.filterElement}
+      />
+    );
+  });
+
+  const rowExpansionTemplate = (data) => {
+  
+    return (
+      <div>
+        <DataTable className="information" value={data}>
+          {dynamicColumns2}
+        </DataTable>
+      </div>
+    );
+  };
+
   const ex = localStorage.getItem("device name");
 
   const onRowSelect = (e) => {
@@ -71,9 +97,9 @@ export default function Table(props) {
         paginatorTemplate="CurrentPageReport FirstPageLink PrevPageLink PageLinks NextPageLink LastPageLink"
         currentPageReportTemplate="{first} to {last} "
         rows={5}
-        // expandedRows={rows}
-        // onRowToggle={(e) => setRows(e.data)}
-        // rowExpansionTemplate={rowExpansionTemplate}
+        expandedRows={state}
+        onRowToggle={(e) => setstate(data2)}
+        rowExpansionTemplate={rowExpansionTemplate}
         selectionMode={props.type}
         onRowSelect={(e) => onRowSelect(e)}
       >
