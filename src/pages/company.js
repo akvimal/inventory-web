@@ -19,7 +19,6 @@ export default function Company() {
       setCstatus(e.data.status)
     );
   };
-  console.log(cname, clocation, cstatus);
   const history = useHistory();
   const dispatch = useDispatch();
   useEffect(() => {
@@ -27,7 +26,6 @@ export default function Company() {
   }, [dispatch]);
 
   const cardData = useSelector((state) => state.dataCard.data);
-  // let match = useRouteMatch();
 
   useEffect(() => {
     if (_.isEmpty(cardData)) {

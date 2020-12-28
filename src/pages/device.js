@@ -78,27 +78,34 @@ export default function Device() {
   });
 
 
-  const onStatusFilterChange = (event) => {
+  const onFilterNameChange = (event) => {
     dt.current.filter(event.value, 'name', 'equals');
     setItem(event.value);
 }
+const onFilterLocationChange = (event) => {
+  dt.current.filter(event.value, 'location', 'equals');
+  setItem(event.value);
+}
+const onFilterStatusChange = (event) => {
+  dt.current.filter(event.value, 'status', 'equals');
+  setItem(event.value);
+}
 
-  const dropDownFilter =(options)=>{
+  const dropDownFilter =(options,onChange)=>{
     return  <Dropdown
     value={item}
     options={options}
-    onChange={onStatusFilterChange}
+    onChange={onChange}
     placeholder="search"
     className="p-column-filter"
-    filter
     showClear
   />
   }
 
   const columns = [
-    { field: "name", header: "Name", filterElement: dropDownFilter(name), filter:true},
-    { field: "location", header: "Location", filterElement: dropDownFilter(location) ,filter:true},
-    { field: "status", header: "Status", filterElement: dropDownFilter(status) ,filter:true},
+    { field: "name", header: "Name", filterElement: dropDownFilter(name,onFilterNameChange), filter:true},
+    { field: "location", header: "Location", filterElement: dropDownFilter(location,onFilterLocationChange) ,filter:true},
+    { field: "status", header: "Status", filterElement: dropDownFilter(status,onFilterStatusChange) ,filter:true},
     { field: "count", header: "Count" },
   ];
 
