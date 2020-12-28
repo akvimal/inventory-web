@@ -13,8 +13,7 @@ export default function DataCard(props) {
   let match = useRouteMatch();
   const location = useLocation();
   const pathItems = location.pathname.split("/");
-  const currentCard = pathItems.length === 3 ? pathItems[2] : "";
-
+  const currentCard = pathItems.length ? pathItems[2] : "";
   return (
     <>
       <p className="title">{props.name}</p>
