@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { DataTable } from "primereact/datatable";
 import { Column } from "primereact/column";
 import { useDispatch, useSelector } from "react-redux";
@@ -7,27 +7,13 @@ import { useHistory } from "react-router-dom";
 
 
 export default function Table(props) {
-  console.log(props);
 
   const history = useHistory();
 
   const dispatch = useDispatch();
 
   const data = useSelector((state) => state.table.data);
-  //  const columns = useSelector((state) =>state.table.device)
 
-  // const rowExpansionTemplate = (data) => {
-  //   return (
-  //     <div>
-  //       <DataTable className="information" value={information}>
-  //         {dynamicColumns2}
-  //       </DataTable>
-  //       <DataTable className="data-table" value={data.history}>
-  //         {dynamicColumns1}
-  //       </DataTable>
-  //     </div>
-  //   );
-  // };
   const [filter, setFilter] = useState(false);
 
   const nameBodyTemplate = (rowData) => {
@@ -54,9 +40,8 @@ export default function Table(props) {
         key={col.field}
         field={col.field}
         header={nameBodyTemplate(col.header)}
-        filter={filter}
+        filter={col.filter}
         filterElement={col.filterElement}
-        // body={nameBodyTemplate}
       />
     );
   });
@@ -75,10 +60,12 @@ export default function Table(props) {
     props.select(e);
   };
 
+
   return (
     <>
       <DataTable
         value={data}
+        ref={props.refs}
         header="INVENTORY LIST"
         paginator
         paginatorTemplate="CurrentPageReport FirstPageLink PrevPageLink PageLinks NextPageLink LastPageLink"

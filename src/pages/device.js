@@ -1,4 +1,4 @@
-import React, { useEffect,useState  } from "react";
+import React, { useEffect,useRef,useState  } from "react";
 import DataCard from "../components/DataCard";
 import Table from "../components/table";
 import Band from "../components/band";
@@ -10,9 +10,14 @@ import _ from "lodash";
 import { Dropdown } from "primereact/dropdown";
 
 export default function Device() {
+
+  let dt = useRef(null);
+
   const [dname, setDname] = useState(null);
   const [dlocation, setDlocation] = useState(null);
   const [dstatus, setDstatus] = useState(null);
+
+
 
   const rowClick = (e) => {
     return (
@@ -29,21 +34,9 @@ export default function Device() {
     dispatch(fetchDataCard("dashboard/device/inventory"));
   }, [dispatch]);
 
-  const data = useSelector((state) => state.table.data);
+
   const cardData = useSelector((state) => state.dataCard.data);
-
-  const getUnique = (arr, comp) => {
-    const unique = arr
-      .map((e) => e[comp])
-      .map((e, i, final) => final.indexOf(e) === i && i)
-      .filter((e) => arr[e])
-      .map((e) => arr[e]);
-    return unique;
-  };
-
-  const uniqueName = getUnique(data, "name");
-  const uniqueLoc = getUnique(data, "location");
-  const uniqueStatus = getUnique(data, "status");
+  const tableData = useSelector((state) => state.table.data);
 
   useEffect(() => {
     if (_.isEmpty(cardData)) {
@@ -57,6 +50,21 @@ export default function Device() {
 
   const [item, setItem] = useState(null);
 
+
+  const getUnique = (arr, comp) => {
+    const unique = arr
+      .map((e) => e[comp])
+      .map((e, i, final) => final.indexOf(e) === i && i)
+      .filter((e) => arr[e])
+      .map((e) => arr[e]);
+    return unique;
+  };
+
+  const uniqueName = getUnique(tableData, "name");
+  const uniqueLoc = getUnique(tableData, "location");
+  const uniqueStatus = getUnique(tableData, "status");
+
+
   const name = uniqueName.map((a) => {
     return a.name;
   });
@@ -69,26 +77,28 @@ export default function Device() {
     return status.status;
   });
 
-  const count = data.map((count) => {
-    return count.count;
-  });
 
- 
+  const onStatusFilterChange = (event) => {
+    dt.current.filter(event.value, 'name', 'equals');
+    setItem(event.value);
+}
+
   const dropDownFilter =(options)=>{
     return  <Dropdown
     value={item}
     options={options}
-    onChange={(e) => setItem(e.value)}
+    onChange={onStatusFilterChange}
     placeholder="search"
     className="p-column-filter"
+    filter
     showClear
   />
   }
 
   const columns = [
-    { field: "name", header: "Name", filterElement: dropDownFilter(name)},
-    { field: "location", header: "Location", filterElement: dropDownFilter(location) },
-    { field: "status", header: "Status", filterElement: dropDownFilter(status) },
+    { field: "name", header: "Name", filterElement: dropDownFilter(name), filter:true},
+    { field: "location", header: "Location", filterElement: dropDownFilter(location) ,filter:true},
+    { field: "status", header: "Status", filterElement: dropDownFilter(status) ,filter:true},
     { field: "count", header: "Count" },
   ];
 
@@ -99,7 +109,6 @@ export default function Device() {
     { field: "location", header: "Location" },
     { field: "uninstallation_date", header: "Uninstallation Date" },
   ];
-
   return (
     <>
       <div id="scroll-cards">
@@ -124,6 +133,7 @@ export default function Device() {
               render={(props) => (
                 <Table
                   {...props}
+                  refs={dt}
                   columns={columns}
                   type="single"
                   select={rowClick}
