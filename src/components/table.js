@@ -1,22 +1,19 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { DataTable } from "primereact/datatable";
 import { Column } from "primereact/column";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchTable } from "../redux/action";
 import { useHistory } from "react-router-dom";
-import { MultiSelect } from "primereact/multiselect";
-import { Dropdown } from "primereact/dropdown";
 
 export default function Table(props) {
-  console.log(props);
-
   const history = useHistory();
 
   const dispatch = useDispatch();
 
-  const data = useSelector((state) => state.table.data);
-  //  const columns = useSelector((state) =>state.table.device)
+  // const data = useSelector((state) => state.table.data);
+  // const data2 = useSelector((state) => state.table.data2);
 
+<<<<<<< HEAD
   // const rowExpansionTemplate = (data) => {
   //   return (
   //     <div>
@@ -31,12 +28,18 @@ export default function Table(props) {
   // };
   // const [row, setRows] = useState(null);
   const [filter, setFilter] = useState(false);
+=======
+  // const [filter, setFilter] = useState(false);
+
+  const [state, setstate] = useState([]);
+>>>>>>> dev-vimalesh
 
   const nameBodyTemplate = (rowData) => {
     return (
       <React.Fragment>
         <span className="p-column-title">
           {rowData}
+<<<<<<< HEAD
           {/* <i
             className="pi pi-filter"
             style={{
@@ -46,6 +49,9 @@ export default function Table(props) {
             }}
             onClick={() => setFilter(!filter)}
           ></i> */}
+=======
+          {props.filtericon}
+>>>>>>> dev-vimalesh
         </span>
       </React.Fragment>
     );
@@ -56,12 +62,64 @@ export default function Table(props) {
         key={col.field}
         field={col.field}
         header={nameBodyTemplate(col.header)}
-        filter={filter}
+        filter={col.filter}
         filterElement={col.filterElement}
-        // body={nameBodyTemplate}
       />
     );
   });
+
+  const dynamicColumns2 = props.columns.map((col, i) => {
+    return (
+      <Column
+        key={col.field}
+        field={col.field}
+        header={nameBodyTemplate(col.header)}
+        filter={col.filter}
+        filterElement={col.filterElement}
+      />
+    );
+  });
+  console.log(props);
+  const dynamicColumns3 = props.columns2.map((col, i) => {
+    return (
+      <Column
+        key={col.field}
+        field={col.field}
+        header={nameBodyTemplate(col.header)}
+      />
+    );
+  });
+ const information = [
+   {
+     model: "Model No.",
+     manufacturer: "manufacturer",
+     hardware_version: "Hardware Version",
+     commission_date: "Commission Date",
+     decommission_date: "Decommission Date",
+     cost: "$900",
+   },
+ ];
+//  const dynamicColumns1 = props.columns3.map((col, i) => {
+//    return (
+//      <Column
+//        key={col.field}
+//        field={col.field}
+//        header={nameBodyTemplate(col.header)}
+//      />
+//    );
+//  });
+  const rowExpansionTemplate = (data) => {
+    return (
+      <div>
+        {/* <DataTable className="information" value={information}>
+          {dynamicColumns1}
+        </DataTable> */}
+        <DataTable className="information" value={data.history}>
+          {dynamicColumns3}
+        </DataTable>
+      </div>
+    );
+  };
 
   const ex = localStorage.getItem("device name");
 
@@ -80,20 +138,21 @@ export default function Table(props) {
   return (
     <>
       <DataTable
-        value={data}
+        value={props.tableData}
+        ref={props.refs}
         header="INVENTORY LIST"
         paginator
         paginatorTemplate="CurrentPageReport FirstPageLink PrevPageLink PageLinks NextPageLink LastPageLink"
         currentPageReportTemplate="{first} to {last} "
         rows={5}
-        // expandedRows={rows}
-        // onRowToggle={(e) => setRows(e.data)}
-        // rowExpansionTemplate={rowExpansionTemplate}
+        expandedRows={state}
+        onRowToggle={(e) => setstate(e.data)}
+        rowExpansionTemplate={rowExpansionTemplate}
         selectionMode={props.type}
         onRowSelect={(e) => onRowSelect(e)}
       >
         {dynamicColumns}
-        <Column expander style={{ width: "3em" }} />
+        {props.rowExpander}
       </DataTable>
     </>
   );

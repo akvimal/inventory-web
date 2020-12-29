@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import DataCard from "../components/DataCard";
 import Table from "../components/table";
 import Band from "../components/band";
@@ -7,10 +7,209 @@ import { fetchDataCard } from "../redux/action";
 import { Route, Switch, useHistory } from "react-router-dom";
 import { fetchTable } from "../redux/action";
 import _ from "lodash";
-import { useState } from "react";
 import { Dropdown } from "primereact/dropdown";
+import { Column } from "primereact/column";
 
 export default function Device() {
+  let dt = useRef(null);
+
+  const table = [
+    {
+      machine_id: "F4:5A:5C:F8:59:BC",
+      installation_id: "AU-T0001",
+      installation_date: "18-09-2020",
+      location: "Auburn",
+      uninstallation_date: "18-09-2020",
+      // name: "company1",
+      // location: "Beavercreek",
+      // status: "installed",
+      // count: 20,
+      history: [
+        {
+          installation_id: 1,
+          installation_date: "20/10/2020",
+          location: "Rio De Janeiro",
+          status: "Installed",
+          uninstallation_date: "30/10/2020",
+          company: "Nulla Tempor Odio",
+        },
+        {
+          installation_id: 2,
+          installation_date: "20/10/2020",
+          location: "Tokiyo",
+          status: "Installed",
+          uninstallation_date: "30/10/2020",
+          company: "Nulla Tempor Odio",
+        },
+        {
+          installation_id: 3,
+          installation_date: "20/10/2020",
+          location: "Manila",
+          status: "Installed",
+          uninstallation_date: "30/10/2020",
+          company: "Nulla Tempor Odio",
+        },
+      ],
+    },
+    {
+      machine_id: "B4:5A:5C:F8:59:BC",
+      installation_id: "AU-T0002",
+      installation_date: "13-09-2020",
+      location: "Auburn",
+      uninstallation_date: "19-09-2020",
+      // name: "company1",
+      // location: "Beavercreek",
+      // status: "installed",
+      // count: 20,
+      history: [
+        {
+          installation_id: 4,
+          installation_date: "20/10/2020",
+          location: "Rio De Janeiro",
+          status: "Installed",
+          uninstallation_date: "30/10/2020",
+          company: "Nulla Tempor Odio",
+        },
+        {
+          installation_id: 5,
+          installation_date: "20/10/2020",
+          location: "Tokiyo",
+          status: "Installed",
+          uninstallation_date: "30/10/2020",
+          company: "Nulla Tempor Odio",
+        },
+        {
+          installation_id: 6,
+          installation_date: "20/10/2020",
+          location: "Manila",
+          status: "Installed",
+          uninstallation_date: "30/10/2020",
+          company: "Nulla Tempor Odio",
+        },
+      ],
+    },
+    {
+      machine_id: "P4:5A:5C:F8:59:BC",
+      installation_id: "AU-T0003",
+      installation_date: "18-09-2020",
+      location: "Auburn",
+      uninstallation_date: "18-09-2020",
+      // name: "company1",
+      // location: "Beavercreek",
+      // status: "installed",
+      // count: 20,
+      history: [
+        {
+          installation_id: 7,
+          installation_date: "20/10/2020",
+          location: "Rio De Janeiro",
+          status: "Installed",
+          uninstallation_date: "30/10/2020",
+          company: "Nulla Tempor Odio",
+        },
+        {
+          installation_id: 8,
+          installation_date: "20/10/2020",
+          location: "Tokiyo",
+          status: "Installed",
+          uninstallation_date: "30/10/2020",
+          company: "Nulla Tempor Odio",
+        },
+        {
+          installation_id: 9,
+          installation_date: "20/10/2020",
+          location: "Manila",
+          status: "Installed",
+          uninstallation_date: "30/10/2020",
+          company: "Nulla Tempor Odio",
+        },
+      ],
+    },
+    {
+      machine_id: "A4:5A:5C:F8:59:BC",
+      installation_id: "AU-T0001",
+      installation_date: "18-09-2020",
+      location: "Auburn",
+      uninstallation_date: "18-09-2020",
+      // name: "company1",
+      // location: "Beavercreek",
+      // status: "installed",
+      // count: 20,
+      history: [
+        {
+          installation_id: 10,
+          installation_date: "20/10/2020",
+          location: "Rio De Janeiro",
+          status: "Installed",
+          uninstallation_date: "30/10/2020",
+          company: "Nulla Tempor Odio",
+        },
+        {
+          installation_id: 11,
+          installation_date: "20/10/2020",
+          location: "Tokiyo",
+          status: "Installed",
+          uninstallation_date: "30/10/2020",
+          company: "Nulla Tempor Odio",
+        },
+        {
+          installation_id: 12,
+          installation_date: "20/10/2020",
+          location: "Manila",
+          status: "Installed",
+          uninstallation_date: "30/10/2020",
+          company: "Nulla Tempor Odio",
+        },
+      ],
+    },
+    {
+      machine_id: "Q4:5A:5C:F8:59:BC",
+      installation_id: "AU-T0001",
+      installation_date: "18-09-2020",
+      location: "Auburn",
+      uninstallation_date: "18-09-2020",
+      // name: "company1",
+      // location: "Beavercreek",
+      // status: "installed",
+      // count: 20,
+      history: [
+        {
+          installation_id: 13,
+          installation_date: "20/10/2020",
+          location: "Rio De Janeiro",
+          status: "Installed",
+          uninstallation_date: "30/10/2020",
+          company: "Nulla Tempor Odio",
+        },
+        {
+          installation_id: 14,
+          installation_date: "20/10/2020",
+          location: "Tokiyo",
+          status: "Installed",
+          uninstallation_date: "30/10/2020",
+          company: "Nulla Tempor Odio",
+        },
+        {
+          installation_id: 15,
+          installation_date: "20/10/2020",
+          location: "Manila",
+          status: "Installed",
+          uninstallation_date: "30/10/2020",
+          company: "Nulla Tempor Odio",
+        },
+      ],
+    },
+  ];
+
+ const columns3 = [
+   { field: "model", header: "Model" },
+   { field: "manufacturer", header: "Manufacturer" },
+   { field: "hardware_version", header: "Hardware Version" },
+   { field: "commission_date", header: "Commission Date" },
+   { field: "decommission_date", header: "Decommission Date" },
+   { field: "cost", header: "Cost" },
+ ];
+
   const [dname, setDname] = useState(null);
   const [dlocation, setDlocation] = useState(null);
   const [dstatus, setDstatus] = useState(null);
@@ -22,8 +221,11 @@ export default function Device() {
       setDstatus(e.data.status)
     );
   };
+<<<<<<< HEAD
 
   const [row, setRows] = useState(null);
+=======
+>>>>>>> dev-vimalesh
 
   const dispatch = useDispatch();
   const history = useHistory();
@@ -32,8 +234,21 @@ export default function Device() {
     dispatch(fetchDataCard("dashboard/device/inventory"));
   }, [dispatch]);
 
-  const data = useSelector((state) => state.table.data);
   const cardData = useSelector((state) => state.dataCard.data);
+  const tableData = useSelector((state) => state.table.data);
+
+  useEffect(() => {
+    if (_.isEmpty(cardData)) {
+    } else {
+      dispatch(
+        fetchTable("dashboard/company/status", { device: cardData[0].name })
+      );
+      localStorage.setItem("device name", cardData[0].name);
+      history.push(`/device/${cardData[0].name}`);
+    }
+  }, [cardData]);
+
+  const [item, setItem] = useState(null);
 
   const getUnique = (arr, comp) => {
     const unique = arr
@@ -44,21 +259,9 @@ export default function Device() {
     return unique;
   };
 
-  const uniqueName = getUnique(data, "name");
-  const uniqueLoc = getUnique(data, "location");
-  const uniqueStatus = getUnique(data, "status");
-
-  useEffect(() => {
-    if (_.isEmpty(cardData)) {
-    } else {
-      dispatch(
-        fetchTable("dashboard/company/status", { device: cardData[0].name })
-      );
-      history.push(`/device/${cardData[0].name}`);
-    }
-  }, [cardData]);
-
-  const [item, setItem] = useState(null);
+  const uniqueName = getUnique(tableData, "name");
+  const uniqueLoc = getUnique(tableData, "location");
+  const uniqueStatus = getUnique(tableData, "status");
 
   const name = uniqueName.map((a) => {
     return a.name;
@@ -72,71 +275,89 @@ export default function Device() {
     return status.status;
   });
 
-  const count = data.map((count) => {
-    return count.count;
-  });
-
-  // const statusItemTemplate = (option) => {
-  //   return <span className={`customer-badge status-${option}`}>{option}</span>;
-  // };
-  const nameFilter = (
-    <Dropdown
-      value={item}
-      options={name}
-      onChange={(e) => setItem(e.value)}
-      // itemTemplate={statusItemTemplate}
-      placeholder="search"
-      className="p-column-filter"
-      showClear
-    />
-  );
-  const locationFilter = (
-    <Dropdown
-      value={item}
-      options={location}
-      onChange={(e) => setItem(e.value)}
-      // itemTemplate={statusItemTemplate}
-      placeholder="search"
-      className="p-column-filter"
-      showClear
-    />
-  );
-  const statusFilter = (
-    <Dropdown
-      value={item}
-      options={status}
-      onChange={(e) => setItem(e.value)}
-      // itemTemplate={statusItemTemplate}
-      placeholder="search"
-      className="p-column-filter"
-      showClear
-    />
-  );
-  const countFilter = (
-    <Dropdown
-      value={item}
-      options={count}
-      onChange={(e) => setItem(e.value)}
-      // itemTemplate={statusItemTemplate}
-      placeholder="search"
-      className="p-column-filter"
-      showClear
-    />
+  const onFilterNameChange = (event) => {
+    dt.current.filter(event.value, "name", "equals");
+    setItem(event.value);
+  };
+  const onFilterLocationChange = (event) => {
+    dt.current.filter(event.value, "location", "equals");
+    setItem(event.value);
+  };
+  const onFilterStatusChange = (event) => {
+    dt.current.filter(event.value, "status", "equals");
+    setItem(event.value);
+  };
+  const expander = <Column expander style={{ width: "3em" }} />;
+  const dropDownFilter = (options, onChange) => {
+    return (
+      <Dropdown
+        value={item}
+        options={options}
+        onChange={onChange}
+        placeholder="search"
+        className="p-column-filter"
+        showClear
+      />
+    );
+  };
+  const [filter, setFilter] = useState(false);
+  const icon = (
+    <i
+      className="pi pi-filter"
+      style={{
+        fontSize: "10px",
+        cursor: "pointer",
+        paddingLeft: "50px",
+      }}
+      onClick={() => setFilter(!filter)}
+    ></i>
   );
 
   const columns = [
-    { field: "name", header: "Name", filterElement: nameFilter },
-    { field: "location", header: "Location", filterElement: locationFilter },
-    { field: "status", header: "Status", filterElement: statusFilter },
+    {
+      field: "name",
+      header: "Name",
+      filterElement: dropDownFilter(name, onFilterNameChange),
+      filter: filter,
+    },
+    {
+      field: "location",
+      header: "Location",
+      filterElement: dropDownFilter(location, onFilterLocationChange),
+      filter: filter,
+    },
+    {
+      field: "status",
+      header: "Status",
+      filterElement: dropDownFilter(status, onFilterStatusChange),
+      filter: filter,
+    },
     { field: "count", header: "Count" },
   ];
-
+const data = useSelector((state) => state.table.data);
   const columns1 = [
-    { field: "machine_id", header: "Machine Id" },
-    { field: "installation_id", header: "Installation Id" },
-    { field: "installation_date", header: "Uninstallation Date" },
+    { field: "machine_id", header: "Machine Id", filter: false },
+    { field: "installation_id", header: "Installation Id", filter: false },
+    {
+      field: "installation_date",
+      header: "Uninstallation Date",
+      filter: false,
+    },
+    { field: "location", header: "Location", filter: false },
+    {
+      field: "uninstallation_date",
+      header: "Uninstallation Date",
+      filter: false,
+    },
+  ];
+
+  const columns2 = [
+    { field: "installation_id", header: "Installation ID" },
+    { field: "installation_date", header: "Installation Date" },
     { field: "location", header: "Location" },
-    { field: "uninstallation_date", header: "Uninstallation Date" },
+    { field: "status", header: "Status" },
+    { field: "uninstallation_date", header: "Uninstallation_date" },
+    { field: "company", header: "Company" },
   ];
 
   return (
@@ -162,8 +383,12 @@ export default function Device() {
               path="/device/:BaconBit"
               render={(props) => (
                 <Table
+                  tableData={data}
+                  filtericon={icon}
                   {...props}
+                  refs={dt}
                   columns={columns}
+                  columns2={columns2}
                   type="single"
                   select={rowClick}
                 />
@@ -171,7 +396,16 @@ export default function Device() {
             />
             <Route
               path="/:device/:innertable"
-              render={(props) => <Table {...props} columns={columns1} />}
+              render={(props) => (
+                <Table
+                  columns3={columns3}
+                  tableData={table}
+                  {...props}
+                  columns={columns1}
+                  columns2={columns2}
+                  rowExpander={expander}
+                />
+              )}
             />
           </Switch>
         </div>
