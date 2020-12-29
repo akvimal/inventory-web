@@ -11,6 +11,194 @@ import { Column } from "primereact/column";
 import { Dropdown } from "primereact/dropdown";
 
 export default function Company() {
+  const table = [
+    {
+      machine_id: "F4:5A:5C:F8:59:BC",
+      installation_id: "AU-T0001",
+      installation_date: "18-09-2020",
+      location: "Auburn",
+      uninstallation_date: "18-09-2020",
+      // name: "company1",
+      // location: "Beavercreek",
+      // status: "installed",
+      // count: 20,
+      history: [
+        {
+          installation_id: 1,
+          installation_date: "20/10/2020",
+          location: "Rio De Janeiro",
+          status: "Installed",
+          uninstallation_date: "30/10/2020",
+          company: "Nulla Tempor Odio",
+        },
+        {
+          installation_id: 2,
+          installation_date: "20/10/2020",
+          location: "Tokiyo",
+          status: "Installed",
+          uninstallation_date: "30/10/2020",
+          company: "Nulla Tempor Odio",
+        },
+        {
+          installation_id: 3,
+          installation_date: "20/10/2020",
+          location: "Manila",
+          status: "Installed",
+          uninstallation_date: "30/10/2020",
+          company: "Nulla Tempor Odio",
+        },
+      ],
+    },
+    {
+      machine_id: "B4:5A:5C:F8:59:BC",
+      installation_id: "AU-T0002",
+      installation_date: "13-09-2020",
+      location: "Auburn",
+      uninstallation_date: "19-09-2020",
+      // name: "company1",
+      // location: "Beavercreek",
+      // status: "installed",
+      // count: 20,
+      history: [
+        {
+          installation_id: 4,
+          installation_date: "20/10/2020",
+          location: "Rio De Janeiro",
+          status: "Installed",
+          uninstallation_date: "30/10/2020",
+          company: "Nulla Tempor Odio",
+        },
+        {
+          installation_id: 5,
+          installation_date: "20/10/2020",
+          location: "Tokiyo",
+          status: "Installed",
+          uninstallation_date: "30/10/2020",
+          company: "Nulla Tempor Odio",
+        },
+        {
+          installation_id: 6,
+          installation_date: "20/10/2020",
+          location: "Manila",
+          status: "Installed",
+          uninstallation_date: "30/10/2020",
+          company: "Nulla Tempor Odio",
+        },
+      ],
+    },
+    {
+      machine_id: "P4:5A:5C:F8:59:BC",
+      installation_id: "AU-T0003",
+      installation_date: "18-09-2020",
+      location: "Auburn",
+      uninstallation_date: "18-09-2020",
+      // name: "company1",
+      // location: "Beavercreek",
+      // status: "installed",
+      // count: 20,
+      history: [
+        {
+          installation_id: 7,
+          installation_date: "20/10/2020",
+          location: "Rio De Janeiro",
+          status: "Installed",
+          uninstallation_date: "30/10/2020",
+          company: "Nulla Tempor Odio",
+        },
+        {
+          installation_id: 8,
+          installation_date: "20/10/2020",
+          location: "Tokiyo",
+          status: "Installed",
+          uninstallation_date: "30/10/2020",
+          company: "Nulla Tempor Odio",
+        },
+        {
+          installation_id: 9,
+          installation_date: "20/10/2020",
+          location: "Manila",
+          status: "Installed",
+          uninstallation_date: "30/10/2020",
+          company: "Nulla Tempor Odio",
+        },
+      ],
+    },
+    {
+      machine_id: "A4:5A:5C:F8:59:BC",
+      installation_id: "AU-T0001",
+      installation_date: "18-09-2020",
+      location: "Auburn",
+      uninstallation_date: "18-09-2020",
+      // name: "company1",
+      // location: "Beavercreek",
+      // status: "installed",
+      // count: 20,
+      history: [
+        {
+          installation_id: 10,
+          installation_date: "20/10/2020",
+          location: "Rio De Janeiro",
+          status: "Installed",
+          uninstallation_date: "30/10/2020",
+          company: "Nulla Tempor Odio",
+        },
+        {
+          installation_id: 11,
+          installation_date: "20/10/2020",
+          location: "Tokiyo",
+          status: "Installed",
+          uninstallation_date: "30/10/2020",
+          company: "Nulla Tempor Odio",
+        },
+        {
+          installation_id: 12,
+          installation_date: "20/10/2020",
+          location: "Manila",
+          status: "Installed",
+          uninstallation_date: "30/10/2020",
+          company: "Nulla Tempor Odio",
+        },
+      ],
+    },
+    {
+      machine_id: "Q4:5A:5C:F8:59:BC",
+      installation_id: "AU-T0001",
+      installation_date: "18-09-2020",
+      location: "Auburn",
+      uninstallation_date: "18-09-2020",
+      // name: "company1",
+      // location: "Beavercreek",
+      // status: "installed",
+      // count: 20,
+      history: [
+        {
+          installation_id: 13,
+          installation_date: "20/10/2020",
+          location: "Rio De Janeiro",
+          status: "Installed",
+          uninstallation_date: "30/10/2020",
+          company: "Nulla Tempor Odio",
+        },
+        {
+          installation_id: 14,
+          installation_date: "20/10/2020",
+          location: "Tokiyo",
+          status: "Installed",
+          uninstallation_date: "30/10/2020",
+          company: "Nulla Tempor Odio",
+        },
+        {
+          installation_id: 15,
+          installation_date: "20/10/2020",
+          location: "Manila",
+          status: "Installed",
+          uninstallation_date: "30/10/2020",
+          company: "Nulla Tempor Odio",
+        },
+      ],
+    },
+  ];
+  const data = useSelector((state) => state.table.data);
   const [cname, setCname] = useState(null);
   const [clocation, setClocation] = useState(null);
   const [cstatus, setCstatus] = useState(null);
@@ -39,6 +227,7 @@ export default function Company() {
       dispatch(
         fetchTable("dashboard/device/status", { company: cardData[0].name })
       );
+      localStorage.setItem("device name", cardData[0].name);
       history.push(`/company/${cardData[0].name}`);
     }
   }, [cardData]);
@@ -168,6 +357,7 @@ export default function Company() {
               path="/company/:companyname"
               render={(props) => (
                 <Table
+                  tableData={data}
                   filtericon={icon}
                   {...props}
                   refs={dt}
@@ -182,6 +372,7 @@ export default function Company() {
               path="/:device/:innertable"
               render={(props) => (
                 <Table
+                  tableData={table}
                   {...props}
                   columns={columns1}
                   columns2={columns2}

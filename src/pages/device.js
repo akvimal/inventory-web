@@ -13,6 +13,203 @@ import { Column } from "primereact/column";
 export default function Device() {
   let dt = useRef(null);
 
+  const table = [
+    {
+      machine_id: "F4:5A:5C:F8:59:BC",
+      installation_id: "AU-T0001",
+      installation_date: "18-09-2020",
+      location: "Auburn",
+      uninstallation_date: "18-09-2020",
+      // name: "company1",
+      // location: "Beavercreek",
+      // status: "installed",
+      // count: 20,
+      history: [
+        {
+          installation_id: 1,
+          installation_date: "20/10/2020",
+          location: "Rio De Janeiro",
+          status: "Installed",
+          uninstallation_date: "30/10/2020",
+          company: "Nulla Tempor Odio",
+        },
+        {
+          installation_id: 2,
+          installation_date: "20/10/2020",
+          location: "Tokiyo",
+          status: "Installed",
+          uninstallation_date: "30/10/2020",
+          company: "Nulla Tempor Odio",
+        },
+        {
+          installation_id: 3,
+          installation_date: "20/10/2020",
+          location: "Manila",
+          status: "Installed",
+          uninstallation_date: "30/10/2020",
+          company: "Nulla Tempor Odio",
+        },
+      ],
+    },
+    {
+      machine_id: "B4:5A:5C:F8:59:BC",
+      installation_id: "AU-T0002",
+      installation_date: "13-09-2020",
+      location: "Auburn",
+      uninstallation_date: "19-09-2020",
+      // name: "company1",
+      // location: "Beavercreek",
+      // status: "installed",
+      // count: 20,
+      history: [
+        {
+          installation_id: 4,
+          installation_date: "20/10/2020",
+          location: "Rio De Janeiro",
+          status: "Installed",
+          uninstallation_date: "30/10/2020",
+          company: "Nulla Tempor Odio",
+        },
+        {
+          installation_id: 5,
+          installation_date: "20/10/2020",
+          location: "Tokiyo",
+          status: "Installed",
+          uninstallation_date: "30/10/2020",
+          company: "Nulla Tempor Odio",
+        },
+        {
+          installation_id: 6,
+          installation_date: "20/10/2020",
+          location: "Manila",
+          status: "Installed",
+          uninstallation_date: "30/10/2020",
+          company: "Nulla Tempor Odio",
+        },
+      ],
+    },
+    {
+      machine_id: "P4:5A:5C:F8:59:BC",
+      installation_id: "AU-T0003",
+      installation_date: "18-09-2020",
+      location: "Auburn",
+      uninstallation_date: "18-09-2020",
+      // name: "company1",
+      // location: "Beavercreek",
+      // status: "installed",
+      // count: 20,
+      history: [
+        {
+          installation_id: 7,
+          installation_date: "20/10/2020",
+          location: "Rio De Janeiro",
+          status: "Installed",
+          uninstallation_date: "30/10/2020",
+          company: "Nulla Tempor Odio",
+        },
+        {
+          installation_id: 8,
+          installation_date: "20/10/2020",
+          location: "Tokiyo",
+          status: "Installed",
+          uninstallation_date: "30/10/2020",
+          company: "Nulla Tempor Odio",
+        },
+        {
+          installation_id: 9,
+          installation_date: "20/10/2020",
+          location: "Manila",
+          status: "Installed",
+          uninstallation_date: "30/10/2020",
+          company: "Nulla Tempor Odio",
+        },
+      ],
+    },
+    {
+      machine_id: "A4:5A:5C:F8:59:BC",
+      installation_id: "AU-T0001",
+      installation_date: "18-09-2020",
+      location: "Auburn",
+      uninstallation_date: "18-09-2020",
+      // name: "company1",
+      // location: "Beavercreek",
+      // status: "installed",
+      // count: 20,
+      history: [
+        {
+          installation_id: 10,
+          installation_date: "20/10/2020",
+          location: "Rio De Janeiro",
+          status: "Installed",
+          uninstallation_date: "30/10/2020",
+          company: "Nulla Tempor Odio",
+        },
+        {
+          installation_id: 11,
+          installation_date: "20/10/2020",
+          location: "Tokiyo",
+          status: "Installed",
+          uninstallation_date: "30/10/2020",
+          company: "Nulla Tempor Odio",
+        },
+        {
+          installation_id: 12,
+          installation_date: "20/10/2020",
+          location: "Manila",
+          status: "Installed",
+          uninstallation_date: "30/10/2020",
+          company: "Nulla Tempor Odio",
+        },
+      ],
+    },
+    {
+      machine_id: "Q4:5A:5C:F8:59:BC",
+      installation_id: "AU-T0001",
+      installation_date: "18-09-2020",
+      location: "Auburn",
+      uninstallation_date: "18-09-2020",
+      // name: "company1",
+      // location: "Beavercreek",
+      // status: "installed",
+      // count: 20,
+      history: [
+        {
+          installation_id: 13,
+          installation_date: "20/10/2020",
+          location: "Rio De Janeiro",
+          status: "Installed",
+          uninstallation_date: "30/10/2020",
+          company: "Nulla Tempor Odio",
+        },
+        {
+          installation_id: 14,
+          installation_date: "20/10/2020",
+          location: "Tokiyo",
+          status: "Installed",
+          uninstallation_date: "30/10/2020",
+          company: "Nulla Tempor Odio",
+        },
+        {
+          installation_id: 15,
+          installation_date: "20/10/2020",
+          location: "Manila",
+          status: "Installed",
+          uninstallation_date: "30/10/2020",
+          company: "Nulla Tempor Odio",
+        },
+      ],
+    },
+  ];
+
+ const columns3 = [
+   { field: "model", header: "Model" },
+   { field: "manufacturer", header: "Manufacturer" },
+   { field: "hardware_version", header: "Hardware Version" },
+   { field: "commission_date", header: "Commission Date" },
+   { field: "decommission_date", header: "Decommission Date" },
+   { field: "cost", header: "Cost" },
+ ];
+
   const [dname, setDname] = useState(null);
   const [dlocation, setDlocation] = useState(null);
   const [dstatus, setDstatus] = useState(null);
@@ -41,6 +238,7 @@ export default function Device() {
       dispatch(
         fetchTable("dashboard/company/status", { device: cardData[0].name })
       );
+      localStorage.setItem("device name", cardData[0].name);
       history.push(`/device/${cardData[0].name}`);
     }
   }, [cardData]);
@@ -131,7 +329,7 @@ export default function Device() {
     },
     { field: "count", header: "Count" },
   ];
-
+const data = useSelector((state) => state.table.data);
   const columns1 = [
     { field: "machine_id", header: "Machine Id", filter: false },
     { field: "installation_id", header: "Installation Id", filter: false },
@@ -180,6 +378,7 @@ export default function Device() {
               path="/device/:BaconBit"
               render={(props) => (
                 <Table
+                  tableData={data}
                   filtericon={icon}
                   {...props}
                   refs={dt}
@@ -194,6 +393,8 @@ export default function Device() {
               path="/:device/:innertable"
               render={(props) => (
                 <Table
+                  columns3={columns3}
+                  tableData={table}
                   {...props}
                   columns={columns1}
                   columns2={columns2}
