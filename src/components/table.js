@@ -13,16 +13,45 @@ export default function Table(props) {
   // const data = useSelector((state) => state.table.data);
   // const data2 = useSelector((state) => state.table.data2);
 
+<<<<<<< HEAD
+  // const rowExpansionTemplate = (data) => {
+  //   return (
+  //     <div>
+  //       <DataTable className="information" value={information}>
+  //         {dynamicColumns2}
+  //       </DataTable>
+  //       <DataTable className="data-table" value={data.history}>
+  //         {dynamicColumns1}
+  //       </DataTable>
+  //     </div>
+  //   );
+  // };
+  // const [row, setRows] = useState(null);
+  const [filter, setFilter] = useState(false);
+=======
   // const [filter, setFilter] = useState(false);
 
   const [state, setstate] = useState([]);
+>>>>>>> dev-vimalesh
 
   const nameBodyTemplate = (rowData) => {
     return (
       <React.Fragment>
         <span className="p-column-title">
           {rowData}
+<<<<<<< HEAD
+          {/* <i
+            className="pi pi-filter"
+            style={{
+              fontSize: "10px",
+              cursor: "pointer",
+              paddingLeft: "50px",
+            }}
+            onClick={() => setFilter(!filter)}
+          ></i> */}
+=======
           {props.filtericon}
+>>>>>>> dev-vimalesh
         </span>
       </React.Fragment>
     );
@@ -100,7 +129,7 @@ export default function Table(props) {
     dispatch(
       fetchTable("dashboard/device/location", {
         company: e.data.name || ex,
-        device: "BaconBit" || e.data.device_name,
+        device: "BaconBit" ||  e.data.device_name,
       })
     );
     props.select(e);

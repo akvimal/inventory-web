@@ -562,6 +562,8 @@ hr.divider-line {
 .p-column-filter {
   width: 13vmax !important;
 }
+<<<<<<< HEAD
+=======
 
 .p-dropdown-items-wrapper {
   background-color: #373e47 !important;
@@ -575,3 +577,4 @@ hr.divider-line {
 .p-datatable-wrapper {
   background-color: #ffffff !important;
 }
+>>>>>>> dev-vimalesh
