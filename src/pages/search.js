@@ -14,6 +14,193 @@ export default function search() {
     { field: "uninstallation_date", header: "Uninstallation Date" },
   ];
   const columns2 = [];
+  const table = [
+    {
+      machine_id: "F4:5A:5C:F8:59:BC",
+      installation_id: "AU-T0001",
+      installation_date: "18-09-2020",
+      location: "Auburn",
+      uninstallation_date: "18-09-2020",
+      // name: "company1",
+      // location: "Beavercreek",
+      // status: "installed",
+      // count: 20,
+      history: [
+        {
+          installation_id: 1,
+          installation_date: "20/10/2020",
+          location: "Rio De Janeiro",
+          status: "Installed",
+          uninstallation_date: "30/10/2020",
+          company: "Nulla Tempor Odio",
+        },
+        {
+          installation_id: 2,
+          installation_date: "20/10/2020",
+          location: "Tokiyo",
+          status: "Installed",
+          uninstallation_date: "30/10/2020",
+          company: "Nulla Tempor Odio",
+        },
+        {
+          installation_id: 3,
+          installation_date: "20/10/2020",
+          location: "Manila",
+          status: "Installed",
+          uninstallation_date: "30/10/2020",
+          company: "Nulla Tempor Odio",
+        },
+      ],
+    },
+    {
+      machine_id: "B4:5A:5C:F8:59:BC",
+      installation_id: "AU-T0002",
+      installation_date: "13-09-2020",
+      location: "Auburn",
+      uninstallation_date: "19-09-2020",
+      // name: "company1",
+      // location: "Beavercreek",
+      // status: "installed",
+      // count: 20,
+      history: [
+        {
+          installation_id: 4,
+          installation_date: "20/10/2020",
+          location: "Rio De Janeiro",
+          status: "Installed",
+          uninstallation_date: "30/10/2020",
+          company: "Nulla Tempor Odio",
+        },
+        {
+          installation_id: 5,
+          installation_date: "20/10/2020",
+          location: "Tokiyo",
+          status: "Installed",
+          uninstallation_date: "30/10/2020",
+          company: "Nulla Tempor Odio",
+        },
+        {
+          installation_id: 6,
+          installation_date: "20/10/2020",
+          location: "Manila",
+          status: "Installed",
+          uninstallation_date: "30/10/2020",
+          company: "Nulla Tempor Odio",
+        },
+      ],
+    },
+    {
+      machine_id: "P4:5A:5C:F8:59:BC",
+      installation_id: "AU-T0003",
+      installation_date: "18-09-2020",
+      location: "Auburn",
+      uninstallation_date: "18-09-2020",
+      // name: "company1",
+      // location: "Beavercreek",
+      // status: "installed",
+      // count: 20,
+      history: [
+        {
+          installation_id: 7,
+          installation_date: "20/10/2020",
+          location: "Rio De Janeiro",
+          status: "Installed",
+          uninstallation_date: "30/10/2020",
+          company: "Nulla Tempor Odio",
+        },
+        {
+          installation_id: 8,
+          installation_date: "20/10/2020",
+          location: "Tokiyo",
+          status: "Installed",
+          uninstallation_date: "30/10/2020",
+          company: "Nulla Tempor Odio",
+        },
+        {
+          installation_id: 9,
+          installation_date: "20/10/2020",
+          location: "Manila",
+          status: "Installed",
+          uninstallation_date: "30/10/2020",
+          company: "Nulla Tempor Odio",
+        },
+      ],
+    },
+    {
+      machine_id: "A4:5A:5C:F8:59:BC",
+      installation_id: "AU-T0001",
+      installation_date: "18-09-2020",
+      location: "Auburn",
+      uninstallation_date: "18-09-2020",
+      // name: "company1",
+      // location: "Beavercreek",
+      // status: "installed",
+      // count: 20,
+      history: [
+        {
+          installation_id: 10,
+          installation_date: "20/10/2020",
+          location: "Rio De Janeiro",
+          status: "Installed",
+          uninstallation_date: "30/10/2020",
+          company: "Nulla Tempor Odio",
+        },
+        {
+          installation_id: 11,
+          installation_date: "20/10/2020",
+          location: "Tokiyo",
+          status: "Installed",
+          uninstallation_date: "30/10/2020",
+          company: "Nulla Tempor Odio",
+        },
+        {
+          installation_id: 12,
+          installation_date: "20/10/2020",
+          location: "Manila",
+          status: "Installed",
+          uninstallation_date: "30/10/2020",
+          company: "Nulla Tempor Odio",
+        },
+      ],
+    },
+    {
+      machine_id: "Q4:5A:5C:F8:59:BC",
+      installation_id: "AU-T0001",
+      installation_date: "18-09-2020",
+      location: "Auburn",
+      uninstallation_date: "18-09-2020",
+      // name: "company1",
+      // location: "Beavercreek",
+      // status: "installed",
+      // count: 20,
+      history: [
+        {
+          installation_id: 13,
+          installation_date: "20/10/2020",
+          location: "Rio De Janeiro",
+          status: "Installed",
+          uninstallation_date: "30/10/2020",
+          company: "Nulla Tempor Odio",
+        },
+        {
+          installation_id: 14,
+          installation_date: "20/10/2020",
+          location: "Tokiyo",
+          status: "Installed",
+          uninstallation_date: "30/10/2020",
+          company: "Nulla Tempor Odio",
+        },
+        {
+          installation_id: 15,
+          installation_date: "20/10/2020",
+          location: "Manila",
+          status: "Installed",
+          uninstallation_date: "30/10/2020",
+          company: "Nulla Tempor Odio",
+        },
+      ],
+    },
+  ];
   return (
     <>
       <div id="scroll-cards">
@@ -31,7 +218,12 @@ export default function search() {
             <Route
               path="/search"
               render={(props) => (
-                <Table {...props} columns={columns} columns2={columns2} />
+                <Table
+                  {...props}
+                  columns={columns}
+                  columns2={columns2}
+                  tableData={table}
+                />
               )}
             />
           </Switch>
