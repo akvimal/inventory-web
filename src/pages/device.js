@@ -221,11 +221,6 @@ export default function Device() {
       setDstatus(e.data.status)
     );
   };
-<<<<<<< HEAD
-
-  const [row, setRows] = useState(null);
-=======
->>>>>>> dev-vimalesh
 
   const dispatch = useDispatch();
   const history = useHistory();
