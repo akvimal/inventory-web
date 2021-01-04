@@ -332,6 +332,10 @@ hr.divider-line {
   height: 43px !important;
 }
 
+/* .information{
+  
+} */
+
 .data-table {
   border-top: 1px solid rgba(255, 255, 255, 0.719) !important;
   border-left: 1px solid rgba(255, 255, 255, 0.719) !important;
@@ -537,12 +541,13 @@ hr.divider-line {
   color: var(--unnamed-color-f7b924) !important;
 }
 
-.information {
+.information{
   /* border: 0px solid black !important; */
-  border-right: 1px solid white !important;
+  /* border-right: 1px solid white !important; */
   border-left: 1px solid white !important;
-  background-color: #3ac47d !important;
-  background: #3ac47d !important;
+  color: #3ac47d !important;
+  background-color: #d92550 !important;
+  
 }
 
 .product-badge.status-installed {
