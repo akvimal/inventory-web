@@ -198,16 +198,16 @@ export default function Company() {
       ],
     },
   ];
-    const information = [
-      {
-        model: "Model No.",
-        manufacturer: "manufacturer",
-        hardware_version: "Hardware Version",
-        commission_date: "Commission Date",
-        decommission_date: "Decommission Date",
-        cost: "$900",
-      },
-    ];
+  const information = [
+    {
+      model: "Model No.",
+      manufacturer: "manufacturer",
+      hardware_version: "Hardware Version",
+      commission_date: "Commission Date",
+      decommission_date: "Decommission Date",
+      cost: "$900",
+    },
+  ];
   const data = useSelector((state) => state.table.data);
   const [cname, setCname] = useState(null);
   const [clocation, setClocation] = useState(null);
@@ -230,9 +230,6 @@ export default function Company() {
 
   useEffect(() => {
     if (_.isEmpty(cardData)) {
-      dispatch(
-        fetchTable("dashboard/device/status", { company: cardData[0].name })
-      );
     } else {
       dispatch(
         fetchTable("dashboard/device/status", { company: cardData[0].name })
@@ -261,7 +258,7 @@ export default function Company() {
   });
 
   const deviceName = uniqueLoc.map((d) => {
-    return d.device_name;
+    return d.name;
   });
 
   const status = uniqueStatus.map((status) => {
@@ -273,7 +270,7 @@ export default function Company() {
     setItem(event.value);
   };
   const onFilterDeviceNameChange = (event) => {
-    dt.current.filter(event.value, "device_name", "equals");
+    dt.current.filter(event.value, "name", "equals");
     setItem(event.value);
   };
   const onFilterStatusChange = (event) => {
@@ -313,7 +310,7 @@ export default function Company() {
       filterElement: dropDownFilter(location, onFilterLocationChange),
     },
     {
-      field: "device_name",
+      field: "name",
       header: "Device Name",
       filter: filter,
       filterElement: dropDownFilter(deviceName, onFilterDeviceNameChange),
@@ -330,9 +327,9 @@ export default function Company() {
   const columns1 = [
     { field: "machine_id", header: "Machine Id" },
     { field: "installation_id", header: "Installation Id" },
-    { field: "installation_date", header: "Uninstallation Date" },
+    { field: "installation_date", header: "Installation Date" },
     { field: "location", header: "Location" },
-    { field: "uninstallation_date", header: "Uninstallation Date" },
+    { field: "uninstallation_date", header: "Availability Date" },
   ];
 
   const columns2 = [
@@ -343,14 +340,14 @@ export default function Company() {
     { field: "uninstallation_date", header: "Uninstallation_date" },
     { field: "company", header: "Company" },
   ];
-    const columns3 = [
-      { field: "model", header: "Model" },
-      { field: "manufacturer", header: "Manufacturer" },
-      { field: "hardware_version", header: "Hardware Version" },
-      { field: "commission_date", header: "Commission Date" },
-      { field: "decommission_date", header: "Decommission Date" },
-      { field: "cost", header: "Cost" },
-    ];
+  const columns3 = [
+    { field: "model", header: "Model" },
+    { field: "manufacturer", header: "Manufacturer" },
+    { field: "hardware_version", header: "Hardware Version" },
+    { field: "commission_date", header: "Commission Date" },
+    { field: "decommission_date", header: "Decommission Date" },
+    { field: "cost", header: "Cost" },
+  ];
 
   return (
     <>

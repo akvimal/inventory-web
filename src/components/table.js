@@ -74,11 +74,11 @@ export default function Table(props) {
 
   const onRowSelect = (e) => {
     console.log(e);
-    history.push(`${props.match.url}/${e.data.device_name}`);
+    history.push(`${props.match.url}/${e.data.name}`);
     dispatch(
       fetchTable("dashboard/device/location", {
         company: e.data.name || ex,
-        device: "BaconBit" || e.data.device_name,
+        device: "BaconBit" || e.data.name,
       })
     );
     props.select(e);
@@ -91,6 +91,7 @@ export default function Table(props) {
         ref={props.refs}
         header="INVENTORY LIST"
         paginator
+        paginatorPosition="top"
         paginatorTemplate="CurrentPageReport FirstPageLink PrevPageLink PageLinks NextPageLink LastPageLink"
         currentPageReportTemplate="{first} to {last} "
         rows={5}

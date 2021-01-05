@@ -337,13 +337,13 @@ const data = useSelector((state) => state.table.data);
     { field: "installation_id", header: "Installation Id", filter: false },
     {
       field: "installation_date",
-      header: "Uninstallation Date",
+      header: "Installation Date",
       filter: false,
     },
     { field: "location", header: "Location", filter: false },
     {
       field: "uninstallation_date",
-      header: "Uninstallation Date",
+      header: "Availability Date",
       filter: false,
     },
   ];
