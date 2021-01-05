@@ -91,7 +91,6 @@ export default function Table(props) {
         ref={props.refs}
         header="INVENTORY LIST"
         paginator
-        paginatorPosition="top"
         paginatorTemplate="CurrentPageReport FirstPageLink PrevPageLink PageLinks NextPageLink LastPageLink"
         currentPageReportTemplate="{first} to {last} "
         rows={5}
