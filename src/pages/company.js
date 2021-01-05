@@ -198,6 +198,16 @@ export default function Company() {
       ],
     },
   ];
+    const information = [
+      {
+        model: "Model No.",
+        manufacturer: "manufacturer",
+        hardware_version: "Hardware Version",
+        commission_date: "Commission Date",
+        decommission_date: "Decommission Date",
+        cost: "$900",
+      },
+    ];
   const data = useSelector((state) => state.table.data);
   const [cname, setCname] = useState(null);
   const [clocation, setClocation] = useState(null);
@@ -333,6 +343,14 @@ export default function Company() {
     { field: "uninstallation_date", header: "Uninstallation_date" },
     { field: "company", header: "Company" },
   ];
+    const columns3 = [
+      { field: "model", header: "Model" },
+      { field: "manufacturer", header: "Manufacturer" },
+      { field: "hardware_version", header: "Hardware Version" },
+      { field: "commission_date", header: "Commission Date" },
+      { field: "decommission_date", header: "Decommission Date" },
+      { field: "cost", header: "Cost" },
+    ];
 
   return (
     <>
@@ -363,6 +381,7 @@ export default function Company() {
                   refs={dt}
                   columns={columns}
                   columns2={columns2}
+                  columns3={columns3}
                   type="single"
                   select={deviceClick}
                 />
@@ -374,8 +393,10 @@ export default function Company() {
                 <Table
                   tableData={table}
                   {...props}
+                  history={information}
                   columns={columns1}
                   columns2={columns2}
+                  columns3={columns3}
                   rowExpander={expander}
                 />
               )}
