@@ -38,19 +38,6 @@ export default function Table(props) {
       />
     );
   });
-
-  const dynamicColumns2 = props.columns.map((col, i) => {
-    return (
-      <Column
-        key={col.field}
-        field={col.field}
-        header={nameBodyTemplate(col.header)}
-        filter={col.filter}
-        filterElement={col.filterElement}
-      />
-    );
-  });
-  console.log(props);
   const dynamicColumns3 = props.columns2.map((col, i) => {
     return (
       <Column
@@ -60,31 +47,22 @@ export default function Table(props) {
       />
     );
   });
- const information = [
-   {
-     model: "Model No.",
-     manufacturer: "manufacturer",
-     hardware_version: "Hardware Version",
-     commission_date: "Commission Date",
-     decommission_date: "Decommission Date",
-     cost: "$900",
-   },
- ];
-//  const dynamicColumns1 = props.columns3.map((col, i) => {
-//    return (
-//      <Column
-//        key={col.field}
-//        field={col.field}
-//        header={nameBodyTemplate(col.header)}
-//      />
-//    );
-//  });
+
+  const dynamicColumns1 = props.columns3.map((col, i) => {
+    return (
+      <Column
+        key={col.field}
+        field={col.field}
+        header={nameBodyTemplate(col.header)}
+      />
+    );
+  });
   const rowExpansionTemplate = (data) => {
     return (
       <div>
-        {/* <DataTable className="information" value={information}>
+        <DataTable value={props.history}>
           {dynamicColumns1}
-        </DataTable> */}
+        </DataTable>
         <DataTable className="information" value={data.history}>
           {dynamicColumns3}
         </DataTable>
@@ -96,11 +74,11 @@ export default function Table(props) {
 
   const onRowSelect = (e) => {
     console.log(e);
-    history.push(`${props.match.url}/${e.data.device_name}`);
+    history.push(`${props.match.url}/${e.data.name}`);
     dispatch(
       fetchTable("dashboard/device/location", {
         company: e.data.name || ex,
-        device: "BaconBit" ||  e.data.device_name,
+        device: "BaconBit" || e.data.name,
       })
     );
     props.select(e);
@@ -113,6 +91,7 @@ export default function Table(props) {
         ref={props.refs}
         header="INVENTORY LIST"
         paginator
+        paginatorPosition="top"
         paginatorTemplate="CurrentPageReport FirstPageLink PrevPageLink PageLinks NextPageLink LastPageLink"
         currentPageReportTemplate="{first} to {last} "
         rows={5}

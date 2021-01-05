@@ -201,14 +201,16 @@ export default function Device() {
     },
   ];
 
- const columns3 = [
-   { field: "model", header: "Model" },
-   { field: "manufacturer", header: "Manufacturer" },
-   { field: "hardware_version", header: "Hardware Version" },
-   { field: "commission_date", header: "Commission Date" },
-   { field: "decommission_date", header: "Decommission Date" },
-   { field: "cost", header: "Cost" },
- ];
+  const information = [
+    {
+      model: "Model No.",
+      manufacturer: "manufacturer",
+      hardware_version: "Hardware Version",
+      commission_date: "Commission Date",
+      decommission_date: "Decommission Date",
+      cost: "$900",
+    },
+  ];
 
   const [dname, setDname] = useState(null);
   const [dlocation, setDlocation] = useState(null);
@@ -335,13 +337,13 @@ const data = useSelector((state) => state.table.data);
     { field: "installation_id", header: "Installation Id", filter: false },
     {
       field: "installation_date",
-      header: "Uninstallation Date",
+      header: "Installation Date",
       filter: false,
     },
     { field: "location", header: "Location", filter: false },
     {
       field: "uninstallation_date",
-      header: "Uninstallation Date",
+      header: "Availability Date",
       filter: false,
     },
   ];
@@ -353,6 +355,15 @@ const data = useSelector((state) => state.table.data);
     { field: "status", header: "Status" },
     { field: "uninstallation_date", header: "Uninstallation_date" },
     { field: "company", header: "Company" },
+  ];
+
+  const columns3 = [
+    { field: "model", header: "Model" },
+    { field: "manufacturer", header: "Manufacturer" },
+    { field: "hardware_version", header: "Hardware Version" },
+    { field: "commission_date", header: "Commission Date" },
+    { field: "decommission_date", header: "Decommission Date" },
+    { field: "cost", header: "Cost" },
   ];
 
   return (
@@ -384,6 +395,7 @@ const data = useSelector((state) => state.table.data);
                   refs={dt}
                   columns={columns}
                   columns2={columns2}
+                  columns3={columns3}
                   type="single"
                   select={rowClick}
                 />
@@ -393,11 +405,12 @@ const data = useSelector((state) => state.table.data);
               path="/:device/:innertable"
               render={(props) => (
                 <Table
-                  columns3={columns3}
                   tableData={table}
                   {...props}
+                  history={information}
                   columns={columns1}
                   columns2={columns2}
+                  columns3={columns3}
                   rowExpander={expander}
                 />
               )}
