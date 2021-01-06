@@ -152,16 +152,16 @@ export default function Company() {
     { field: "installed_date", header: "Installation Date" },
     { field: "location", header: "Location" },
     { field: "status", header: "Status" },
-    { field: "uninstallation_date", header: "Uninstallation_date" },
+    { field: "uninstallation_date", header: "Uninstallation Date" },
     { field: "name", header: "Company" },
   ];
   const columns3 = [
     { field: "model", header: "Model" },
     { field: "manufacturer", header: "Manufacturer" },
-    { field: "version", header: "Hardware Version" },
+    { field: "hardware_version", header: "Hardware Version" },
     { field: "commision_date", header: "Commission Date" },
     { field: "decommision_date", header: "Decommission Date" },
-    { field: "cost_per_device", header: "Cost" },
+    { field: "cycle", header: "Cycle" },
   ];
 
   return (

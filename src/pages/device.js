@@ -171,7 +171,7 @@ export default function Device() {
   const columns3 = [
     { field: "model", header: "Model" },
     { field: "manufacturer", header: "Manufacturer" },
-    { field: "version", header: "Hardware Version" },
+    { field: "hardware_version", header: "Hardware Version" },
     { field: "commision_date", header: "Commission Date" },
     { field: "decommision_date", header: "Decommission Date" },
     { field: "cycle", header: "Cycle" },

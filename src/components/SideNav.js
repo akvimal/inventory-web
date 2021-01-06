@@ -33,9 +33,9 @@ export default function SideNav() {
           </Link>
         </div>
         <div>
-          <Link to="/search" className="link">
-            <Button label="Search" className={active[2]} />
-          </Link>
+          {/* <Link to="/search" className="link"> */}
+          <Button label="Search" className={active[2]} />
+          {/* </Link> */}
         </div>
       </Sidebar>
     </>
