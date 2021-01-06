@@ -12,8 +12,8 @@ import { Column } from "primereact/column";
 
 export default function Device() {
   const device = useSelector((state) => state.dataCard.device);
-  const data = useSelector((state) => state.table.data);
-  const innerData = useSelector((state) => state.table.data2);
+  const tableData = useSelector((state) => state.table.data);
+  const innerTableData = useSelector((state) => state.table.data2);
   const [dname, setDname] = useState(null);
   const [dlocation, setDlocation] = useState(null);
   const [dstatus, setDstatus] = useState(null);
@@ -67,9 +67,9 @@ export default function Device() {
     return unique;
   };
 
-  const uniqueName = getUnique(data, "name");
-  const uniqueLoc = getUnique(data, "location");
-  const uniqueStatus = getUnique(data, "status");
+  const uniqueName = getUnique(tableData, "name");
+  const uniqueLoc = getUnique(tableData, "location");
+  const uniqueStatus = getUnique(tableData, "status");
 
   const name = uniqueName.map((a) => {
     return a.name;
@@ -202,10 +202,10 @@ export default function Device() {
           <Switch>
             <Route
               exact
-              path="/device/:BaconBit"
+              path="/device/:deviceName"
               render={(props) => (
                 <Table
-                  tableData={data}
+                  tableData={tableData}
                   filtericon={icon}
                   {...props}
                   refs={dt}
@@ -221,14 +221,14 @@ export default function Device() {
               path="/:device/:innertable"
               render={(props) => (
                 <Table
-                  tableData={data}
+                  tableData={tableData}
                   {...props}
                   history={information}
                   columns={columns1}
                   columns2={columns2}
                   columns3={columns3}
                   rowExpander={expander}
-                  row={innerData}
+                  row={innerTableData}
                 />
               )}
             />
