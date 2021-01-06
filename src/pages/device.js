@@ -144,8 +144,8 @@ export default function Device() {
   ];
 
   const columns1 = [
-    { field: "machine_id", header: "Machine Id", filter: false },
-    { field: "installation_id", header: "Installation Id", filter: false },
+    { field: "machine_id", header: "Machine ID", filter: false },
+    { field: "installation_id", header: "Installation ID", filter: false },
     {
       field: "installation_date",
       header: "Installation Date",
