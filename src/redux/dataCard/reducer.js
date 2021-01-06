@@ -1,7 +1,8 @@
 import {
   FETCH_DATACARD_FAILURE,
   FETCH_DATACARD_REQUEST,
-  FETCH_DATACARD_SUCCESS,
+  FETCH_DEVICEDATACARD_SUCCESS,
+  FETCH_COMPANYDATACARD_SUCCESS,
 } from "./type";
 
 // eslint-disable-next-line import/no-anonymous-default-export
@@ -9,18 +10,26 @@ export default (
   state = {
     isLoading: false,
     error: null,
-    data: [],
+    device: [],
+    company: [],
   },
   action
 ) => {
   switch (action.type) {
     case FETCH_DATACARD_REQUEST:
       return { ...state, isLoading: true };
-    case FETCH_DATACARD_SUCCESS:
+    case FETCH_DEVICEDATACARD_SUCCESS:
       return {
         ...state,
         isLoading: false,
-        data: action.payload,
+        device: action.payload,
+        error: null,
+      };
+    case FETCH_COMPANYDATACARD_SUCCESS:
+      return {
+        ...state,
+        isLoading: false,
+        company: action.payload,
         error: null,
       };
     case FETCH_DATACARD_FAILURE:

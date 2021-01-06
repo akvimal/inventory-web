@@ -11,13 +11,12 @@ import { Dropdown } from "primereact/dropdown";
 import { Column } from "primereact/column";
 
 export default function Device() {
-  const cardData = useSelector((state) => state.dataCard.data);
+  const device = useSelector((state) => state.dataCard.device);
   const data = useSelector((state) => state.table.data);
   const innerData = useSelector((state) => state.table.data2);
   const [dname, setDname] = useState(null);
   const [dlocation, setDlocation] = useState(null);
   const [dstatus, setDstatus] = useState(null);
-
   const [item, setItem] = useState(null);
 
   let dt = useRef(null);
@@ -45,19 +44,19 @@ export default function Device() {
   const history = useHistory();
 
   useEffect(() => {
-    dispatch(fetchDataCard("dashboard/device/inventory"));
+    dispatch(fetchDataCard("dashboard/device/inventory", "device"));
   }, [dispatch]);
 
   useEffect(() => {
-    if (_.isEmpty(cardData)) {
+    if (_.isEmpty(device)) {
     } else {
       dispatch(
-        fetchTable("dashboard/company/status", { device: cardData[0].name })
+        fetchTable("dashboard/company/status", { device: device[0].name })
       );
-      localStorage.setItem("device name", cardData[0].name);
-      history.push(`/device/${cardData[0].name}`);
+      localStorage.setItem("device name", device[0].name);
+      history.push(`/device/${device[0].name}`);
     }
-  }, [cardData, dispatch, history]);
+  }, [device, dispatch, history]);
 
   const getUnique = (arr, comp) => {
     const unique = arr
@@ -182,7 +181,12 @@ export default function Device() {
     <>
       <div id="scroll-cards">
         <div className="mt-3 ml-4 mr-4">
-          <DataCard name="device" id="company" url="dashboard/company/status" />
+          <DataCard
+            name="device"
+            id="company"
+            url="dashboard/company/status"
+            data={device}
+          />
         </div>
       </div>
       <div id="table">

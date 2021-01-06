@@ -1,14 +1,13 @@
 import React from "react";
 import { Card } from "primereact/card";
 import { ScrollPanel } from "primereact/scrollpanel";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { Link, useLocation, useRouteMatch } from "react-router-dom";
 import { fetchTable } from "../redux/action";
 
 export default function DataCard(props) {
   const dispatch = useDispatch();
 
-  const data = useSelector((state) => state.dataCard.data);
   let match = useRouteMatch();
   const location = useLocation();
   const pathItems = location.pathname.split("/");
@@ -19,7 +18,7 @@ export default function DataCard(props) {
       <hr className="divider-line" />
       <ScrollPanel>
         <div className="p-d-flex mt-3">
-          {data.map(({ name, status }) => {
+          {props.data.map(({ name, status }) => {
             const check =
               props.name === "device"
                 ? {

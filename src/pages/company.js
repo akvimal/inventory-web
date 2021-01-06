@@ -13,7 +13,8 @@ import { Dropdown } from "primereact/dropdown";
 export default function Company() {
   const data = useSelector((state) => state.table.data);
   const innerData = useSelector((state) => state.table.data2);
-  const cardData = useSelector((state) => state.dataCard.data);
+  const company = useSelector((state) => state.dataCard.company);
+  let dt = useRef(null);
 
   const information = [
     {
@@ -40,21 +41,20 @@ export default function Company() {
   const history = useHistory();
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(fetchDataCard("dashboard/company/devices"));
+    dispatch(fetchDataCard("dashboard/company/devices", "company"));
   }, [dispatch]);
 
   useEffect(() => {
-    if (_.isEmpty(cardData)) {
+    if (_.isEmpty(company)) {
     } else {
       dispatch(
-        fetchTable("dashboard/device/status", { company: cardData[0].name })
+        fetchTable("dashboard/device/status", { company: company[0].name })
       );
-      localStorage.setItem("device name", cardData[0].name);
-      history.push(`/company/${cardData[0].name}`);
+      localStorage.setItem("device name", company[0].name);
+      history.push(`/company/${company[0].name}`);
     }
-  }, [cardData, history, dispatch]);
+  }, [company, history, dispatch]);
 
-  let dt = useRef(null);
   const getUnique = (arr, comp) => {
     const unique = arr
       .map((e) => e[comp])
@@ -168,7 +168,12 @@ export default function Company() {
     <>
       <div id="scroll-cards">
         <div className="mt-3 ml-4 mr-4">
-          <DataCard name="company" id="device" url="dashboard/device/status" />
+          <DataCard
+            name="company"
+            id="device"
+            url="dashboard/device/status"
+            data={company}
+          />
         </div>
       </div>
       <div id="table">
