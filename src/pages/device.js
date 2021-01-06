@@ -233,6 +233,7 @@ export default function Device() {
 
   const cardData = useSelector((state) => state.dataCard.data);
   const data = useSelector((state) => state.table.data);
+  const innerData = useSelector((state)=>state.table.data2)
 
   useEffect(() => {
     if (_.isEmpty(cardData)) {
@@ -349,12 +350,12 @@ export default function Device() {
   ];
 
   const columns2 = [
-    { field: "installation_id", header: "Installation ID" },
-    { field: "installation_date", header: "Installation Date" },
+    { field: "installed_id", header: "Installation ID" },
+    { field: "installed_date", header: "Installation Date" },
     { field: "location", header: "Location" },
     { field: "status", header: "Status" },
     { field: "uninstallation_date", header: "Uninstallation Date" },
-    { field: "company", header: "Company" },
+    { field: "name", header: "Company" },
   ];
 
   const columns3 = [
@@ -412,7 +413,7 @@ export default function Device() {
                   columns2={columns2}
                   columns3={columns3}
                   rowExpander={expander}
-                  row={table}
+                  row={innerData}
                 />
               )}
             />

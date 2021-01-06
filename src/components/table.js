@@ -78,12 +78,15 @@ export default function Table(props) {
   };
 
   const onRowExpand = (e) => {
+    console.log(e);
     setstate(e.data);
-    dispatch(
-      fetchTable("dashboard/device/history", {
-        machine: e.data[0].machine_id,
-      })
-    );
+    return e.data !== []
+      ? dispatch(
+          fetchTable("dashboard/device/history", {
+            machine: e.data[0].machine_id,
+          })
+        )
+      : null;
   };
 
   return (
