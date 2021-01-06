@@ -343,10 +343,10 @@ export default function Company() {
   const columns3 = [
     { field: "model", header: "Model" },
     { field: "manufacturer", header: "Manufacturer" },
-    { field: "hardware_version", header: "Hardware Version" },
-    { field: "commission_date", header: "Commission Date" },
-    { field: "decommission_date", header: "Decommission Date" },
-    { field: "cost", header: "Cost" },
+    { field: "version", header: "Hardware Version" },
+    { field: "commision_date", header: "Commission Date" },
+    { field: "decommision_date", header: "Decommission Date" },
+    { field: "cost_per_device", header: "Cost" },
   ];
 
   return (
@@ -388,7 +388,7 @@ export default function Company() {
               path="/:device/:innertable"
               render={(props) => (
                 <Table
-                  tableData={table}
+                  tableData={data}
                   {...props}
                   history={information}
                   columns={columns1}

@@ -60,10 +60,15 @@ export default function Table(props) {
   const rowExpansionTemplate = (data) => {
     return (
       <div>
-        <DataTable value={props.history}>
+        <DataTable
+          value={props.tableData}
+          paginator
+          paginatorTemplate="CurrentPageReport FirstPageLink PrevPageLink PageLinks NextPageLink LastPageLink"
+          currentPageReportTemplate="{first} to {last} "
+        >
           {dynamicColumns1}
         </DataTable>
-        <DataTable className="information" value={data.history}>
+        <DataTable className="information" value={props.row}>
           {dynamicColumns3}
         </DataTable>
       </div>
@@ -77,11 +82,16 @@ export default function Table(props) {
     history.push(`${props.match.url}/${e.data.name}`);
     dispatch(
       fetchTable("dashboard/device/location", {
-        company: e.data.name || ex,
-        device: "BaconBit" || e.data.name,
+        company: "AUBURN UNIVERSITY",
+        device: "BaconBit",
       })
     );
     props.select(e);
+  };
+
+  const onRowExpand = (e) => {
+    setstate(e.data);
+    console.log(e.data[0].machine_id);
   };
 
   return (
@@ -95,7 +105,7 @@ export default function Table(props) {
         currentPageReportTemplate="{first} to {last} "
         rows={5}
         expandedRows={state}
-        onRowToggle={(e) => setstate(e.data)}
+        onRowToggle={(e) => onRowExpand(e)}
         rowExpansionTemplate={rowExpansionTemplate}
         selectionMode={props.type}
         onRowSelect={(e) => onRowSelect(e)}

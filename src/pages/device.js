@@ -353,17 +353,17 @@ const data = useSelector((state) => state.table.data);
     { field: "installation_date", header: "Installation Date" },
     { field: "location", header: "Location" },
     { field: "status", header: "Status" },
-    { field: "uninstallation_date", header: "Uninstallation_date" },
+    { field: "uninstallation_date", header: "Uninstallation Date" },
     { field: "company", header: "Company" },
   ];
 
   const columns3 = [
     { field: "model", header: "Model" },
     { field: "manufacturer", header: "Manufacturer" },
-    { field: "hardware_version", header: "Hardware Version" },
-    { field: "commission_date", header: "Commission Date" },
-    { field: "decommission_date", header: "Decommission Date" },
-    { field: "cost", header: "Cost" },
+    { field: "version", header: "Hardware Version" },
+    { field: "commision_date", header: "Commission Date" },
+    { field: "decommision_date", header: "Decommission Date" },
+    { field: "cost_per_device", header: "Cost" },
   ];
 
   return (
@@ -405,13 +405,14 @@ const data = useSelector((state) => state.table.data);
               path="/:device/:innertable"
               render={(props) => (
                 <Table
-                  tableData={table}
+                  tableData={data}
                   {...props}
                   history={information}
                   columns={columns1}
                   columns2={columns2}
                   columns3={columns3}
                   rowExpander={expander}
+                  row={table}
                 />
               )}
             />
