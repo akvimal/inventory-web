@@ -3,12 +3,12 @@ import { DataTable } from "primereact/datatable";
 import { Column } from "primereact/column";
 import { useDispatch } from "react-redux";
 import { fetchTable } from "../redux/action";
-import { useHistory } from "react-router-dom";
-import _ from "lodash";
+import { useHistory, useLocation } from "react-router-dom";
+import _ from "lodash"
 
 export default function Table(props) {
   const history = useHistory();
-
+  const location = useLocation();
   const dispatch = useDispatch();
 
   const [state, setstate] = useState([]);
@@ -64,17 +64,20 @@ export default function Table(props) {
     );
   };
 
-  // const ex = localStorage.getItem("device name");
-
   const onRowSelect = (e) => {
-    console.log(e);
     history.push(`${props.match.url}/${e.data.name}`);
-    dispatch(
-      fetchTable("dashboard/device/location", {
-        company: "AUBURN UNIVERSITY",
-        device: "BaconBit",
-      })
-    );
+    const pathItems = location.pathname.split("/");
+    const value =
+      pathItems[1] !== "company"
+        ? {
+            company: e.data.name,
+            device: pathItems[2],
+          }
+        : {
+            company: pathItems[2],
+            device: e.data.name,
+          };
+    dispatch(fetchTable("dashboard/device/location", value));
     props.select(e);
   };
 
