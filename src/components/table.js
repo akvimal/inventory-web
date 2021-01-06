@@ -1,7 +1,7 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useState } from "react";
 import { DataTable } from "primereact/datatable";
 import { Column } from "primereact/column";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { fetchTable } from "../redux/action";
 import { useHistory } from "react-router-dom";
 
@@ -27,7 +27,7 @@ export default function Table(props) {
       </React.Fragment>
     );
   };
-  const dynamicColumns = props.columns.map((col, i) => {
+  const dynamicColumns = props.columns.map((col) => {
     return (
       <Column
         key={col.field}
@@ -38,7 +38,7 @@ export default function Table(props) {
       />
     );
   });
-  const dynamicColumns3 = props.columns2.map((col, i) => {
+  const dynamicColumns3 = props.columns2.map((col) => {
     return (
       <Column
         key={col.field}
@@ -48,7 +48,7 @@ export default function Table(props) {
     );
   });
 
-  const dynamicColumns1 = props.columns3.map((col, i) => {
+  const dynamicColumns1 = props.columns3.map((col) => {
     return (
       <Column
         key={col.field}
@@ -57,15 +57,10 @@ export default function Table(props) {
       />
     );
   });
-  const rowExpansionTemplate = (data) => {
+  const rowExpansionTemplate = () => {
     return (
       <div>
-        <DataTable
-          value={props.tableData}
-          paginator
-          paginatorTemplate="CurrentPageReport FirstPageLink PrevPageLink PageLinks NextPageLink LastPageLink"
-          currentPageReportTemplate="{first} to {last} "
-        >
+        <DataTable value={state[0].properties}>
           {dynamicColumns1}
         </DataTable>
         <DataTable className="information" value={props.row}>
@@ -75,7 +70,7 @@ export default function Table(props) {
     );
   };
 
-  const ex = localStorage.getItem("device name");
+  // const ex = localStorage.getItem("device name");
 
   const onRowSelect = (e) => {
     console.log(e);
@@ -91,7 +86,6 @@ export default function Table(props) {
 
   const onRowExpand = (e) => {
     setstate(e.data);
-    console.log(e.data[0].machine_id);
   };
 
   return (

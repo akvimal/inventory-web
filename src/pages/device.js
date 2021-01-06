@@ -232,7 +232,7 @@ export default function Device() {
   }, [dispatch]);
 
   const cardData = useSelector((state) => state.dataCard.data);
-  const tableData = useSelector((state) => state.table.data);
+  const data = useSelector((state) => state.table.data);
 
   useEffect(() => {
     if (_.isEmpty(cardData)) {
@@ -243,7 +243,7 @@ export default function Device() {
       localStorage.setItem("device name", cardData[0].name);
       history.push(`/device/${cardData[0].name}`);
     }
-  }, [cardData]);
+  }, [cardData, dispatch, history]);
 
   const [item, setItem] = useState(null);
 
@@ -256,9 +256,9 @@ export default function Device() {
     return unique;
   };
 
-  const uniqueName = getUnique(tableData, "name");
-  const uniqueLoc = getUnique(tableData, "location");
-  const uniqueStatus = getUnique(tableData, "status");
+  const uniqueName = getUnique(data, "name");
+  const uniqueLoc = getUnique(data, "location");
+  const uniqueStatus = getUnique(data, "status");
 
   const name = uniqueName.map((a) => {
     return a.name;
@@ -331,7 +331,7 @@ export default function Device() {
     },
     { field: "count", header: "Count" },
   ];
-const data = useSelector((state) => state.table.data);
+
   const columns1 = [
     { field: "machine_id", header: "Machine Id", filter: false },
     { field: "installation_id", header: "Installation Id", filter: false },
@@ -363,7 +363,7 @@ const data = useSelector((state) => state.table.data);
     { field: "version", header: "Hardware Version" },
     { field: "commision_date", header: "Commission Date" },
     { field: "decommision_date", header: "Decommission Date" },
-    { field: "cost_per_device", header: "Cost" },
+    { field: "cycle", header: "Cycle" },
   ];
 
   return (
