@@ -10,11 +10,6 @@ export default function Table(props) {
 
   const dispatch = useDispatch();
 
-  // const data = useSelector((state) => state.table.data);
-  // const data2 = useSelector((state) => state.table.data2);
-
-  // const [filter, setFilter] = useState(false);
-
   const [state, setstate] = useState([]);
 
   const nameBodyTemplate = (rowData) => {
@@ -60,9 +55,7 @@ export default function Table(props) {
   const rowExpansionTemplate = () => {
     return (
       <div>
-        <DataTable value={state[0].properties}>
-          {dynamicColumns1}
-        </DataTable>
+        <DataTable value={state[0].properties}>{dynamicColumns1}</DataTable>
         <DataTable className="information" value={props.row}>
           {dynamicColumns3}
         </DataTable>
@@ -86,6 +79,11 @@ export default function Table(props) {
 
   const onRowExpand = (e) => {
     setstate(e.data);
+    dispatch(
+      fetchTable("dashboard/device/history", {
+        machine: e.data[0].machine_id,
+      })
+    );
   };
 
   return (

@@ -212,6 +212,7 @@ export default function Company() {
   const [cname, setCname] = useState(null);
   const [clocation, setClocation] = useState(null);
   const [cstatus, setCstatus] = useState(null);
+  const [item, setItem] = useState(null);
   const deviceClick = (e) => {
     return (
       setCname(e.data.device_name),
@@ -237,8 +238,8 @@ export default function Company() {
       localStorage.setItem("device name", cardData[0].name);
       history.push(`/company/${cardData[0].name}`);
     }
-  }, [cardData]);
-  const [item, setItem] = useState(null);
+  }, [cardData, history, dispatch]);
+
   let dt = useRef(null);
   const getUnique = (arr, comp) => {
     const unique = arr
@@ -395,6 +396,7 @@ export default function Company() {
                   columns2={columns2}
                   columns3={columns3}
                   rowExpander={expander}
+                  row={table}
                 />
               )}
             />
