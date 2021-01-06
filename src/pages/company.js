@@ -11,193 +11,10 @@ import { Column } from "primereact/column";
 import { Dropdown } from "primereact/dropdown";
 
 export default function Company() {
-  const table = [
-    {
-      machine_id: "F4:5A:5C:F8:59:BC",
-      installation_id: "AU-T0001",
-      installation_date: "18-09-2020",
-      location: "Auburn",
-      uninstallation_date: "18-09-2020",
-      // name: "company1",
-      // location: "Beavercreek",
-      // status: "installed",
-      // count: 20,
-      history: [
-        {
-          installation_id: 1,
-          installation_date: "20/10/2020",
-          location: "Rio De Janeiro",
-          status: "Installed",
-          uninstallation_date: "30/10/2020",
-          company: "Nulla Tempor Odio",
-        },
-        {
-          installation_id: 2,
-          installation_date: "20/10/2020",
-          location: "Tokiyo",
-          status: "Installed",
-          uninstallation_date: "30/10/2020",
-          company: "Nulla Tempor Odio",
-        },
-        {
-          installation_id: 3,
-          installation_date: "20/10/2020",
-          location: "Manila",
-          status: "Installed",
-          uninstallation_date: "30/10/2020",
-          company: "Nulla Tempor Odio",
-        },
-      ],
-    },
-    {
-      machine_id: "B4:5A:5C:F8:59:BC",
-      installation_id: "AU-T0002",
-      installation_date: "13-09-2020",
-      location: "Auburn",
-      uninstallation_date: "19-09-2020",
-      // name: "company1",
-      // location: "Beavercreek",
-      // status: "installed",
-      // count: 20,
-      history: [
-        {
-          installation_id: 4,
-          installation_date: "20/10/2020",
-          location: "Rio De Janeiro",
-          status: "Installed",
-          uninstallation_date: "30/10/2020",
-          company: "Nulla Tempor Odio",
-        },
-        {
-          installation_id: 5,
-          installation_date: "20/10/2020",
-          location: "Tokiyo",
-          status: "Installed",
-          uninstallation_date: "30/10/2020",
-          company: "Nulla Tempor Odio",
-        },
-        {
-          installation_id: 6,
-          installation_date: "20/10/2020",
-          location: "Manila",
-          status: "Installed",
-          uninstallation_date: "30/10/2020",
-          company: "Nulla Tempor Odio",
-        },
-      ],
-    },
-    {
-      machine_id: "P4:5A:5C:F8:59:BC",
-      installation_id: "AU-T0003",
-      installation_date: "18-09-2020",
-      location: "Auburn",
-      uninstallation_date: "18-09-2020",
-      // name: "company1",
-      // location: "Beavercreek",
-      // status: "installed",
-      // count: 20,
-      history: [
-        {
-          installation_id: 7,
-          installation_date: "20/10/2020",
-          location: "Rio De Janeiro",
-          status: "Installed",
-          uninstallation_date: "30/10/2020",
-          company: "Nulla Tempor Odio",
-        },
-        {
-          installation_id: 8,
-          installation_date: "20/10/2020",
-          location: "Tokiyo",
-          status: "Installed",
-          uninstallation_date: "30/10/2020",
-          company: "Nulla Tempor Odio",
-        },
-        {
-          installation_id: 9,
-          installation_date: "20/10/2020",
-          location: "Manila",
-          status: "Installed",
-          uninstallation_date: "30/10/2020",
-          company: "Nulla Tempor Odio",
-        },
-      ],
-    },
-    {
-      machine_id: "A4:5A:5C:F8:59:BC",
-      installation_id: "AU-T0001",
-      installation_date: "18-09-2020",
-      location: "Auburn",
-      uninstallation_date: "18-09-2020",
-      // name: "company1",
-      // location: "Beavercreek",
-      // status: "installed",
-      // count: 20,
-      history: [
-        {
-          installation_id: 10,
-          installation_date: "20/10/2020",
-          location: "Rio De Janeiro",
-          status: "Installed",
-          uninstallation_date: "30/10/2020",
-          company: "Nulla Tempor Odio",
-        },
-        {
-          installation_id: 11,
-          installation_date: "20/10/2020",
-          location: "Tokiyo",
-          status: "Installed",
-          uninstallation_date: "30/10/2020",
-          company: "Nulla Tempor Odio",
-        },
-        {
-          installation_id: 12,
-          installation_date: "20/10/2020",
-          location: "Manila",
-          status: "Installed",
-          uninstallation_date: "30/10/2020",
-          company: "Nulla Tempor Odio",
-        },
-      ],
-    },
-    {
-      machine_id: "Q4:5A:5C:F8:59:BC",
-      installation_id: "AU-T0001",
-      installation_date: "18-09-2020",
-      location: "Auburn",
-      uninstallation_date: "18-09-2020",
-      // name: "company1",
-      // location: "Beavercreek",
-      // status: "installed",
-      // count: 20,
-      history: [
-        {
-          installation_id: 13,
-          installation_date: "20/10/2020",
-          location: "Rio De Janeiro",
-          status: "Installed",
-          uninstallation_date: "30/10/2020",
-          company: "Nulla Tempor Odio",
-        },
-        {
-          installation_id: 14,
-          installation_date: "20/10/2020",
-          location: "Tokiyo",
-          status: "Installed",
-          uninstallation_date: "30/10/2020",
-          company: "Nulla Tempor Odio",
-        },
-        {
-          installation_id: 15,
-          installation_date: "20/10/2020",
-          location: "Manila",
-          status: "Installed",
-          uninstallation_date: "30/10/2020",
-          company: "Nulla Tempor Odio",
-        },
-      ],
-    },
-  ];
+  const data = useSelector((state) => state.table.data);
+  const innerData = useSelector((state) => state.table.data2);
+  const cardData = useSelector((state) => state.dataCard.data);
+
   const information = [
     {
       model: "Model No.",
@@ -208,7 +25,7 @@ export default function Company() {
       cost: "$900",
     },
   ];
-  const data = useSelector((state) => state.table.data);
+
   const [cname, setCname] = useState(null);
   const [clocation, setClocation] = useState(null);
   const [cstatus, setCstatus] = useState(null);
@@ -225,9 +42,6 @@ export default function Company() {
   useEffect(() => {
     dispatch(fetchDataCard("dashboard/company/devices"));
   }, [dispatch]);
-
-  const cardData = useSelector((state) => state.dataCard.data);
-  const tableData = useSelector((state) => state.table.data);
 
   useEffect(() => {
     if (_.isEmpty(cardData)) {
@@ -250,9 +64,9 @@ export default function Company() {
     return unique;
   };
 
-  const uniqueName = getUnique(tableData, "name");
-  const uniqueLoc = getUnique(tableData, "location");
-  const uniqueStatus = getUnique(tableData, "status");
+  const uniqueName = getUnique(data, "name");
+  const uniqueLoc = getUnique(data, "location");
+  const uniqueStatus = getUnique(data, "status");
 
   const location = uniqueName.map((a) => {
     return a.location;
@@ -334,12 +148,12 @@ export default function Company() {
   ];
 
   const columns2 = [
-    { field: "installation_id", header: "Installation ID" },
-    { field: "installation_date", header: "Installation Date" },
+    { field: "installed_id", header: "Installation ID" },
+    { field: "installed_date", header: "Installation Date" },
     { field: "location", header: "Location" },
     { field: "status", header: "Status" },
     { field: "uninstallation_date", header: "Uninstallation_date" },
-    { field: "company", header: "Company" },
+    { field: "name", header: "Company" },
   ];
   const columns3 = [
     { field: "model", header: "Model" },
@@ -396,7 +210,7 @@ export default function Company() {
                   columns2={columns2}
                   columns3={columns3}
                   rowExpander={expander}
-                  row={table}
+                  row={innerData}
                 />
               )}
             />

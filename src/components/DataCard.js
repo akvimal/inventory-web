@@ -1,10 +1,9 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { Card } from "primereact/card";
 import { ScrollPanel } from "primereact/scrollpanel";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useLocation, useRouteMatch } from "react-router-dom";
 import { fetchTable } from "../redux/action";
-import _ from "lodash";
 
 export default function DataCard(props) {
   const dispatch = useDispatch();

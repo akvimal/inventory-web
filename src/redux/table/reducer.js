@@ -5,6 +5,7 @@ import {
   FETCH_INNERTABLE_SUCCESS,
 } from "./type";
 
+// eslint-disable-next-line import/no-anonymous-default-export
 export default (
   state = {
     isLoading: false,
