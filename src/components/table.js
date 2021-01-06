@@ -4,7 +4,7 @@ import { Column } from "primereact/column";
 import { useDispatch } from "react-redux";
 import { fetchTable } from "../redux/action";
 import { useHistory, useLocation } from "react-router-dom";
-import _ from "lodash"
+import _ from "lodash";
 
 export default function Table(props) {
   const history = useHistory();
@@ -85,7 +85,6 @@ export default function Table(props) {
     console.log(e);
     setstate(e.data);
     if (_.isEmpty(e.data)) {
-      
     } else {
       dispatch(
         fetchTable("dashboard/device/history", {
@@ -98,6 +97,7 @@ export default function Table(props) {
   return (
     <>
       <DataTable
+        className="maintable"
         value={props.tableData}
         ref={props.refs}
         header="INVENTORY LIST"

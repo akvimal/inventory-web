@@ -312,9 +312,9 @@ hr.divider-line {
   opacity: 1 !important;
 }
 
-.p-datatable-header {
+.maintable > .p-datatable-header {
   background: var(--unnamed-color-29313a) 0% 0% no-repeat padding-box !important;
-  background: #29313a 0% 0% no-repeat padding-box !important;
+  background: #014ca1 0% 0% no-repeat padding-box !important;
   opacity: 1 !important;
   border: none !important;
   color: var(--unnamed-color-ffffff) !important;
@@ -536,14 +536,22 @@ hr.divider-line {
   color: var(--unnamed-color-f7b924) !important;
 }
 
-.information{
-  border-right: 1px solid white !important;
-  border-left: 1px solid white !important;
-  
+.information .p-datatable-wrapper > table > thead > tr > th {
+  /* border-right: 1px solid white !important;
+  border-left: 1px solid white !important; */
+  background: var(--unnamed-color-29313a) 0% 0% no-repeat padding-box !important;
+  background: #a10101 0% 0% no-repeat padding-box !important;
+  opacity: 1 !important;
+  border: none !important;
+  color: var(--unnamed-color-ffffff) !important;
+  text-align: left !important;
+  font: normal normal 600 16px/19px Montserrat !important;
+  letter-spacing: 0px !important;
+  color: #ffffff !important;
+  text-transform: uppercase !important;
 }
 
-
-.history{
+.history {
   border-left: 5px solid red !important;
 }
 
