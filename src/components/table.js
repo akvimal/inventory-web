@@ -4,6 +4,7 @@ import { Column } from "primereact/column";
 import { useDispatch } from "react-redux";
 import { fetchTable } from "../redux/action";
 import { useHistory } from "react-router-dom";
+import _ from "lodash";
 
 export default function Table(props) {
   const history = useHistory();
@@ -80,13 +81,15 @@ export default function Table(props) {
   const onRowExpand = (e) => {
     console.log(e);
     setstate(e.data);
-    return e.data !== []
-      ? dispatch(
-          fetchTable("dashboard/device/history", {
-            machine: e.data[0].machine_id,
-          })
-        )
-      : null;
+    if (_.isEmpty(e.data)) {
+      
+    } else {
+      dispatch(
+        fetchTable("dashboard/device/history", {
+          machine: e.data[0].machine_id,
+        })
+      );
+    }
   };
 
   return (
