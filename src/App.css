@@ -314,7 +314,7 @@ hr.divider-line {
 
 .maintable > .p-datatable-header {
   background: var(--unnamed-color-29313a) 0% 0% no-repeat padding-box !important;
-  background: #29313A 0% 0% no-repeat padding-box !important;
+  background: #29313a 0% 0% no-repeat padding-box !important;
   opacity: 1 !important;
   border: none !important;
   color: var(--unnamed-color-ffffff) !important;
@@ -324,7 +324,7 @@ hr.divider-line {
   color: #ffffff !important;
   text-transform: uppercase !important;
 }
-.p-datatable-thead > tr > th {
+.maintable .p-datatable-thead > tr > th {
   background: var(--unnamed-color-29313a) 0% 0% no-repeat padding-box !important;
   background: #29313a 0% 0% no-repeat padding-box !important;
   border-top: 1px solid rgba(255, 255, 255, 0.719) !important;
@@ -358,6 +358,20 @@ hr.divider-line {
   border: none !important;
 }
 
+.maintable .p-datatable-tbody > tr > td[colspan] {
+  background: var(--unnamed-color-29313a) 0% 0% no-repeat padding-box !important;
+  background: #373e47 0% 0% no-repeat padding-box !important;
+  border-top: 1px solid rgba(255, 255, 255, 0.719) !important;
+  opacity: 1 !important;
+  color: var(--unnamed-color-ffffff) !important;
+  text-align: left !important;
+  font: normal normal normal 14px/18px Montserrat !important;
+  letter-spacing: 0px !important;
+  color: #ffffff !important;
+  opacity: 1 !important;
+  height: 43px !important;
+}
+
 .p-datatable-tbody > tr > td {
   background: var(--unnamed-color-29313a) 0% 0% no-repeat padding-box !important;
   background: #29313a 0% 0% no-repeat padding-box !important;
@@ -369,8 +383,8 @@ hr.divider-line {
   letter-spacing: 0px !important;
   color: #ffffff !important;
   opacity: 1 !important;
-  height: 43px !important;
 }
+
 .band {
   top: 303px !important;
   left: 275px !important;
@@ -550,7 +564,7 @@ hr.divider-line {
 }
 .inner-table .p-datatable-wrapper > table > tbody > tr > td {
   background: var(--unnamed-color-29313a) 0% 0% no-repeat padding-box !important;
-  background: #373E47 0% 0% no-repeat padding-box !important;
+  background: #373e47 0% 0% no-repeat padding-box !important;
   text-align: left !important;
   color: #ffffff !important;
   opacity: 1px !important;
@@ -563,11 +577,14 @@ hr.divider-line {
 }
 .inner-table2 .p-datatable-wrapper > table > tbody > tr > td {
   background: var(--unnamed-color-29313a) 0% 0% no-repeat padding-box !important;
-  background: #373E47 0% 0% no-repeat padding-box !important;
+  background: #373e47 0% 0% no-repeat padding-box !important;
   text-align: left !important;
   border: none !important;
   color: #ffffff !important;
   text-transform: uppercase !important;
+}
+.test {
+  margin: 0% !important;
 }
 /* .maintable .p-datatable-wrapper> table>tbody>tr>td >div {
   background: var(--unnamed-color-29313a) 0% 0% no-repeat padding-box !important;
@@ -579,7 +596,7 @@ hr.divider-line {
 } */
 .inner-table2 .p-datatable-wrapper > table > thead > tr > th {
   background: var(--unnamed-color-29313a) 0% 0% no-repeat padding-box !important;
-  background: #373E47 0% 0% no-repeat padding-box !important;
+  background: #373e47 0% 0% no-repeat padding-box !important;
   opacity: 1 !important;
   border: none !important;
   color: var(--unnamed-color-ffffff) !important;

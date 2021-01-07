@@ -95,7 +95,9 @@ export default function Device() {
     dt.current.filter(event.value, "status", "equals");
     setItem(event.value);
   };
-  const expander = <Column expander style={{ width: "3em" }} />;
+  const expander = (
+    <Column expander className="expander" style={{ width: "3em" }} />
+  );
   const dropDownFilter = (options, onChange) => {
     return (
       <Dropdown
