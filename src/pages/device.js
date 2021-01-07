@@ -21,17 +21,6 @@ export default function Device() {
 
   let dt = useRef(null);
 
-  const information = [
-    {
-      model: "Model No.",
-      manufacturer: "manufacturer",
-      hardware_version: "Hardware Version",
-      commission_date: "Commission Date",
-      decommission_date: "Decommission Date",
-      cost: "$900",
-    },
-  ];
-
   const rowClick = (e) => {
     return (
       setDname(e.data.name),
@@ -223,7 +212,6 @@ export default function Device() {
                 <Table
                   tableData={tableData}
                   {...props}
-                  history={information}
                   columns={columns1}
                   columns2={columns2}
                   columns3={columns3}
