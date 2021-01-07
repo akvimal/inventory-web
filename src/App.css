@@ -314,7 +314,7 @@ hr.divider-line {
 
 .maintable > .p-datatable-header {
   background: var(--unnamed-color-29313a) 0% 0% no-repeat padding-box !important;
-  background: #014ca1 0% 0% no-repeat padding-box !important;
+  background: #29313A 0% 0% no-repeat padding-box !important;
   opacity: 1 !important;
   border: none !important;
   color: var(--unnamed-color-ffffff) !important;
@@ -536,11 +536,9 @@ hr.divider-line {
   color: var(--unnamed-color-f7b924) !important;
 }
 
-.information .p-datatable-wrapper > table > thead > tr > th {
-  /* border-right: 1px solid white !important;
-  border-left: 1px solid white !important; */
+.inner-table .p-datatable-wrapper > table > thead > tr > th {
   background: var(--unnamed-color-29313a) 0% 0% no-repeat padding-box !important;
-  background: #a10101 0% 0% no-repeat padding-box !important;
+  background: #29313a 0% 0% no-repeat padding-box !important;
   opacity: 1 !important;
   border: none !important;
   color: var(--unnamed-color-ffffff) !important;
@@ -549,6 +547,48 @@ hr.divider-line {
   letter-spacing: 0px !important;
   color: #ffffff !important;
   text-transform: uppercase !important;
+}
+.inner-table .p-datatable-wrapper > table > tbody > tr > td {
+  background: var(--unnamed-color-29313a) 0% 0% no-repeat padding-box !important;
+  background: #373E47 0% 0% no-repeat padding-box !important;
+  text-align: left !important;
+  color: #ffffff !important;
+  opacity: 1px !important;
+  text-transform: uppercase !important;
+}
+.inner-table {
+  border-right: 1px solid white !important;
+  border-left: 1px solid white !important;
+  border-top: 1px solid white !important;
+}
+.inner-table2 .p-datatable-wrapper > table > tbody > tr > td {
+  background: var(--unnamed-color-29313a) 0% 0% no-repeat padding-box !important;
+  background: #373E47 0% 0% no-repeat padding-box !important;
+  text-align: left !important;
+  border: none !important;
+  color: #ffffff !important;
+  text-transform: uppercase !important;
+}
+/* .maintable .p-datatable-wrapper> table>tbody>tr>td >div {
+  background: var(--unnamed-color-29313a) 0% 0% no-repeat padding-box !important;
+  background: #09499e 0% 0% no-repeat padding-box !important;
+} */
+/* .test .p-datatable-wrapper> table>tbody>tr{
+  background: #d92550 !important;
+  margin: 40px !important;
+} */
+.inner-table2 .p-datatable-wrapper > table > thead > tr > th {
+  background: var(--unnamed-color-29313a) 0% 0% no-repeat padding-box !important;
+  background: #373E47 0% 0% no-repeat padding-box !important;
+  opacity: 1 !important;
+  border: none !important;
+  color: var(--unnamed-color-ffffff) !important;
+  text-align: left !important;
+  font: normal normal 600 16px/19px Montserrat !important;
+  letter-spacing: 0px !important;
+  color: #ffffff !important;
+  text-transform: uppercase !important;
+  padding: none !important;
 }
 
 .history {

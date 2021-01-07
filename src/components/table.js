@@ -55,9 +55,9 @@ export default function Table(props) {
   });
   const rowExpansionTemplate = () => {
     return (
-      <div>
-        <DataTable value={state[0].properties}>{dynamicColumns1}</DataTable>
-        <DataTable className="information" value={props.row}>
+      <div className="test">
+        <DataTable className="inner-table2" value={state[0].properties}>{dynamicColumns1}</DataTable>
+        <DataTable className="inner-table" value={props.row}>
           {dynamicColumns3}
         </DataTable>
       </div>
