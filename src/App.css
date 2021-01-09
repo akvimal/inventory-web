@@ -358,6 +358,15 @@ hr.divider-line {
   border: none !important;
 }
 
+.p-button-info{
+  background-color: #29313A !important;
+  border: #3ac47d !important;
+  height: 43px !important;
+  margin-left: 50px !important;
+  outline: #3ac47d !important;
+  color: var(--unnamed-color-f7b924) !important;
+}
+
 .maintable .p-datatable-tbody > tr > td[colspan] {
   background: var(--unnamed-color-29313a) 0% 0% no-repeat padding-box !important;
   background: #373e47 0% 0% no-repeat padding-box !important;
@@ -630,8 +639,8 @@ hr.divider-line {
 }
 
 .p-dropdown-item {
-  color: #ffffff !important;
-  opacity: 0.7 !important;
+  color: #f7b924 !important;
+  opacity:1 !important;
 }
 
 /* .p-datatable-wrapper {

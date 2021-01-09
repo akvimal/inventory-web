@@ -1,14 +1,20 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Table from "../components/table";
 import Band from "../components/band";
 import { Dropdown } from "primereact/dropdown";
 import { InputText } from "primereact/inputtext";
 import { Route, Switch } from "react-router-dom";
 import { Column } from "primereact/column";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchTable } from "../redux/action";
+import { Button } from "primereact/button";
 
 export default function Search() {
-  const tableData = useSelector((state) => state.table.data);
+  const dispatch = useDispatch();
+  const [inputText, setInputText] = useState("");
+  const [selectedType, setSelectedType] = useState({});
+  const data = useSelector((state) => state.table.data);
+  const innerTableData = useSelector((state) => state.table.data2);
   const columns = [
     { field: "machine_id", header: "Machine Id" },
     { field: "installation_id", header: "Installation ID" },
@@ -32,193 +38,30 @@ export default function Search() {
     { field: "decommision_date", header: "Decommission Date" },
     { field: "cycle", header: "Cycle" },
   ];
-  // const table = [
-  //   {
-  //     machine_id: "F4:5A:5C:F8:59:BC",
-  //     installation_id: "AU-T0001",
-  //     installation_date: "18-09-2020",
-  //     location: "Auburn",
-  //     uninstallation_date: "18-09-2020",
-  //     // name: "company1",
-  //     // location: "Beavercreek",
-  //     // status: "installed",
-  //     // count: 20,
-  //     history: [
-  //       {
-  //         installation_id: 1,
-  //         installation_date: "20/10/2020",
-  //         location: "Rio De Janeiro",
-  //         status: "Installed",
-  //         uninstallation_date: "30/10/2020",
-  //         company: "Nulla Tempor Odio",
-  //       },
-  //       {
-  //         installation_id: 2,
-  //         installation_date: "20/10/2020",
-  //         location: "Tokiyo",
-  //         status: "Installed",
-  //         uninstallation_date: "30/10/2020",
-  //         company: "Nulla Tempor Odio",
-  //       },
-  //       {
-  //         installation_id: 3,
-  //         installation_date: "20/10/2020",
-  //         location: "Manila",
-  //         status: "Installed",
-  //         uninstallation_date: "30/10/2020",
-  //         company: "Nulla Tempor Odio",
-  //       },
-  //     ],
-  //   },
-  //   {
-  //     machine_id: "B4:5A:5C:F8:59:BC",
-  //     installation_id: "AU-T0002",
-  //     installation_date: "13-09-2020",
-  //     location: "Auburn",
-  //     uninstallation_date: "19-09-2020",
-  //     // name: "company1",
-  //     // location: "Beavercreek",
-  //     // status: "installed",
-  //     // count: 20,
-  //     history: [
-  //       {
-  //         installation_id: 4,
-  //         installation_date: "20/10/2020",
-  //         location: "Rio De Janeiro",
-  //         status: "Installed",
-  //         uninstallation_date: "30/10/2020",
-  //         company: "Nulla Tempor Odio",
-  //       },
-  //       {
-  //         installation_id: 5,
-  //         installation_date: "20/10/2020",
-  //         location: "Tokiyo",
-  //         status: "Installed",
-  //         uninstallation_date: "30/10/2020",
-  //         company: "Nulla Tempor Odio",
-  //       },
-  //       {
-  //         installation_id: 6,
-  //         installation_date: "20/10/2020",
-  //         location: "Manila",
-  //         status: "Installed",
-  //         uninstallation_date: "30/10/2020",
-  //         company: "Nulla Tempor Odio",
-  //       },
-  //     ],
-  //   },
-  //   {
-  //     machine_id: "P4:5A:5C:F8:59:BC",
-  //     installation_id: "AU-T0003",
-  //     installation_date: "18-09-2020",
-  //     location: "Auburn",
-  //     uninstallation_date: "18-09-2020",
-  //     // name: "company1",
-  //     // location: "Beavercreek",
-  //     // status: "installed",
-  //     // count: 20,
-  //     history: [
-  //       {
-  //         installation_id: 7,
-  //         installation_date: "20/10/2020",
-  //         location: "Rio De Janeiro",
-  //         status: "Installed",
-  //         uninstallation_date: "30/10/2020",
-  //         company: "Nulla Tempor Odio",
-  //       },
-  //       {
-  //         installation_id: 8,
-  //         installation_date: "20/10/2020",
-  //         location: "Tokiyo",
-  //         status: "Installed",
-  //         uninstallation_date: "30/10/2020",
-  //         company: "Nulla Tempor Odio",
-  //       },
-  //       {
-  //         installation_id: 9,
-  //         installation_date: "20/10/2020",
-  //         location: "Manila",
-  //         status: "Installed",
-  //         uninstallation_date: "30/10/2020",
-  //         company: "Nulla Tempor Odio",
-  //       },
-  //     ],
-  //   },
-  //   {
-  //     machine_id: "A4:5A:5C:F8:59:BC",
-  //     installation_id: "AU-T0001",
-  //     installation_date: "18-09-2020",
-  //     location: "Auburn",
-  //     uninstallation_date: "18-09-2020",
-  //     // name: "company1",
-  //     // location: "Beavercreek",
-  //     // status: "installed",
-  //     // count: 20,
-  //     history: [
-  //       {
-  //         installation_id: 10,
-  //         installation_date: "20/10/2020",
-  //         location: "Rio De Janeiro",
-  //         status: "Installed",
-  //         uninstallation_date: "30/10/2020",
-  //         company: "Nulla Tempor Odio",
-  //       },
-  //       {
-  //         installation_id: 11,
-  //         installation_date: "20/10/2020",
-  //         location: "Tokiyo",
-  //         status: "Installed",
-  //         uninstallation_date: "30/10/2020",
-  //         company: "Nulla Tempor Odio",
-  //       },
-  //       {
-  //         installation_id: 12,
-  //         installation_date: "20/10/2020",
-  //         location: "Manila",
-  //         status: "Installed",
-  //         uninstallation_date: "30/10/2020",
-  //         company: "Nulla Tempor Odio",
-  //       },
-  //     ],
-  //   },
-  //   {
-  //     machine_id: "Q4:5A:5C:F8:59:BC",
-  //     installation_id: "AU-T0001",
-  //     installation_date: "18-09-2020",
-  //     location: "Auburn",
-  //     uninstallation_date: "18-09-2020",
-  //     // name: "company1",
-  //     // location: "Beavercreek",
-  //     // status: "installed",
-  //     // count: 20,
-  //     history: [
-  //       {
-  //         installation_id: 13,
-  //         installation_date: "20/10/2020",
-  //         location: "Rio De Janeiro",
-  //         status: "Installed",
-  //         uninstallation_date: "30/10/2020",
-  //         company: "Nulla Tempor Odio",
-  //       },
-  //       {
-  //         installation_id: 14,
-  //         installation_date: "20/10/2020",
-  //         location: "Tokiyo",
-  //         status: "Installed",
-  //         uninstallation_date: "30/10/2020",
-  //         company: "Nulla Tempor Odio",
-  //       },
-  //       {
-  //         installation_id: 15,
-  //         installation_date: "20/10/2020",
-  //         location: "Manila",
-  //         status: "Installed",
-  //         uninstallation_date: "30/10/2020",
-  //         company: "Nulla Tempor Odio",
-  //       },
-  //     ],
-  //   },
-  // ];
+  const properties = [
+    { name: "Organisation", code: "company" },
+    { name: "Device Type", code: "device" },
+    { name: "Machine ID", code: "machine" },
+  ];
+
+  const onCityChange = (e) => {
+    setSelectedType(e.value);
+  };
+  const onSearchClick = () => {
+    const value =
+      selectedType.code === "machine"
+        ? { machine: inputText }
+        : selectedType.code === "device"
+        ? { device: inputText }
+        : selectedType.code === "company"
+        ? { company: inputText }
+        : null;
+    dispatch(fetchTable("dashboard/device/location", value, [dispatch]));
+  };
+
+  useEffect(() => {
+    dispatch(fetchTable("dashboard/device/location"));
+  }, [dispatch]);
   const expander = <Column expander style={{ width: "3em" }} />;
   return (
     <>
@@ -226,8 +69,23 @@ export default function Search() {
         <div className=" search-text mt-3 ml-4 mr-4">
           {" "}
           Search By <br />
-          <Dropdown className="dropdown-value" placeholder="Machine ID" />
-          <InputText className="input-value" />
+          <Dropdown
+            value={selectedType}
+            options={properties}
+            onChange={onCityChange}
+            optionLabel="name"
+            placeholder="Search"
+          />
+          <InputText
+            className="input-value"
+            value={inputText}
+            onChange={(e) => setInputText(e.target.value)}
+          />
+          <Button
+            label="Search"
+            className="p-button-info"
+            onClick={onSearchClick}
+          />
         </div>
       </div>
       <div id="table">
@@ -243,7 +101,8 @@ export default function Search() {
                   columns2={columns2}
                   columns3={columns3}
                   rowExpander={expander}
-                  tableData={tableData}
+                  tableData={data}
+                  row={innerTableData}
                 />
               )}
             />

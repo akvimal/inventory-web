@@ -84,7 +84,6 @@ export default function Table(props) {
   };
 
   const onRowExpand = (e) => {
-    console.log(e);
     setstate(e.data);
     if (_.isEmpty(e.data)) {
     } else {
@@ -95,7 +94,6 @@ export default function Table(props) {
       );
     }
   };
-
   return (
     <>
       <DataTable
@@ -103,9 +101,11 @@ export default function Table(props) {
         value={props.tableData}
         ref={props.refs}
         header="INVENTORY LIST"
-        paginator
-        paginatorTemplate="CurrentPageReport FirstPageLink PrevPageLink PageLinks NextPageLink LastPageLink"
-        currentPageReportTemplate="{first} to {last} "
+        paginator={props.page}
+        paginatorTemplate="FirstPageLink PrevPageLink CurrentPageReport NextPageLink LastPageLink"
+        currentPageReportTemplate="Page {first} of {totalRecords} "
+        paginatorLeft
+        // paginatorPosition="top"
         rows={5}
         expandedRows={state}
         onRowToggle={(e) => onRowExpand(e)}

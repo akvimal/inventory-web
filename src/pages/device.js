@@ -168,6 +168,8 @@ export default function Device() {
     { field: "cycle", header: "Cycle" },
   ];
 
+  const pages = true;
+
   return (
     <>
       <div id="scroll-cards">
@@ -219,6 +221,7 @@ export default function Device() {
                   columns3={columns3}
                   rowExpander={expander}
                   row={innerTableData}
+                  page={pages}
                 />
               )}
             />

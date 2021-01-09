@@ -33,7 +33,7 @@ export default function Company() {
   const [item, setItem] = useState(null);
   const deviceClick = (e) => {
     return (
-      setCname(e.data.device_name),
+      setCname(e.data.name),
       setClocation(e.data.location),
       setCstatus(e.data.status)
     );
