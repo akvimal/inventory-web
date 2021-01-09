@@ -13,6 +13,7 @@ export default function Search() {
   const dispatch = useDispatch();
   const [inputText, setInputText] = useState("");
   const [selectedType, setSelectedType] = useState({});
+  const [list, setList] = useState("");
   const data = useSelector((state) => state.table.data);
   const innerTableData = useSelector((state) => state.table.data2);
   const columns = [
@@ -44,13 +45,33 @@ export default function Search() {
     { name: "Machine ID", code: "machine" },
   ];
 
-  const onCityChange = (e) => {
+  const listProperties = data.map((e) => {
+    return [
+      {
+        name: e.machine_id,
+        code: e.machine_id,
+      },
+    ];
+  });
+
+  // const listProperties = [
+  //   { name: "E3:20:DE:D0:01:3A", code: "E3:20:DE:D0:01:3A" },
+  //   { name: "D9:EE:F9:2A:87:7C", code: "D9:EE:F9:2A:87:7C" },
+  //   { name: "F0:E6:C1:D3:D5:53", code: "F0:E6:C1:D3:D5:53" },
+  //   { name: "C4:F7:07:22:F5:4D", code: "C4:F7:07:22:F5:4D" },
+  //   { name: "C4:80:F9:BD:C7:7A", code: "C4:80:F9:BD:C7:7A" },
+  // ];
+  const onTypeChange = (e) => {
     setSelectedType(e.value);
+  };
+
+  const onChange = (e) => {
+    setList(e.value);
   };
   const onSearchClick = () => {
     const value =
       selectedType.code === "machine"
-        ? { machine: inputText }
+        ? { machine: list.name }
         : selectedType.code === "device"
         ? { device: inputText }
         : selectedType.code === "company"
@@ -72,14 +93,21 @@ export default function Search() {
           <Dropdown
             value={selectedType}
             options={properties}
-            onChange={onCityChange}
+            onChange={onTypeChange}
             optionLabel="name"
             placeholder="Search"
           />
-          <InputText
+          {/* <InputText
             className="input-value"
             value={inputText}
             onChange={(e) => setInputText(e.target.value)}
+          /> */}
+          <Dropdown
+            value={list}
+            options={listProperties}
+            onChange={onChange}
+            optionLabel="name"
+            placeholder=""
           />
           <Button
             label="Search"
