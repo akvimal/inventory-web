@@ -2,20 +2,21 @@ import React, { useEffect, useState } from "react";
 import Table from "../components/table";
 import Band from "../components/band";
 import { Dropdown } from "primereact/dropdown";
-import { InputText } from "primereact/inputtext";
 import { Route, Switch } from "react-router-dom";
 import { Column } from "primereact/column";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchTable } from "../redux/action";
 import { Button } from "primereact/button";
+import  getUnique  from "../pages/utils/removeDuplicates";
 
 export default function Search() {
   const dispatch = useDispatch();
-  const [inputText, setInputText] = useState("");
+  // const [inputText, setInputText] = useState("");
   const [selectedType, setSelectedType] = useState({});
   const [list, setList] = useState("");
   const data = useSelector((state) => state.table.data);
   const innerTableData = useSelector((state) => state.table.data2);
+  
   const columns = [
     { field: "machine_id", header: "Machine Id" },
     { field: "installation_id", header: "Installation ID" },
@@ -23,6 +24,7 @@ export default function Search() {
     { field: "location", header: "Location" },
     { field: "uninstallation_date", header: "Uninstallation Date" },
   ];
+
   const columns2 = [
     { field: "installed_id", header: "Installation ID" },
     { field: "installed_date", header: "Installation Date" },
@@ -31,6 +33,7 @@ export default function Search() {
     { field: "uninstallation_date", header: "Uninstallation Date" },
     { field: "name", header: "Company" },
   ];
+
   const columns3 = [
     { field: "model", header: "Model" },
     { field: "manufacturer", header: "Manufacturer" },
@@ -39,28 +42,46 @@ export default function Search() {
     { field: "decommision_date", header: "Decommission Date" },
     { field: "cycle", header: "Cycle" },
   ];
+
   const properties = [
-    { name: "Organisation", code: "company" },
-    { name: "Device Type", code: "device" },
     { name: "Machine ID", code: "machine" },
+    { name: "Device Type", code: "device" },
+    { name: "Organisation", code: "company" },
   ];
 
-  const listProperties = data.map((e) => {
-    return [
-      {
-        name: e.machine_id,
-        code: e.machine_id,
-      },
-    ];
+  const uniqueDevice = getUnique(data, "device_name");
+
+  const uniqueOrganisation = getUnique(data, "organization");
+
+  const uniqueMachine = getUnique(data, "machine_id");
+
+  const deviceName = uniqueDevice.map((d) => {
+    return d.device_name;
   });
 
-  // const listProperties = [
-  //   { name: "E3:20:DE:D0:01:3A", code: "E3:20:DE:D0:01:3A" },
-  //   { name: "D9:EE:F9:2A:87:7C", code: "D9:EE:F9:2A:87:7C" },
-  //   { name: "F0:E6:C1:D3:D5:53", code: "F0:E6:C1:D3:D5:53" },
-  //   { name: "C4:F7:07:22:F5:4D", code: "C4:F7:07:22:F5:4D" },
-  //   { name: "C4:80:F9:BD:C7:7A", code: "C4:80:F9:BD:C7:7A" },
-  // ];
+  const orgName = uniqueOrganisation.map((o) => {
+    return o.organization;
+  });
+
+  const machineId = uniqueMachine.map((m) => {
+    return m.machine_id;
+  });
+
+  const machineOps = machineId.map((machineId) => ({
+    name: machineId,
+    code: machineId,
+  }));
+
+  const organisationOps = orgName.map((orgName) => ({
+    name: orgName,
+    code: orgName,
+  }));
+
+  const deviceOps = deviceName.map((device) => ({
+    name: device,
+    code: device,
+  }));
+
   const onTypeChange = (e) => {
     setSelectedType(e.value);
   };
@@ -68,14 +89,24 @@ export default function Search() {
   const onChange = (e) => {
     setList(e.value);
   };
+
+  const options =
+    selectedType.code === "machine"
+      ? machineOps
+      : selectedType.code === "company"
+      ? organisationOps
+      : selectedType.code === "device"
+      ? deviceOps
+      : null;
+
   const onSearchClick = () => {
     const value =
       selectedType.code === "machine"
         ? { machine: list.name }
         : selectedType.code === "device"
-        ? { device: inputText }
+        ? { device: list.name }
         : selectedType.code === "company"
-        ? { company: inputText }
+        ? { company: list.name }
         : null;
     dispatch(fetchTable("dashboard/device/location", value, [dispatch]));
   };
@@ -83,7 +114,9 @@ export default function Search() {
   useEffect(() => {
     dispatch(fetchTable("dashboard/device/location"));
   }, [dispatch]);
+
   const expander = <Column expander style={{ width: "3em" }} />;
+
   return (
     <>
       <div id="scroll-cards">
@@ -104,10 +137,10 @@ export default function Search() {
           /> */}
           <Dropdown
             value={list}
-            options={listProperties}
+            options={options}
             onChange={onChange}
             optionLabel="name"
-            placeholder=""
+            placeholder="Search"
           />
           <Button
             label="Search"
