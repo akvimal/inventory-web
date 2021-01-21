@@ -9,6 +9,7 @@ import { fetchTable } from "../redux/table/action";
 import _ from "lodash";
 import { Column } from "primereact/column";
 import { Dropdown } from "primereact/dropdown";
+import getUnique from "../pages/utils/removeDuplicates";
 
 export default function Company() {
   const data = useSelector((state) => state.table.data);
@@ -33,7 +34,7 @@ export default function Company() {
   const [item, setItem] = useState(null);
   const deviceClick = (e) => {
     return (
-      setCname(e.data.device_name),
+      setCname(e.data.name),
       setClocation(e.data.location),
       setCstatus(e.data.status)
     );
@@ -54,15 +55,6 @@ export default function Company() {
       history.push(`/company/${company[0].name}`);
     }
   }, [company, history, dispatch]);
-
-  const getUnique = (arr, comp) => {
-    const unique = arr
-      .map((e) => e[comp])
-      .map((e, i, final) => final.indexOf(e) === i && i)
-      .filter((e) => arr[e])
-      .map((e) => arr[e]);
-    return unique;
-  };
 
   const uniqueName = getUnique(data, "name");
   const uniqueLoc = getUnique(data, "location");

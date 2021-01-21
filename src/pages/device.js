@@ -9,6 +9,7 @@ import { fetchTable } from "../redux/action";
 import _ from "lodash";
 import { Dropdown } from "primereact/dropdown";
 import { Column } from "primereact/column";
+import getUnique from "../pages/utils/removeDuplicates";
 
 export default function Device() {
   const device = useSelector((state) => state.dataCard.device);
@@ -20,17 +21,6 @@ export default function Device() {
   const [item, setItem] = useState(null);
 
   let dt = useRef(null);
-
-  const information = [
-    {
-      model: "Model No.",
-      manufacturer: "manufacturer",
-      hardware_version: "Hardware Version",
-      commission_date: "Commission Date",
-      decommission_date: "Decommission Date",
-      cost: "$900",
-    },
-  ];
 
   const rowClick = (e) => {
     return (
@@ -57,15 +47,6 @@ export default function Device() {
       history.push(`/device/${device[0].name}`);
     }
   }, [device, dispatch, history]);
-
-  const getUnique = (arr, comp) => {
-    const unique = arr
-      .map((e) => e[comp])
-      .map((e, i, final) => final.indexOf(e) === i && i)
-      .filter((e) => arr[e])
-      .map((e) => arr[e]);
-    return unique;
-  };
 
   const uniqueName = getUnique(tableData, "name");
   const uniqueLoc = getUnique(tableData, "location");
@@ -95,7 +76,9 @@ export default function Device() {
     dt.current.filter(event.value, "status", "equals");
     setItem(event.value);
   };
-  const expander = <Column expander style={{ width: "3em" }} />;
+  const expander = (
+    <Column expander className="expander" style={{ width: "3em" }} />
+  );
   const dropDownFilter = (options, onChange) => {
     return (
       <Dropdown
@@ -177,6 +160,8 @@ export default function Device() {
     { field: "cycle", header: "Cycle" },
   ];
 
+  const pages = true;
+
   return (
     <>
       <div id="scroll-cards">
@@ -223,12 +208,12 @@ export default function Device() {
                 <Table
                   tableData={tableData}
                   {...props}
-                  history={information}
                   columns={columns1}
                   columns2={columns2}
                   columns3={columns3}
                   rowExpander={expander}
                   row={innerTableData}
+                  page={pages}
                 />
               )}
             />
