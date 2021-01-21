@@ -72,11 +72,13 @@ export default function Table(props) {
     const value =
       pathItems[1] !== "company"
         ? {
-            company: e.data.name,
+            status: e.data.status,
+            org_location_id: e.data.org_location_id,
             device: pathItems[2],
           }
         : {
-            company: pathItems[2],
+            org_location_id: e.data.org_location_id,
+            status: e.data.status,
             device: e.data.name,
           };
     dispatch(fetchTable("dashboard/device/location", value));

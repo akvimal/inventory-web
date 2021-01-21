@@ -155,7 +155,7 @@ export default function Company() {
     { field: "decommision_date", header: "Decommission Date" },
     { field: "cycle", header: "Cycle" },
   ];
-
+const pages = true;
   return (
     <>
       <div id="scroll-cards">
@@ -193,6 +193,7 @@ export default function Company() {
                   columns3={columns3}
                   type="single"
                   select={deviceClick}
+                  page={pages}
                 />
               )}
             />
@@ -208,6 +209,7 @@ export default function Company() {
                   columns3={columns3}
                   rowExpander={expander}
                   row={innerData}
+                  page={pages}
                 />
               )}
             />

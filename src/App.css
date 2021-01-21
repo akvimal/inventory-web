@@ -297,6 +297,7 @@ hr.divider-line {
   text-transform: uppercase !important;
   opacity: 1 !important;
   font: bolder !important;
+  height: 20px !important;
 }
 
 .inner-content-title-1 {

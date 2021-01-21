@@ -199,6 +199,7 @@ export default function Device() {
                   columns3={columns3}
                   type="single"
                   select={rowClick}
+                  page={pages}
                 />
               )}
             />
