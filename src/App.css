@@ -217,7 +217,7 @@ hr.divider-line {
   top: 142px !important;
   left: 275px !important;
   width: fit-content !important;
-  height: 137px !important;
+  height: 157px !important;
   background: var(--unnamed-color-29313a) 0% 0% no-repeat padding-box !important;
   /* border: 1px solid var(--unnamed-color-f7b924) !important; */
   background: #29313a 0% 0% no-repeat padding-box !important;
@@ -229,7 +229,7 @@ hr.divider-line {
   top: 142px !important;
   left: 275px !important;
   width: fit-content !important;
-  height: 137px !important;
+  height: 157px !important;
   background: var(--unnamed-color-29313a) 0% 0% no-repeat padding-box !important;
   border: 1px solid var(--unnamed-color-f7b924) !important;
   background: #29313a 0% 0% no-repeat padding-box !important;
@@ -278,8 +278,8 @@ hr.divider-line {
 }
 
 .inner-content {
-  width: 87px !important;
-  height: 62px !important;
+  width: 97px !important;
+  height: 72px !important;
   background: #20272e 0% 0% no-repeat padding-box !important;
   border-radius: 3px !important;
   opacity: 1 !important;
@@ -310,6 +310,7 @@ hr.divider-line {
   letter-spacing: 0px !important;
   color: #ffffff !important;
   opacity: 1 !important;
+  /* padding-top: 20px !important; */
 }
 
 .maintable > .p-datatable-header {
