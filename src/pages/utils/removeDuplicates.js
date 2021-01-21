@@ -1,4 +1,3 @@
-import React from "react";
 export default function RemoveDuplicates(arr, comp) {
   //   const getUnique = (arr, comp) => {
   const unique = arr
