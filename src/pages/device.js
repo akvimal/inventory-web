@@ -147,12 +147,12 @@ export default function Device() {
   ];
 
   const columns2 = [
-    { field: "installed_id", header: "INSTALLATION ID" },
-    { field: "installed_date", header: "INSTALLATION DATE" },
+    { field: "installed_id", header: "ID" },
+    { field: "installed_date", header: "DATE" },
+    { field: "name", header: "COMPANY" },
     { field: "location", header: "LOCATION" },
     { field: "status", header: "STATUS" },
-    { field: "uninstallation_date", header: "UNINSTALLATION DATE" },
-    { field: "name", header: "COMPANY" },
+    // { field: "uninstallation_date", header: "UNINSTALLATION DATE" },
   ];
 
   const columns3 = [
@@ -160,7 +160,7 @@ export default function Device() {
     { field: "manufacturer", header: "MANUFACTURER" },
     { field: "version", header: "HARDWARE VERSION" },
     { field: "commission_date", header: "COMMISSION DATE" },
-    { field: "decommision_date", header: "DECOMMISSION DATE" },
+    { field: "decommission_date", header: "DECOMMISSION DATE" },
     { field: "cycle", header: "CYCLE" },
   ];
 
