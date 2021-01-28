@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Card } from "primereact/card";
 import { ScrollPanel } from "primereact/scrollpanel";
 import { useDispatch } from "react-redux";
@@ -12,6 +12,8 @@ export default function DataCard(props) {
   const location = useLocation();
   const pathItems = location.pathname.split("/");
   const currentCard = pathItems.length ? pathItems[2] : "";
+  const [statuses, setStatuses] = useState();
+
   return (
     <>
       <p className="title">{props.name}</p>
@@ -23,6 +25,7 @@ export default function DataCard(props) {
               props.name === "device"
                 ? {
                     device: name,
+                    status: statuses,
                   }
                 : {
                     company: name,
@@ -46,7 +49,11 @@ export default function DataCard(props) {
                     <div className="p-d-flex" key={name}>
                       {status.map((e) => {
                         return (
-                          <div className="inner-content mr-2 mt-3" key={e.name}>
+                          <div
+                            className="inner-content mr-2 mt-3"
+                            onClick={() => setStatuses(e.name)}
+                            key={e.name}
+                          >
                             <p className="inner-content-title m-0">{e.name}</p>
                             <p className="inner-content-title-1 m-1 ml-0">
                               {e.count}
