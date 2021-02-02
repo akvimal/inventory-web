@@ -1,3 +1,4 @@
+/* eslint-disable no-sequences */
 import React, { useEffect, useRef, useState } from "react";
 import DataCard from "../components/DataCard";
 import Table from "../components/table";

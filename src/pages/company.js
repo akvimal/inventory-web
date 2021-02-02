@@ -1,3 +1,4 @@
+/* eslint-disable no-sequences */
 import React, { useEffect, useRef, useState } from "react";
 import DataCard from "../components/DataCard";
 import Table from "../components/table";
@@ -28,9 +29,9 @@ export default function Company() {
       setCstatus(e.data.status)
     );
   };
-   const click = () => {
-     return setCname("ALL"), setClocation("ALL"), setCstatus("ALL");
-   };
+  const click = () => {
+    return setCname("ALL"), setClocation("ALL"), setCstatus("ALL");
+  };
   const history = useHistory();
   const dispatch = useDispatch();
   useEffect(() => {
@@ -148,7 +149,7 @@ export default function Company() {
     { field: "decommision_date", header: "DECOMMISSION DATE" },
     { field: "cycle", header: "Cycle" },
   ];
-const pages = true;
+  const pages = true;
   return (
     <>
       <div id="scroll-cards">
