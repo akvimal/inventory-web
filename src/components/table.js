@@ -44,21 +44,21 @@ export default function Table(props) {
     );
   });
 
-  const dynamicColumns1 = props.columns3.map((col) => {
-    return (
-      <Column
-        key={col.field}
-        field={col.field}
-        header={nameBodyTemplate(col.header)}
-      />
-    );
-  });
+  // const dynamicColumns1 = props.columns3.map((col) => {
+  //   return (
+  //     <Column
+  //       key={col.field}
+  //       field={col.field}
+  //       header={nameBodyTemplate(col.header)}
+  //     />
+  //   );
+  // });
   const rowExpansionTemplate = () => {
     return (
       <div className="test">
-        <DataTable className="inner-table2" value={state[0].properties}>
+        {/* <DataTable className="inner-table2" value={state[0].properties}>
           {dynamicColumns1}
-        </DataTable>
+        </DataTable> */}
         <DataTable className="inner-table" value={props.row}>
           {dynamicColumns3}
         </DataTable>
@@ -72,11 +72,13 @@ export default function Table(props) {
     const value =
       pathItems[1] !== "company"
         ? {
-            company: e.data.name,
+            status: e.data.status,
+            org_location_id: e.data.org_location_id,
             device: pathItems[2],
           }
         : {
-            company: pathItems[2],
+            org_location_id: e.data.org_location_id,
+            status: e.data.status,
             device: e.data.name,
           };
     dispatch(fetchTable("dashboard/device/location", value));
@@ -84,7 +86,6 @@ export default function Table(props) {
   };
 
   const onRowExpand = (e) => {
-    console.log(e);
     setstate(e.data);
     if (_.isEmpty(e.data)) {
     } else {
@@ -95,7 +96,6 @@ export default function Table(props) {
       );
     }
   };
-
   return (
     <>
       <DataTable
@@ -103,9 +103,11 @@ export default function Table(props) {
         value={props.tableData}
         ref={props.refs}
         header="INVENTORY LIST"
-        paginator
-        paginatorTemplate="CurrentPageReport FirstPageLink PrevPageLink PageLinks NextPageLink LastPageLink"
-        currentPageReportTemplate="{first} to {last} "
+        paginator={props.page}
+        paginatorTemplate="FirstPageLink PrevPageLink CurrentPageReport NextPageLink LastPageLink"
+        currentPageReportTemplate="Page {first} of {totalRecords} "
+        paginatorLeft
+        // paginatorPosition="top"
         rows={5}
         expandedRows={state}
         onRowToggle={(e) => onRowExpand(e)}

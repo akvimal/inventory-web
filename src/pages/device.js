@@ -1,3 +1,4 @@
+/* eslint-disable no-sequences */
 import React, { useEffect, useRef, useState } from "react";
 import DataCard from "../components/DataCard";
 import Table from "../components/table";
@@ -9,28 +10,18 @@ import { fetchTable } from "../redux/action";
 import _ from "lodash";
 import { Dropdown } from "primereact/dropdown";
 import { Column } from "primereact/column";
+import getUnique from "../pages/utils/removeDuplicates";
 
 export default function Device() {
   const device = useSelector((state) => state.dataCard.device);
   const tableData = useSelector((state) => state.table.data);
   const innerTableData = useSelector((state) => state.table.data2);
-  const [dname, setDname] = useState(null);
-  const [dlocation, setDlocation] = useState(null);
-  const [dstatus, setDstatus] = useState(null);
+  const [dname, setDname] = useState("ALL");
+  const [dlocation, setDlocation] = useState("ALL");
+  const [dstatus, setDstatus] = useState("ALL");
   const [item, setItem] = useState(null);
 
   let dt = useRef(null);
-
-  const information = [
-    {
-      model: "Model No.",
-      manufacturer: "manufacturer",
-      hardware_version: "Hardware Version",
-      commission_date: "Commission Date",
-      decommission_date: "Decommission Date",
-      cost: "$900",
-    },
-  ];
 
   const rowClick = (e) => {
     return (
@@ -38,6 +29,10 @@ export default function Device() {
       setDlocation(e.data.location),
       setDstatus(e.data.status)
     );
+  };
+
+  const click = () => {
+    return setDname("ALL"), setDlocation("ALL"), setDstatus("ALL");
   };
 
   const dispatch = useDispatch();
@@ -57,15 +52,6 @@ export default function Device() {
       history.push(`/device/${device[0].name}`);
     }
   }, [device, dispatch, history]);
-
-  const getUnique = (arr, comp) => {
-    const unique = arr
-      .map((e) => e[comp])
-      .map((e, i, final) => final.indexOf(e) === i && i)
-      .filter((e) => arr[e])
-      .map((e) => arr[e]);
-    return unique;
-  };
 
   const uniqueName = getUnique(tableData, "name");
   const uniqueLoc = getUnique(tableData, "location");
@@ -126,58 +112,63 @@ export default function Device() {
   const columns = [
     {
       field: "name",
-      header: "Name",
+      header: "NAME",
       filterElement: dropDownFilter(name, onFilterNameChange),
       filter: filter,
     },
     {
       field: "location",
-      header: "Location",
+      header: "LOCATION",
       filterElement: dropDownFilter(location, onFilterLocationChange),
       filter: filter,
     },
     {
       field: "status",
-      header: "Status",
+      header: "STATUS",
       filterElement: dropDownFilter(status, onFilterStatusChange),
       filter: filter,
     },
-    { field: "count", header: "Count" },
+    { field: "count", header: "COUNT" },
   ];
 
   const columns1 = [
-    { field: "machine_id", header: "Machine Id", filter: false },
-    { field: "installation_id", header: "Installation Id", filter: false },
+    { field: "machine_id", header: "MACHINE ID", filter: false },
+    { field: "installation_id", header: "ID", filter: false },
     {
       field: "installation_date",
-      header: "Installation Date",
+      header: "DATE",
       filter: false,
     },
-    { field: "location", header: "Location", filter: false },
-    {
-      field: "uninstallation_date",
-      header: "Availability Date",
-      filter: false,
-    },
+    { field: "location", header: "LOCATION", filter: false },
+    { field: "device_name", header: "MODEL" },
+    { field: "version", header: "VERSION" },
+    { field: "cycle", header: "CYCLE" },
+    // {
+    //   field: "uninstallation_date",
+    //   header: "AVAILABILITY DATE",
+    //   filter: false,
+    // },
   ];
 
   const columns2 = [
-    { field: "installed_id", header: "Installation ID" },
-    { field: "installed_date", header: "Installation Date" },
-    { field: "location", header: "Location" },
-    { field: "status", header: "Status" },
-    { field: "uninstallation_date", header: "Uninstallation Date" },
-    { field: "name", header: "Company" },
+    { field: "installed_id", header: "ID" },
+    { field: "installed_date", header: "DATE" },
+    { field: "name", header: "COMPANY" },
+    { field: "location", header: "LOCATION" },
+    { field: "status", header: "STATUS" },
+    // { field: "uninstallation_date", header: "UNINSTALLATION DATE" },
   ];
 
-  const columns3 = [
-    { field: "model", header: "Model" },
-    { field: "manufacturer", header: "Manufacturer" },
-    { field: "hardware_version", header: "Hardware Version" },
-    { field: "commision_date", header: "Commission Date" },
-    { field: "decommision_date", header: "Decommission Date" },
-    { field: "cycle", header: "Cycle" },
-  ];
+  // const columns3 = [
+  //   // { field: "model", header: "MODEL" },
+  //   { field: "manufacturer", header: "MANUFACTURER" },
+  //   // { field: "version", header: "HARDWARE VERSION" },
+  //   { field: "commission_date", header: "COMMISSION DATE" },
+  //   { field: "decommission_date", header: "DECOMMISSION DATE" },
+  //   // { field: "cycle", header: "CYCLE" },
+  // ];
+
+  const pages = true;
 
   return (
     <>
@@ -188,6 +179,7 @@ export default function Device() {
             id="company"
             url="dashboard/company/status"
             data={device}
+            click={click}
           />
         </div>
       </div>
@@ -213,9 +205,10 @@ export default function Device() {
                   refs={dt}
                   columns={columns}
                   columns2={columns2}
-                  columns3={columns3}
+                  // columns3={columns3}
                   type="single"
                   select={rowClick}
+                  page={pages}
                 />
               )}
             />
@@ -225,12 +218,12 @@ export default function Device() {
                 <Table
                   tableData={tableData}
                   {...props}
-                  history={information}
                   columns={columns1}
                   columns2={columns2}
-                  columns3={columns3}
+                  // columns3={columns3}
                   rowExpander={expander}
                   row={innerTableData}
+                  page={pages}
                 />
               )}
             />
