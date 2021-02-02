@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { Card } from "primereact/card";
 import { ScrollPanel } from "primereact/scrollpanel";
 import { useDispatch } from "react-redux";
@@ -12,7 +12,13 @@ export default function DataCard(props) {
   const location = useLocation();
   const pathItems = location.pathname.split("/");
   const currentCard = pathItems.length ? pathItems[2] : "";
-  const [statuses, setStatuses] = useState();
+
+  const handleClick = (e, check) => {
+    e.preventDefault();
+    e.stopPropagation();
+    dispatch(fetchTable(props.url, check));
+    props.click();
+  };
 
   return (
     <>
@@ -25,7 +31,6 @@ export default function DataCard(props) {
               props.name === "device"
                 ? {
                     device: name,
-                    status: statuses,
                   }
                 : {
                     company: name,
@@ -35,11 +40,7 @@ export default function DataCard(props) {
                 to={{ pathname: `${match.url}/${name}` }}
                 className="link"
                 key={name}
-                onClick={() => {
-                  dispatch(fetchTable(props.url, check));
-                  localStorage.setItem("device name", name);
-                  props.click();
-                }}
+                onClick={(e) => handleClick(e, check)}
               >
                 <div className="p-mr-4" key={name}>
                   <Card
@@ -48,10 +49,20 @@ export default function DataCard(props) {
                   >
                     <div className="p-d-flex" key={name}>
                       {status.map((e) => {
+                        const check1 =
+                          props.name === "device"
+                            ? {
+                                device: name,
+                                status: e.name,
+                              }
+                            : {
+                                company: name,
+                                status: e.name,
+                              };
                         return (
                           <div
                             className="inner-content mr-2 mt-3"
-                            onClick={() => setStatuses(e.name)}
+                            onClick={(v) => handleClick(v, check1)}
                             key={e.name}
                           >
                             <p className="inner-content-title m-0">{e.name}</p>
