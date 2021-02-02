@@ -4,7 +4,7 @@ import { Column } from "primereact/column";
 import { useDispatch } from "react-redux";
 import { fetchTable } from "../redux/action";
 import { useHistory, useLocation } from "react-router-dom";
-import _ from "lodash"
+import _ from "lodash";
 
 export default function Table(props) {
   const history = useHistory();
@@ -55,9 +55,11 @@ export default function Table(props) {
   });
   const rowExpansionTemplate = () => {
     return (
-      <div>
-        <DataTable value={state[0].properties}>{dynamicColumns1}</DataTable>
-        <DataTable className="information" value={props.row}>
+      <div className="test">
+        <DataTable className="inner-table2" value={state[0].properties}>
+          {dynamicColumns1}
+        </DataTable>
+        <DataTable className="inner-table" value={props.row}>
           {dynamicColumns3}
         </DataTable>
       </div>
@@ -70,11 +72,13 @@ export default function Table(props) {
     const value =
       pathItems[1] !== "company"
         ? {
-            company: e.data.name,
+            status: e.data.status,
+            org_location_id: e.data.org_location_id,
             device: pathItems[2],
           }
         : {
-            company: pathItems[2],
+            org_location_id: e.data.org_location_id,
+            status: e.data.status,
             device: e.data.name,
           };
     dispatch(fetchTable("dashboard/device/location", value));
@@ -82,10 +86,8 @@ export default function Table(props) {
   };
 
   const onRowExpand = (e) => {
-    console.log(e);
     setstate(e.data);
     if (_.isEmpty(e.data)) {
-      
     } else {
       dispatch(
         fetchTable("dashboard/device/history", {
@@ -94,16 +96,18 @@ export default function Table(props) {
       );
     }
   };
-
   return (
     <>
       <DataTable
+        className="maintable"
         value={props.tableData}
         ref={props.refs}
         header="INVENTORY LIST"
-        paginator
-        paginatorTemplate="CurrentPageReport FirstPageLink PrevPageLink PageLinks NextPageLink LastPageLink"
-        currentPageReportTemplate="{first} to {last} "
+        paginator={props.page}
+        paginatorTemplate="FirstPageLink PrevPageLink CurrentPageReport NextPageLink LastPageLink"
+        currentPageReportTemplate="Page {first} of {totalRecords} "
+        paginatorLeft
+        // paginatorPosition="top"
         rows={5}
         expandedRows={state}
         onRowToggle={(e) => onRowExpand(e)}

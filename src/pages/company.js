@@ -9,6 +9,7 @@ import { fetchTable } from "../redux/table/action";
 import _ from "lodash";
 import { Column } from "primereact/column";
 import { Dropdown } from "primereact/dropdown";
+import getUnique from "../pages/utils/removeDuplicates";
 
 export default function Company() {
   const data = useSelector((state) => state.table.data);
@@ -16,28 +17,20 @@ export default function Company() {
   const company = useSelector((state) => state.dataCard.company);
   let dt = useRef(null);
 
-  const information = [
-    {
-      model: "Model No.",
-      manufacturer: "manufacturer",
-      hardware_version: "Hardware Version",
-      commission_date: "Commission Date",
-      decommission_date: "Decommission Date",
-      cost: "$900",
-    },
-  ];
-
-  const [cname, setCname] = useState(null);
-  const [clocation, setClocation] = useState(null);
-  const [cstatus, setCstatus] = useState(null);
+  const [cname, setCname] = useState("ALL");
+  const [clocation, setClocation] = useState("ALL");
+  const [cstatus, setCstatus] = useState("ALL");
   const [item, setItem] = useState(null);
   const deviceClick = (e) => {
     return (
-      setCname(e.data.device_name),
+      setCname(e.data.name),
       setClocation(e.data.location),
       setCstatus(e.data.status)
     );
   };
+   const click = () => {
+     return setCname("ALL"), setClocation("ALL"), setCstatus("ALL");
+   };
   const history = useHistory();
   const dispatch = useDispatch();
   useEffect(() => {
@@ -54,15 +47,6 @@ export default function Company() {
       history.push(`/company/${company[0].name}`);
     }
   }, [company, history, dispatch]);
-
-  const getUnique = (arr, comp) => {
-    const unique = arr
-      .map((e) => e[comp])
-      .map((e, i, final) => final.indexOf(e) === i && i)
-      .filter((e) => arr[e])
-      .map((e) => arr[e]);
-    return unique;
-  };
 
   const uniqueName = getUnique(data, "name");
   const uniqueLoc = getUnique(data, "location");
@@ -120,50 +104,50 @@ export default function Company() {
   const columns = [
     {
       field: "location",
-      header: "Location",
+      header: "LOCATION",
       filter: filter,
       filterElement: dropDownFilter(location, onFilterLocationChange),
     },
     {
       field: "name",
-      header: "Device Name",
+      header: "DEVICE NAME",
       filter: filter,
       filterElement: dropDownFilter(deviceName, onFilterDeviceNameChange),
     },
     {
       field: "status",
-      header: "Status",
+      header: "STATUS",
       filter: filter,
       filterElement: dropDownFilter(status, onFilterStatusChange),
     },
-    { field: "count", header: "Count" },
+    { field: "count", header: "COUNT" },
   ];
 
   const columns1 = [
-    { field: "machine_id", header: "Machine Id" },
-    { field: "installation_id", header: "Installation Id" },
-    { field: "installation_date", header: "Installation Date" },
-    { field: "location", header: "Location" },
-    { field: "uninstallation_date", header: "Availability Date" },
+    { field: "machine_id", header: "MACHINE ID" },
+    { field: "installation_id", header: "INSTALLATION ID" },
+    { field: "installation_date", header: "INSTALLATION DATE" },
+    { field: "location", header: "LOCATION" },
+    { field: "uninstallation_date", header: "AVAILABILITY DATE" },
   ];
 
   const columns2 = [
-    { field: "installed_id", header: "Installation ID" },
-    { field: "installed_date", header: "Installation Date" },
-    { field: "location", header: "Location" },
-    { field: "status", header: "Status" },
-    { field: "uninstallation_date", header: "Uninstallation Date" },
-    { field: "name", header: "Company" },
+    { field: "installed_id", header: "INSTALLATION ID" },
+    { field: "installed_date", header: "INSTALLATION DATE" },
+    { field: "location", header: "LOCATION" },
+    { field: "status", header: "STATUS" },
+    { field: "uninstallation_date", header: "UNINSTALLATION DATE" },
+    { field: "name", header: "COMPANY" },
   ];
   const columns3 = [
-    { field: "model", header: "Model" },
-    { field: "manufacturer", header: "Manufacturer" },
-    { field: "hardware_version", header: "Hardware Version" },
-    { field: "commision_date", header: "Commission Date" },
-    { field: "decommision_date", header: "Decommission Date" },
+    { field: "model", header: "MODEL" },
+    { field: "manufacturer", header: "MANUFACTURER" },
+    { field: "hardware_version", header: "HARDWARE VERSION" },
+    { field: "commision_date", header: "COMMISSION DATE" },
+    { field: "decommision_date", header: "DECOMMISSION DATE" },
     { field: "cycle", header: "Cycle" },
   ];
-
+const pages = true;
   return (
     <>
       <div id="scroll-cards">
@@ -173,6 +157,7 @@ export default function Company() {
             id="device"
             url="dashboard/device/status"
             data={company}
+            click={click}
           />
         </div>
       </div>
@@ -201,6 +186,7 @@ export default function Company() {
                   columns3={columns3}
                   type="single"
                   select={deviceClick}
+                  page={pages}
                 />
               )}
             />
@@ -210,12 +196,12 @@ export default function Company() {
                 <Table
                   tableData={data}
                   {...props}
-                  history={information}
                   columns={columns1}
                   columns2={columns2}
                   columns3={columns3}
                   rowExpander={expander}
                   row={innerData}
+                  page={pages}
                 />
               )}
             />
