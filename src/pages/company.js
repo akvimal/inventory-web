@@ -48,17 +48,16 @@ export default function Company() {
       history.push(`/company/${company[0].name}`);
     }
   }, [company, history, dispatch]);
-
+  console.log(data);
   const uniqueName = getUnique(data, "name");
   const uniqueLoc = getUnique(data, "location");
   const uniqueStatus = getUnique(data, "status");
 
-  const location = uniqueName.map((a) => {
-    return a.location;
+  const deviceName = uniqueName.map((a) => {
+    return a.name;
   });
-
-  const deviceName = uniqueLoc.map((d) => {
-    return d.name;
+  const location = uniqueLoc.map((d) => {
+    return d.location;
   });
 
   const status = uniqueStatus.map((status) => {
