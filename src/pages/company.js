@@ -1,3 +1,4 @@
+/* eslint-disable no-sequences */
 import React, { useEffect, useRef, useState } from "react";
 import DataCard from "../components/DataCard";
 import Table from "../components/table";
@@ -28,9 +29,9 @@ export default function Company() {
       setCstatus(e.data.status)
     );
   };
-   const click = () => {
-     return setCname("ALL"), setClocation("ALL"), setCstatus("ALL");
-   };
+  const click = () => {
+    return setCname("ALL"), setClocation("ALL"), setCstatus("ALL");
+  };
   const history = useHistory();
   const dispatch = useDispatch();
   useEffect(() => {
@@ -125,19 +126,20 @@ export default function Company() {
 
   const columns1 = [
     { field: "machine_id", header: "MACHINE ID" },
-    { field: "installation_id", header: "INSTALLATION ID" },
-    { field: "installation_date", header: "INSTALLATION DATE" },
+    { field: "installation_id", header: "ID" },
+    { field: "installation_date", header: "DATE" },
     { field: "location", header: "LOCATION" },
-    { field: "uninstallation_date", header: "AVAILABILITY DATE" },
+    { field: "device_name", header: "MODEL" },
+    { field: "version", header: "VERSION" },
+    { field: "cycle", header: "CYCLE" },
   ];
 
   const columns2 = [
-    { field: "installed_id", header: "INSTALLATION ID" },
-    { field: "installed_date", header: "INSTALLATION DATE" },
+    { field: "installed_id", header: "ID" },
+    { field: "installed_date", header: "DATE" },
+    { field: "name", header: "COMPANY" },
     { field: "location", header: "LOCATION" },
     { field: "status", header: "STATUS" },
-    { field: "uninstallation_date", header: "UNINSTALLATION DATE" },
-    { field: "name", header: "COMPANY" },
   ];
   const columns3 = [
     { field: "model", header: "MODEL" },
@@ -147,7 +149,7 @@ export default function Company() {
     { field: "decommision_date", header: "DECOMMISSION DATE" },
     { field: "cycle", header: "Cycle" },
   ];
-const pages = true;
+  const pages = true;
   return (
     <>
       <div id="scroll-cards">

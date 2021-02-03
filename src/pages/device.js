@@ -1,3 +1,4 @@
+/* eslint-disable no-sequences */
 import React, { useEffect, useRef, useState } from "react";
 import DataCard from "../components/DataCard";
 import Table from "../components/table";
@@ -132,37 +133,40 @@ export default function Device() {
 
   const columns1 = [
     { field: "machine_id", header: "MACHINE ID", filter: false },
-    { field: "installation_id", header: "INSTALLATION ID", filter: false },
+    { field: "installation_id", header: "CUSTOM ID", filter: false },
     {
       field: "installation_date",
-      header: "INSTALLATION DATE",
+      header: "UPDATE DATE",
       filter: false,
     },
     { field: "location", header: "LOCATION", filter: false },
-    {
-      field: "uninstallation_date",
-      header: "AVAILABILITY DATE",
-      filter: false,
-    },
+    // { field: "device_name", header: "MODEL" },
+    { field: "version", header: "VERSION" },
+    { field: "cycle", header: "CYCLE" },
+    // {
+    //   field: "uninstallation_date",
+    //   header: "AVAILABILITY DATE",
+    //   filter: false,
+    // },
   ];
 
   const columns2 = [
-    { field: "installed_id", header: "ID" },
-    { field: "installed_date", header: "DATE" },
+    { field: "installed_id", header: " CUSTOM ID" },
+    { field: "installed_date", header: "UPDATE DATE" },
     { field: "name", header: "COMPANY" },
     { field: "location", header: "LOCATION" },
     { field: "status", header: "STATUS" },
     // { field: "uninstallation_date", header: "UNINSTALLATION DATE" },
   ];
 
-  const columns3 = [
-    { field: "model", header: "MODEL" },
-    { field: "manufacturer", header: "MANUFACTURER" },
-    { field: "version", header: "HARDWARE VERSION" },
-    { field: "commission_date", header: "COMMISSION DATE" },
-    { field: "decommission_date", header: "DECOMMISSION DATE" },
-    { field: "cycle", header: "CYCLE" },
-  ];
+  // const columns3 = [
+  //   // { field: "model", header: "MODEL" },
+  //   { field: "manufacturer", header: "MANUFACTURER" },
+  //   // { field: "version", header: "HARDWARE VERSION" },
+  //   { field: "commission_date", header: "COMMISSION DATE" },
+  //   { field: "decommission_date", header: "DECOMMISSION DATE" },
+  //   // { field: "cycle", header: "CYCLE" },
+  // ];
 
   const pages = true;
 
@@ -201,7 +205,7 @@ export default function Device() {
                   refs={dt}
                   columns={columns}
                   columns2={columns2}
-                  columns3={columns3}
+                  // columns3={columns3}
                   type="single"
                   select={rowClick}
                   page={pages}
@@ -216,7 +220,7 @@ export default function Device() {
                   {...props}
                   columns={columns1}
                   columns2={columns2}
-                  columns3={columns3}
+                  // columns3={columns3}
                   rowExpander={expander}
                   row={innerTableData}
                   page={pages}
