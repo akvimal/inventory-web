@@ -44,21 +44,9 @@ export default function Table(props) {
     );
   });
 
-  const dynamicColumns1 = props.columns3.map((col) => {
-    return (
-      <Column
-        key={col.field}
-        field={col.field}
-        header={nameBodyTemplate(col.header)}
-      />
-    );
-  });
   const rowExpansionTemplate = () => {
     return (
       <div className="test">
-        <DataTable className="inner-table2" value={state[0].properties}>
-          {dynamicColumns1}
-        </DataTable>
         <DataTable className="inner-table" value={props.row}>
           {dynamicColumns3}
         </DataTable>
