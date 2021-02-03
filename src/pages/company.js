@@ -125,17 +125,17 @@ export default function Company() {
 
   const columns1 = [
     { field: "machine_id", header: "MACHINE ID" },
-    { field: "installation_id", header: "ID" },
-    { field: "installation_date", header: "DATE" },
+    { field: "installation_id", header: "CUSTOM ID" },
+    { field: "installation_date", header: "UPDATE DATE" },
     { field: "location", header: "LOCATION" },
-    { field: "device_name", header: "MODEL" },
+    // { field: "device_name", header: "MODEL" },
     { field: "version", header: "VERSION" },
     { field: "cycle", header: "CYCLE" },
   ];
 
   const columns2 = [
-    { field: "installed_id", header: "ID" },
-    { field: "installed_date", header: "DATE" },
+    { field: "installed_id", header: "CUSTOM ID" },
+    { field: "installed_date", header: "UPDATE DATE" },
     { field: "name", header: "COMPANY" },
     { field: "location", header: "LOCATION" },
     { field: "status", header: "STATUS" },
