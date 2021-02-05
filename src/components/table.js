@@ -4,6 +4,7 @@ import { Column } from "primereact/column";
 import { useDispatch } from "react-redux";
 import { fetchTable } from "../redux/action";
 import { useHistory, useLocation } from "react-router-dom";
+import { InnerTable } from "./innerTable";
 
 export default function Table(props) {
   const history = useHistory();
@@ -33,25 +34,14 @@ export default function Table(props) {
       />
     );
   });
-  const dynamicColumns3 = props.columns2.map((col) => {
-    return (
-      <Column
-        key={col.field}
-        field={col.field}
-        header={nameBodyTemplate(col.header)}
-      />
-    );
-  });
 
   const rowExpansionTemplate = (d) => {
     return (
-      <>
-        <div className="test">
-          <DataTable className="inner-table" value={props.row}>
-            {dynamicColumns3}
-          </DataTable>
-        </div>
-      </>
+      <InnerTable
+        machine={d.machine_id}
+        columns2={props.columns2}
+        filtericon={props.filtericon}
+      />
     );
   };
 
@@ -75,17 +65,13 @@ export default function Table(props) {
   };
 
   const onRowExpand = (e) => {
-    console.log(e);
-    dispatch(
-      fetchTable("dashboard/device/history", {
-        machine: e.data.machine_id,
-      })
-    );
+    // dispatch(
+    //   fetchTable("dashboard/device/history", {
+    //     machine: e.data.machine_id,
+    //   })
+    // );
   };
-  const handleToggle = (e) => {
-    console.log(e);
-    setstate(e.data);
-  };
+
   return (
     <>
       <DataTable
@@ -99,11 +85,12 @@ export default function Table(props) {
         paginatorLeft
         rows={5}
         expandedRows={state}
-        onRowToggle={(e) => handleToggle(e)}
+        onRowToggle={(e) => setstate(e.data)}
         onRowExpand={(e) => onRowExpand(e)}
         rowExpansionTemplate={rowExpansionTemplate}
         selectionMode={props.type}
         onRowSelect={(e) => onRowSelect(e)}
+        onRowCollapse={(e) => console.log(e)}
       >
         {dynamicColumns}
         {props.rowExpander}
