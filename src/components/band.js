@@ -1,11 +1,17 @@
 import React from "react";
 import { useDispatch } from "react-redux";
-import { useHistory } from "react-router-dom";
+import { useHistory, useLocation } from "react-router-dom";
 import { fetchTable } from "../redux/action";
 
 export default function Band(props) {
   const history = useHistory();
   const dispatch = useDispatch();
+
+  const location = useLocation();
+  const pathItems = location.pathname.split("/");
+  const currentCard = pathItems.length ? pathItems[3] : "";
+
+  console.log(currentCard, pathItems.length);
 
   const handleRoute = (e) => {
     dispatch(fetchTable(props.url, props.id));
@@ -25,7 +31,9 @@ export default function Band(props) {
         {props.status}:<p> &nbsp; {props.selectedStatus}</p>
       </div>
 
-      <button onClick={(e) => handleRoute(e)}>Back</button>
+      {pathItems.length > 3 ? (
+        <button onClick={(e) => handleRoute(e)}>Back</button>
+      ) : null}
     </div>
   );
 }
