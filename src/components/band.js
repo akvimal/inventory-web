@@ -1,6 +1,17 @@
 import React from "react";
+import { useDispatch } from "react-redux";
+import { useHistory } from "react-router-dom";
+import { fetchTable } from "../redux/action";
 
-export default function band(props) {
+export default function Band(props) {
+  const history = useHistory();
+  const dispatch = useDispatch();
+
+  const handleRoute = (e) => {
+    dispatch(fetchTable(props.url, props.id));
+    history.goBack();
+  };
+
   return (
     <div className="band mb-3">
       <div className="band-text band-highlight ">showing results</div>
@@ -13,6 +24,8 @@ export default function band(props) {
       <div className="band-text-1 band-flex">
         {props.status}:<p> &nbsp; {props.selectedStatus}</p>
       </div>
+
+      <button onClick={(e) => handleRoute(e)}>Back</button>
     </div>
   );
 }

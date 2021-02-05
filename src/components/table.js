@@ -64,14 +64,6 @@ export default function Table(props) {
     props.select(e);
   };
 
-  const onRowExpand = (e) => {
-    // dispatch(
-    //   fetchTable("dashboard/device/history", {
-    //     machine: e.data.machine_id,
-    //   })
-    // );
-  };
-
   return (
     <>
       <DataTable
@@ -86,7 +78,6 @@ export default function Table(props) {
         rows={5}
         expandedRows={state}
         onRowToggle={(e) => setstate(e.data)}
-        onRowExpand={(e) => onRowExpand(e)}
         rowExpansionTemplate={rowExpansionTemplate}
         selectionMode={props.type}
         onRowSelect={(e) => onRowSelect(e)}

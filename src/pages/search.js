@@ -7,16 +7,15 @@ import { Column } from "primereact/column";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchTable } from "../redux/action";
 import { Button } from "primereact/button";
-import  getUnique  from "../pages/utils/removeDuplicates";
+import getUnique from "../pages/utils/removeDuplicates";
 
-export default function Search() {
+export default function Search(props) {
   const dispatch = useDispatch();
-  // const [inputText, setInputText] = useState("");
   const [selectedType, setSelectedType] = useState({});
   const [list, setList] = useState("");
   const data = useSelector((state) => state.table.data);
   const innerTableData = useSelector((state) => state.table.data2);
-  
+
   const columns = [
     { field: "machine_id", header: "Machine Id" },
     { field: "installation_id", header: "Installation ID" },
@@ -141,6 +140,7 @@ export default function Search() {
             onChange={onChange}
             optionLabel="name"
             placeholder="Search"
+            filter={true}
           />
           <Button
             label="Search"
