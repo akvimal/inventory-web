@@ -143,6 +143,8 @@ export default function Company(props) {
     { field: "name", header: "COMPANY" },
     { field: "location", header: "LOCATION" },
     { field: "status", header: "STATUS" },
+    { field: "version", header: "VERSION" },
+    { field: "comments", header: "COMMENTS" },
   ];
   const columns3 = [
     { field: "model", header: "MODEL" },

@@ -1,3 +1,4 @@
+import { Button } from "primereact/button";
 import React from "react";
 import { useDispatch } from "react-redux";
 import { useHistory, useLocation } from "react-router-dom";
@@ -9,9 +10,6 @@ export default function Band(props) {
 
   const location = useLocation();
   const pathItems = location.pathname.split("/");
-  const currentCard = pathItems.length ? pathItems[3] : "";
-
-  console.log(currentCard, pathItems.length);
 
   const handleRoute = (e) => {
     dispatch(fetchTable(props.url, props.id));
@@ -32,7 +30,9 @@ export default function Band(props) {
       </div>
 
       {pathItems.length > 3 ? (
-        <button onClick={(e) => handleRoute(e)}>Back</button>
+        <Button className="p-button-info" onClick={(e) => handleRoute(e)}>
+          Back
+        </Button>
       ) : null}
     </div>
   );

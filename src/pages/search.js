@@ -8,51 +8,62 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchTable } from "../redux/action";
 import { Button } from "primereact/button";
 import getUnique from "../pages/utils/removeDuplicates";
+import apconfig from "../config/apconfig";
 
 export default function Search(props) {
   const dispatch = useDispatch();
   const [selectedType, setSelectedType] = useState({});
   const [list, setList] = useState("");
   const data = useSelector((state) => state.table.data);
+
+  const [search, setSearch] = useState([]);
+
   const innerTableData = useSelector((state) => state.table.data2);
 
+  useEffect(() => {
+    apconfig
+      .post(`dashboard/device/location`)
+      .then((e) => setSearch(e.data))
+      .catch((e) => console.log(e));
+  }, []);
+
   const columns = [
-    { field: "machine_id", header: "Machine Id" },
-    { field: "installation_id", header: "Installation ID" },
-    { field: "installation_date", header: "Installation Date" },
-    { field: "location", header: "Location" },
-    { field: "uninstallation_date", header: "Uninstallation Date" },
+    { field: "machine_id", header: "MACHINE ID", filter: false },
+    { field: "installation_id", header: "CUSTOM ID", filter: false },
+    {
+      field: "installation_date",
+      header: "UPDATE DATE",
+      filter: false,
+    },
+    { field: "location", header: "LOCATION", filter: false },
+    { field: "version", header: "VERSION" },
+    { field: "cycle", header: "CYCLE" },
   ];
 
   const columns2 = [
-    { field: "installed_id", header: "Installation ID" },
-    { field: "installed_date", header: "Installation Date" },
-    { field: "location", header: "Location" },
-    { field: "status", header: "Status" },
-    { field: "uninstallation_date", header: "Uninstallation Date" },
-    { field: "name", header: "Company" },
-  ];
-
-  const columns3 = [
-    { field: "model", header: "Model" },
-    { field: "manufacturer", header: "Manufacturer" },
-    { field: "hardware_version", header: "Hardware Version" },
-    { field: "commision_date", header: "Commission Date" },
-    { field: "decommision_date", header: "Decommission Date" },
-    { field: "cycle", header: "Cycle" },
+    { field: "installed_id", header: " CUSTOM ID" },
+    { field: "installed_date", header: "UPDATE DATE" },
+    { field: "name", header: "COMPANY" },
+    { field: "location", header: "LOCATION" },
+    { field: "status", header: "STATUS" },
+    { field: "version", header: "VERSION" },
+    { field: "comments", header: "COMMENTS" },
   ];
 
   const properties = [
     { name: "Machine ID", code: "machine" },
     { name: "Device Type", code: "device" },
     { name: "Organisation", code: "company" },
+    { name: "Install ID", code: "install_id" },
   ];
 
-  const uniqueDevice = getUnique(data, "device_name");
+  const uniqueDevice = getUnique(search, "device_name");
 
-  const uniqueOrganisation = getUnique(data, "organization");
+  const uniqueOrganisation = getUnique(search, "organization");
 
-  const uniqueMachine = getUnique(data, "machine_id");
+  const uniqueMachine = getUnique(search, "machine_id");
+
+  const uniqueInstallId = getUnique(search, "installation_id");
 
   const deviceName = uniqueDevice.map((d) => {
     return d.device_name;
@@ -65,6 +76,8 @@ export default function Search(props) {
   const machineId = uniqueMachine.map((m) => {
     return m.machine_id;
   });
+
+  const installId = uniqueInstallId.map((i) => i.installation_id);
 
   const machineOps = machineId.map((machineId) => ({
     name: machineId,
@@ -79,6 +92,11 @@ export default function Search(props) {
   const deviceOps = deviceName.map((device) => ({
     name: device,
     code: device,
+  }));
+
+  const installOps = installId.map((i) => ({
+    name: i,
+    code: i,
   }));
 
   const onTypeChange = (e) => {
@@ -96,6 +114,8 @@ export default function Search(props) {
       ? organisationOps
       : selectedType.code === "device"
       ? deviceOps
+      : selectedType.code === "install_id"
+      ? installOps
       : null;
 
   const onSearchClick = () => {
@@ -106,6 +126,8 @@ export default function Search(props) {
         ? { device: list.name }
         : selectedType.code === "company"
         ? { company: list.name }
+        : selectedType.code === "install_id"
+        ? { install_id: list.name}
         : null;
     dispatch(fetchTable("dashboard/device/location", value, [dispatch]));
   };
@@ -129,11 +151,6 @@ export default function Search(props) {
             optionLabel="name"
             placeholder="Search"
           />
-          {/* <InputText
-            className="input-value"
-            value={inputText}
-            onChange={(e) => setInputText(e.target.value)}
-          /> */}
           <Dropdown
             value={list}
             options={options}
@@ -160,7 +177,7 @@ export default function Search(props) {
                   {...props}
                   columns={columns}
                   columns2={columns2}
-                  columns3={columns3}
+                  // columns3={columns3}
                   rowExpander={expander}
                   tableData={data}
                   row={innerTableData}

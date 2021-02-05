@@ -20,6 +20,7 @@ export default function Device(props) {
   const [dlocation, setDlocation] = useState("ALL");
   const [dstatus, setDstatus] = useState("ALL");
   const [item, setItem] = useState(null);
+  const [filter, setFilter] = useState(false);
 
   const [TraceBackId, setTraceBackId] = useState("");
 
@@ -101,7 +102,7 @@ export default function Device(props) {
       />
     );
   };
-  const [filter, setFilter] = useState(false);
+
   const icon = (
     <i
       className="pi pi-filter"
@@ -155,6 +156,8 @@ export default function Device(props) {
     { field: "name", header: "COMPANY" },
     { field: "location", header: "LOCATION" },
     { field: "status", header: "STATUS" },
+    { field: "version", header: "VERSION" },
+    { field: "comments", header: "COMMENTS" },
   ];
 
   const pages = true;
