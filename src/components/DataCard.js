@@ -34,8 +34,7 @@ export default function DataCard(props) {
                 key={name}
                 onClick={() => {
                   dispatch(fetchTable(props.url, check));
-                  localStorage.setItem("device name", name);
-                  props.click();
+                  props.click(name);
                 }}
               >
                 <div className="p-mr-4" key={name}>

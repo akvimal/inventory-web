@@ -1,9 +1,8 @@
 import React from "react";
 import { Menubar } from "primereact/menubar";
 import { Button } from "primereact/button";
-// import SideNav from "./SideNav";
 
-export default function Nav() {
+export default function Nav(props) {
   const end = (
     <>
       <Button
@@ -20,11 +19,7 @@ export default function Nav() {
       />
     </>
   );
-  // const start = (
-  //   <>
-  //     <SideNav />
-  //   </>
-  // );
+
   return (
     <>
       <Menubar start={"Inventory Management"} end={end} />

@@ -12,7 +12,7 @@ import { Dropdown } from "primereact/dropdown";
 import { Column } from "primereact/column";
 import getUnique from "../pages/utils/removeDuplicates";
 
-export default function Device() {
+export default function Device(props) {
   const device = useSelector((state) => state.dataCard.device);
   const tableData = useSelector((state) => state.table.data);
   const innerTableData = useSelector((state) => state.table.data2);
@@ -20,6 +20,9 @@ export default function Device() {
   const [dlocation, setDlocation] = useState("ALL");
   const [dstatus, setDstatus] = useState("ALL");
   const [item, setItem] = useState(null);
+  const [filter, setFilter] = useState(false);
+
+  const [TraceBackId, setTraceBackId] = useState("");
 
   let dt = useRef(null);
 
@@ -31,8 +34,11 @@ export default function Device() {
     );
   };
 
-  const click = () => {
-    return setDname("ALL"), setDlocation("ALL"), setDstatus("ALL");
+  const click = (d) => {
+    setTraceBackId(d);
+    setDname("ALL");
+    setDlocation("ALL");
+    setDstatus("ALL");
   };
 
   const dispatch = useDispatch();
@@ -48,7 +54,7 @@ export default function Device() {
       dispatch(
         fetchTable("dashboard/company/status", { device: device[0].name })
       );
-      localStorage.setItem("device name", device[0].name);
+      setTraceBackId(device[0].name);
       history.push(`/device/${device[0].name}`);
     }
   }, [device, dispatch, history]);
@@ -96,7 +102,7 @@ export default function Device() {
       />
     );
   };
-  const [filter, setFilter] = useState(false);
+
   const icon = (
     <i
       className="pi pi-filter"
@@ -140,14 +146,8 @@ export default function Device() {
       filter: false,
     },
     { field: "location", header: "LOCATION", filter: false },
-    // { field: "device_name", header: "MODEL" },
     { field: "version", header: "VERSION" },
     { field: "cycle", header: "CYCLE" },
-    // {
-    //   field: "uninstallation_date",
-    //   header: "AVAILABILITY DATE",
-    //   filter: false,
-    // },
   ];
 
   const columns2 = [
@@ -156,17 +156,9 @@ export default function Device() {
     { field: "name", header: "COMPANY" },
     { field: "location", header: "LOCATION" },
     { field: "status", header: "STATUS" },
-    // { field: "uninstallation_date", header: "UNINSTALLATION DATE" },
+    { field: "version", header: "VERSION" },
+    { field: "comments", header: "COMMENTS" },
   ];
-
-  // const columns3 = [
-  //   // { field: "model", header: "MODEL" },
-  //   { field: "manufacturer", header: "MANUFACTURER" },
-  //   // { field: "version", header: "HARDWARE VERSION" },
-  //   { field: "commission_date", header: "COMMISSION DATE" },
-  //   { field: "decommission_date", header: "DECOMMISSION DATE" },
-  //   // { field: "cycle", header: "CYCLE" },
-  // ];
 
   const pages = true;
 
@@ -189,9 +181,11 @@ export default function Device() {
             name="Company Name"
             location="location"
             status="status"
+            id={{ device: TraceBackId }}
             selectedName={dname}
             selectedLocation={dlocation}
             selectedStatus={dstatus}
+            url="dashboard/company/status"
           />
           <Switch>
             <Route
@@ -205,7 +199,6 @@ export default function Device() {
                   refs={dt}
                   columns={columns}
                   columns2={columns2}
-                  // columns3={columns3}
                   type="single"
                   select={rowClick}
                   page={pages}

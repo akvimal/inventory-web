@@ -4,7 +4,7 @@ import { Column } from "primereact/column";
 import { useDispatch } from "react-redux";
 import { fetchTable } from "../redux/action";
 import { useHistory, useLocation } from "react-router-dom";
-import _ from "lodash";
+import { InnerTable } from "./innerTable";
 
 export default function Table(props) {
   const history = useHistory();
@@ -34,23 +34,14 @@ export default function Table(props) {
       />
     );
   });
-  const dynamicColumns3 = props.columns2.map((col) => {
-    return (
-      <Column
-        key={col.field}
-        field={col.field}
-        header={nameBodyTemplate(col.header)}
-      />
-    );
-  });
 
-  const rowExpansionTemplate = () => {
+  const rowExpansionTemplate = (d) => {
     return (
-      <div className="test">
-        <DataTable className="inner-table" value={props.row}>
-          {dynamicColumns3}
-        </DataTable>
-      </div>
+      <InnerTable
+        machine={d.machine_id}
+        columns2={props.columns2}
+        filtericon={props.filtericon}
+      />
     );
   };
 
@@ -73,17 +64,6 @@ export default function Table(props) {
     props.select(e);
   };
 
-  const onRowExpand = (e) => {
-    setstate(e.data);
-    if (_.isEmpty(e.data)) {
-    } else {
-      dispatch(
-        fetchTable("dashboard/device/history", {
-          machine: e.data[0].machine_id,
-        })
-      );
-    }
-  };
   return (
     <>
       <DataTable
@@ -95,13 +75,13 @@ export default function Table(props) {
         paginatorTemplate="FirstPageLink PrevPageLink CurrentPageReport NextPageLink LastPageLink"
         currentPageReportTemplate="Page {first} of {totalRecords} "
         paginatorLeft
-        // paginatorPosition="top"
         rows={5}
         expandedRows={state}
-        onRowToggle={(e) => onRowExpand(e)}
+        onRowToggle={(e) => setstate(e.data)}
         rowExpansionTemplate={rowExpansionTemplate}
         selectionMode={props.type}
         onRowSelect={(e) => onRowSelect(e)}
+        onRowCollapse={(e) => console.log(e)}
       >
         {dynamicColumns}
         {props.rowExpander}
