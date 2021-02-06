@@ -40,7 +40,10 @@ export default function DataCard(props) {
                 to={{ pathname: `${match.url}/${name}` }}
                 className="link"
                 key={name}
-                onClick={(e) => handleClick(e, check)}
+                onClick={() => {
+                  dispatch(fetchTable(props.url, check));
+                  props.click(name);
+                }}
               >
                 <div className="p-mr-4" key={name}>
                   <Card
