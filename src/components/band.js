@@ -11,7 +11,7 @@ export default function Band(props) {
   const location = useLocation();
   const pathItems = location.pathname.split("/");
 
-  const handleRoute = (e) => {
+  const handleRoute = () => {
     dispatch(fetchTable(props.url, props.id));
     history.goBack();
   };
@@ -29,11 +29,11 @@ export default function Band(props) {
         {props.status}:<p> &nbsp; {props.selectedStatus}</p>
       </div>
 
-      {/* {pathItems.length > 3 ? (
+      {pathItems.length > 3 ? (
         <Button className="back-button" onClick={(e) => handleRoute(e)}>
           Back
         </Button>
-      ) : null} */}
+      ) : null}
     </div>
   );
 }
