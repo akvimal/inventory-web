@@ -4,7 +4,7 @@ import { Button } from "primereact/button";
 
 import { Link, useLocation } from "react-router-dom";
 
-export default function SideNav() {
+export default function SideNav(props) {
   const location = useLocation();
   const paths = [{ path: "device" }, { path: "company" }, { path: "search" }];
   const active = paths.map((d) => {
@@ -34,7 +34,7 @@ export default function SideNav() {
         </div>
         <div>
           <Link to="/search" className="link">
-          <Button label="Search" className={active[2]} />
+            <Button label="Search" className={active[2]} />
           </Link>
         </div>
       </Sidebar>

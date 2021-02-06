@@ -12,7 +12,7 @@ import { Column } from "primereact/column";
 import { Dropdown } from "primereact/dropdown";
 import getUnique from "../pages/utils/removeDuplicates";
 
-export default function Company() {
+export default function Company(props) {
   const data = useSelector((state) => state.table.data);
   const innerData = useSelector((state) => state.table.data2);
   const company = useSelector((state) => state.dataCard.company);
@@ -22,6 +22,9 @@ export default function Company() {
   const [clocation, setClocation] = useState("ALL");
   const [cstatus, setCstatus] = useState("ALL");
   const [item, setItem] = useState(null);
+
+  const [TraceBackId, setTraceBackId] = useState("");
+
   const deviceClick = (e) => {
     return (
       setCname(e.data.name),
@@ -29,8 +32,11 @@ export default function Company() {
       setCstatus(e.data.status)
     );
   };
-  const click = () => {
-    return setCname("ALL"), setClocation("ALL"), setCstatus("ALL");
+  const click = (d) => {
+    setTraceBackId(d);
+    setCname("ALL");
+    setClocation("ALL");
+    setCstatus("ALL");
   };
   const history = useHistory();
   const dispatch = useDispatch();
@@ -44,21 +50,19 @@ export default function Company() {
       dispatch(
         fetchTable("dashboard/device/status", { company: company[0].name })
       );
-      localStorage.setItem("device name", company[0].name);
+      setTraceBackId(company[0].name);
       history.push(`/company/${company[0].name}`);
     }
   }, [company, history, dispatch]);
-
   const uniqueName = getUnique(data, "name");
   const uniqueLoc = getUnique(data, "location");
   const uniqueStatus = getUnique(data, "status");
 
-  const location = uniqueName.map((a) => {
-    return a.location;
+  const deviceName = uniqueName.map((a) => {
+    return a.name;
   });
-
-  const deviceName = uniqueLoc.map((d) => {
-    return d.name;
+  const location = uniqueLoc.map((d) => {
+    return d.location;
   });
 
   const status = uniqueStatus.map((status) => {
@@ -126,20 +130,21 @@ export default function Company() {
 
   const columns1 = [
     { field: "machine_id", header: "MACHINE ID" },
-    { field: "installation_id", header: "ID" },
-    { field: "installation_date", header: "DATE" },
+    { field: "installation_id", header: "CUSTOM ID" },
+    { field: "installation_date", header: "UPDATE DATE" },
     { field: "location", header: "LOCATION" },
-    { field: "device_name", header: "MODEL" },
     { field: "version", header: "VERSION" },
     { field: "cycle", header: "CYCLE" },
   ];
 
   const columns2 = [
-    { field: "installed_id", header: "ID" },
-    { field: "installed_date", header: "DATE" },
+    { field: "installed_id", header: "CUSTOM ID" },
+    { field: "installed_date", header: "UPDATE DATE" },
     { field: "name", header: "COMPANY" },
     { field: "location", header: "LOCATION" },
     { field: "status", header: "STATUS" },
+    { field: "version", header: "VERSION" },
+    { field: "comments", header: "COMMENTS" },
   ];
   const columns3 = [
     { field: "model", header: "MODEL" },
@@ -169,9 +174,11 @@ export default function Company() {
             name="Device Name"
             location="location"
             status="status"
+            id={{ company: TraceBackId }}
             selectedName={cname}
             selectedLocation={clocation}
             selectedStatus={cstatus}
+            url="dashboard/device/status"
           />
           <Switch>
             <Route

@@ -32,8 +32,8 @@ export default (
         error: action.payload,
         data: [],
       };
-      case FETCH_INNERTABLE_SUCCESS:
-      return{
+    case FETCH_INNERTABLE_SUCCESS:
+      return {
         ...state,
         isLoading: false,
         data2: action.payload,
