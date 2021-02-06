@@ -11,6 +11,7 @@ import _ from "lodash";
 import { Dropdown } from "primereact/dropdown";
 import { Column } from "primereact/column";
 import getUnique from "../pages/utils/removeDuplicates";
+import apconfig from "../config/apconfig";
 
 export default function Device(props) {
   const device = useSelector((state) => state.dataCard.device);
@@ -21,7 +22,7 @@ export default function Device(props) {
   const [dstatus, setDstatus] = useState("ALL");
   const [item, setItem] = useState(null);
   const [filter, setFilter] = useState(false);
-
+  const [filterData, setFilterData] = useState([]);
   const [TraceBackId, setTraceBackId] = useState("");
 
   let dt = useRef(null);
@@ -58,10 +59,18 @@ export default function Device(props) {
       history.push(`/device/${device[0].name}`);
     }
   }, [device, dispatch, history]);
-
-  const uniqueName = getUnique(tableData, "name");
-  const uniqueLoc = getUnique(tableData, "location");
-  const uniqueStatus = getUnique(tableData, "status");
+  useEffect(() => {
+    if (_.isEmpty(device)) {
+    } else {
+      apconfig
+        .post("dashboard/company/status", { device: device[0].name })
+        .then((e) => setFilterData(e.data))
+        .catch((e) => console.log(e));
+    }
+  }, [device]);
+  const uniqueName = getUnique(filterData, "name");
+  const uniqueLoc = getUnique(filterData, "location");
+  const uniqueStatus = getUnique(filterData, "status");
 
   const name = uniqueName.map((a) => {
     return a.name;
