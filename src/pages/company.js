@@ -11,6 +11,7 @@ import _ from "lodash";
 import { Column } from "primereact/column";
 import { Dropdown } from "primereact/dropdown";
 import getUnique from "../pages/utils/removeDuplicates";
+import API from "../config/apconfig";
 
 export default function Company(props) {
   const data = useSelector((state) => state.table.data);
@@ -22,6 +23,7 @@ export default function Company(props) {
   const [clocation, setClocation] = useState("ALL");
   const [cstatus, setCstatus] = useState("ALL");
   const [item, setItem] = useState(null);
+  const [filterData, setFilterData] = useState([]);
 
   const [TraceBackId, setTraceBackId] = useState("");
 
@@ -54,9 +56,18 @@ export default function Company(props) {
       history.push(`/company/${company[0].name}`);
     }
   }, [company, history, dispatch]);
-  const uniqueName = getUnique(data, "name");
-  const uniqueLoc = getUnique(data, "location");
-  const uniqueStatus = getUnique(data, "status");
+
+  useEffect(() => {
+    if (_.isEmpty(company)) {
+    } else {
+      API.post("dashboard/company/status", { company: company[0].name })
+        .then((e) => setFilterData(e.data))
+        .catch((e) => console.log(e));
+    }
+  }, [company]);
+  const uniqueName = getUnique(filterData, "name");
+  const uniqueLoc = getUnique(filterData, "location");
+  const uniqueStatus = getUnique(filterData, "status");
 
   const deviceName = uniqueName.map((a) => {
     return a.name;
