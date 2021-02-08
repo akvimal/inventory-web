@@ -29,11 +29,11 @@ export default function Band(props) {
         {props.status}:<p> &nbsp; {props.selectedStatus}</p>
       </div>
 
-      {/* {pathItems.length > 3 ? (
+      {pathItems.length > 3 ? (
         <Button className="back-button" onClick={(e) => handleRoute(e)}>
           Back
-        </Button>
-      ) : null} */}
+        </Button> 
+      ) : null}
     </div>
   );
 }

@@ -5,12 +5,13 @@ import Table from "../components/table";
 import Band from "../components/band";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchDataCard } from "../redux/action";
-import { Route, Switch, useHistory } from "react-router-dom";
+import { Route, Switch, useHistory, useLocation } from "react-router-dom";
 import { fetchTable } from "../redux/table/action";
 import _ from "lodash";
 import { Column } from "primereact/column";
 import { Dropdown } from "primereact/dropdown";
 import getUnique from "../pages/utils/removeDuplicates";
+import apconfig from "../config/apconfig";
 
 export default function Company(props) {
   const data = useSelector((state) => state.table.data);
@@ -22,9 +23,11 @@ export default function Company(props) {
   const [clocation, setClocation] = useState("ALL");
   const [cstatus, setCstatus] = useState("ALL");
   const [item, setItem] = useState(null);
+  const [filterData, setFilterData] = useState([]);
 
   const [TraceBackId, setTraceBackId] = useState("");
-
+  const locate = useLocation();
+  const pathItems = locate.pathname.split("/");
   const deviceClick = (e) => {
     return (
       setCname(e.data.name),
@@ -54,9 +57,15 @@ export default function Company(props) {
       history.push(`/company/${company[0].name}`);
     }
   }, [company, history, dispatch]);
-  const uniqueName = getUnique(data, "name");
-  const uniqueLoc = getUnique(data, "location");
-  const uniqueStatus = getUnique(data, "status");
+  useEffect(() => {
+    apconfig
+      .post("dashboard/device/status", { company: pathItems[2] })
+      .then((e) => setFilterData(e.data))
+      .catch((e) => console.log(e));
+  }, [pathItems[2]]);
+  const uniqueName = getUnique(filterData, "name");
+  const uniqueLoc = getUnique(filterData, "location");
+  const uniqueStatus = getUnique(filterData, "status");
 
   const deviceName = uniqueName.map((a) => {
     return a.name;
