@@ -35,7 +35,7 @@ const fetchDataCardFailure = (error) => {
 
 export const fetchDataCard = (path, value) => {
   return (dispatch) => {
-    dispatch(fetchDataCardRequest);
+    dispatch(fetchDataCardRequest());
     API.post(path)
       .then(({ data }) => {
         value !== "company"

@@ -11,7 +11,7 @@ export default function Band(props) {
   const location = useLocation();
   const pathItems = location.pathname.split("/");
 
-  const handleRoute = (e) => {
+  const handleRoute = () => {
     dispatch(fetchTable(props.url, props.id));
     history.goBack();
   };
@@ -30,9 +30,9 @@ export default function Band(props) {
       </div>
 
       {pathItems.length > 3 ? (
-        <Button className="back-button" onClick={(e) => handleRoute(e)}>
+        <Button className="back-button" onClick={() => handleRoute()}>
           Back
-        </Button> 
+        </Button>
       ) : null}
     </div>
   );

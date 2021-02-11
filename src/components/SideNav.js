@@ -4,7 +4,7 @@ import { Button } from "primereact/button";
 
 import { Link, useLocation } from "react-router-dom";
 
-export default function SideNav(props) {
+export default function SideNav() {
   const location = useLocation();
   const paths = [{ path: "device" }, { path: "company" }, { path: "search" }];
   const active = paths.map((d) => {

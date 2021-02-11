@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 import {
   Button,
   Form,
@@ -10,19 +10,19 @@ import {
   Container,
   Row,
   Col,
-} from 'reactstrap';
+} from "reactstrap";
 
-import { connect } from 'react-redux';
-import { login } from '../actions/auth';
+import { connect } from "react-redux";
+import { login } from "../actions/auth";
 
 export default connect(null, { login })((props) => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [error, setError] = useState('');
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
 
   const submitForm = () => {
-    if (email === '' || password === '') {
-      setError('Fields are required');
+    if (email === "" || password === "") {
+      setError("Fields are required");
       return;
     }
     props.login({ email, password });
@@ -76,7 +76,8 @@ export default connect(null, { login })((props) => {
                 <Button
                   className="form-input col-11 mt-3"
                   size="large"
-                  onClick={submitForm}>
+                  onClick={submitForm}
+                >
                   Login
                 </Button>
               </FormGroup>

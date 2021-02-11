@@ -127,7 +127,7 @@ export default function Search(props) {
         : selectedType.code === "company"
         ? { company: list.name }
         : selectedType.code === "install_id"
-        ? { install_id: list.name}
+        ? { install_id: list.name }
         : null;
     dispatch(fetchTable("dashboard/device/location", value, [dispatch]));
   };
@@ -177,7 +177,6 @@ export default function Search(props) {
                   {...props}
                   columns={columns}
                   columns2={columns2}
-                  // columns3={columns3}
                   rowExpander={expander}
                   tableData={data}
                   row={innerTableData}

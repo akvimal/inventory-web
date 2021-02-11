@@ -2,7 +2,7 @@ import React from "react";
 import { Menubar } from "primereact/menubar";
 import { Button } from "primereact/button";
 
-export default function Nav(props) {
+export default function Nav() {
   const end = (
     <>
       <Button

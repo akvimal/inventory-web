@@ -13,7 +13,7 @@ import { Column } from "primereact/column";
 import getUnique from "../pages/utils/removeDuplicates";
 import apconfig from "../config/apconfig";
 
-export default function Device(props) {
+export default function Device() {
   const device = useSelector((state) => state.dataCard.device);
   const tableData = useSelector((state) => state.table.data);
   const innerTableData = useSelector((state) => state.table.data2);
@@ -60,12 +60,12 @@ export default function Device(props) {
     }
   }, [device, dispatch, history]);
   useEffect(() => {
-    
-      apconfig
-        .post("dashboard/company/status", { device: pathItems[2] })
-        .then((e) => setFilterData(e.data))
-        .catch((e) => console.log(e));
-    
+    apconfig
+      .post("dashboard/company/status", { device: pathItems[2] })
+      .then((e) => setFilterData(e.data))
+      .catch((e) => console.log(e));
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [pathItems[2]]);
   const uniqueName = getUnique(filterData, "name");
   const uniqueLoc = getUnique(filterData, "location");
@@ -221,7 +221,6 @@ export default function Device(props) {
                   {...props}
                   columns={columns1}
                   columns2={columns2}
-                  // columns3={columns3}
                   rowExpander={expander}
                   row={innerTableData}
                   page={pages}

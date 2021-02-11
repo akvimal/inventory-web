@@ -13,7 +13,7 @@ import { Dropdown } from "primereact/dropdown";
 import getUnique from "../pages/utils/removeDuplicates";
 import apconfig from "../config/apconfig";
 
-export default function Company(props) {
+export default function Company() {
   const data = useSelector((state) => state.table.data);
   const innerData = useSelector((state) => state.table.data2);
   const company = useSelector((state) => state.dataCard.company);
@@ -62,6 +62,7 @@ export default function Company(props) {
       .post("dashboard/device/status", { company: pathItems[2] })
       .then((e) => setFilterData(e.data))
       .catch((e) => console.log(e));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [pathItems[2]]);
   const uniqueName = getUnique(filterData, "name");
   const uniqueLoc = getUnique(filterData, "location");
