@@ -14,10 +14,17 @@ export default function DataCard(props) {
   const currentCard = pathItems.length ? pathItems[2] : "";
 
   const handleClick = (e, check) => {
+    console.log(check);
     e.preventDefault();
     e.stopPropagation();
-    dispatch(fetchTable(props.url, check));
-    props.click();
+    if (check.device !== undefined && check.device === currentCard) {
+      dispatch(fetchTable(props.url, check));
+      props.click();
+    }
+    if (check.company !== undefined && check.company === currentCard) {
+      dispatch(fetchTable(props.url, check));
+      props.click();
+    }
   };
 
   return (
