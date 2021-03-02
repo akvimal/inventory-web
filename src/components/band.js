@@ -32,7 +32,7 @@ export default function Band(props) {
       {pathItems.length > 3 ? (
         <Button className="back-button" onClick={(e) => handleRoute(e)}>
           Back
-        </Button>
+        </Button> 
       ) : null}
     </div>
   );

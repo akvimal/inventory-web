@@ -5,12 +5,13 @@ import Table from "../components/table";
 import Band from "../components/band";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchDataCard } from "../redux/action";
-import { Route, Switch, useHistory } from "react-router-dom";
+import { Route, Switch, useHistory, useLocation } from "react-router-dom";
 import { fetchTable } from "../redux/action";
 import _ from "lodash";
 import { Dropdown } from "primereact/dropdown";
 import { Column } from "primereact/column";
 import getUnique from "../pages/utils/removeDuplicates";
+import apconfig from "../config/apconfig";
 
 export default function Device(props) {
   const device = useSelector((state) => state.dataCard.device);
@@ -21,7 +22,7 @@ export default function Device(props) {
   const [dstatus, setDstatus] = useState("ALL");
   const [item, setItem] = useState(null);
   const [filter, setFilter] = useState(false);
-
+  const [filterData, setFilterData] = useState([]);
   const [TraceBackId, setTraceBackId] = useState("");
 
   let dt = useRef(null);
@@ -43,11 +44,11 @@ export default function Device(props) {
 
   const dispatch = useDispatch();
   const history = useHistory();
-
+  const locate = useLocation();
+  const pathItems = locate.pathname.split("/");
   useEffect(() => {
     dispatch(fetchDataCard("dashboard/device/inventory", "device"));
   }, [dispatch]);
-
   useEffect(() => {
     if (_.isEmpty(device)) {
     } else {
@@ -58,10 +59,17 @@ export default function Device(props) {
       history.push(`/device/${device[0].name}`);
     }
   }, [device, dispatch, history]);
-
-  const uniqueName = getUnique(tableData, "name");
-  const uniqueLoc = getUnique(tableData, "location");
-  const uniqueStatus = getUnique(tableData, "status");
+  useEffect(() => {
+    
+      apconfig
+        .post("dashboard/company/status", { device: pathItems[2] })
+        .then((e) => setFilterData(e.data))
+        .catch((e) => console.log(e));
+    
+  }, [pathItems[2]]);
+  const uniqueName = getUnique(filterData, "name");
+  const uniqueLoc = getUnique(filterData, "location");
+  const uniqueStatus = getUnique(filterData, "status");
 
   const name = uniqueName.map((a) => {
     return a.name;

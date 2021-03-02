@@ -12,6 +12,14 @@ export default function DataCard(props) {
   const location = useLocation();
   const pathItems = location.pathname.split("/");
   const currentCard = pathItems.length ? pathItems[2] : "";
+
+  // const handleClick = (e, check) => {
+  //   e.preventDefault();
+  //   e.stopPropagation();
+  //   dispatch(fetchTable(props.url, check));
+  //   props.click();
+  // };
+
   return (
     <>
       <p className="title">{props.name}</p>
@@ -44,7 +52,22 @@ export default function DataCard(props) {
                   >
                     <div className="p-d-flex" key={name}>
                       {status.map((e) => {
+                        // const check1 =
+                        //   props.name === "device"
+                        //     ? {
+                        //         device: name,
+                        //         status: e.name,
+                        //       }
+                        //     : {
+                        //         company: name,
+                        //         status: e.name,
+                        //       };
                         return (
+                          // <div
+                          //   className="inner-content mr-2 mt-3"
+                          //   onClick={(v) => handleClick(v, check1)}
+                          //   key={e.name}
+                          // >
                           <div className="inner-content mr-2 mt-3" key={e.name}>
                             <p className="inner-content-title m-0">{e.name}</p>
                             <p className="inner-content-title-1 m-1 ml-0">
