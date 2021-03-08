@@ -286,7 +286,7 @@ hr.divider-line {
   padding: 10px !important;
   padding-top: 15px !important;
 }
-.inner-content:hover{
+/* .inner-content:hover{
   width: 97px !important;
   height: 72px !important;
   background: #20272e 0% 0% no-repeat padding-box !important;
@@ -295,7 +295,7 @@ hr.divider-line {
   padding: 10px !important;
   padding-top: 15px !important;
   border: 1px solid var(--unnamed-color-f7b924) !important;
-}
+} */
 
 .inner-content-title {
   color: var(--unnamed-color-f7b924) !important;

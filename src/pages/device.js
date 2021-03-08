@@ -5,7 +5,7 @@ import Table from "../components/table";
 import Band from "../components/band";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchDataCard } from "../redux/action";
-import { Route, Switch, useHistory } from "react-router-dom";
+import { Route, Switch, useHistory, useLocation } from "react-router-dom";
 import { fetchTable } from "../redux/action";
 import _ from "lodash";
 import { Dropdown } from "primereact/dropdown";
@@ -44,11 +44,11 @@ export default function Device(props) {
 
   const dispatch = useDispatch();
   const history = useHistory();
-
+  const locate = useLocation();
+  const pathItems = locate.pathname.split("/");
   useEffect(() => {
     dispatch(fetchDataCard("dashboard/device/inventory", "device"));
   }, [dispatch]);
-
   useEffect(() => {
     if (_.isEmpty(device)) {
     } else {
@@ -61,14 +61,11 @@ export default function Device(props) {
   }, [device, dispatch, history]);
 
   useEffect(() => {
-    if (_.isEmpty(device)) {
-    } else {
-      API
-        .post("dashboard/company/status", { device: device[0].name })
-        .then((e) => setFilterData(e.data))
-        .catch((e) => console.log(e));
-    }
-  }, [device]);
+    API.post("dashboard/company/status", { device: pathItems[2] })
+      .then((e) => setFilterData(e.data))
+      .catch((e) => console.log(e));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [pathItems[2]]);
   const uniqueName = getUnique(filterData, "name");
   const uniqueLoc = getUnique(filterData, "location");
   const uniqueStatus = getUnique(filterData, "status");

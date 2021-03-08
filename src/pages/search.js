@@ -8,7 +8,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchTable } from "../redux/action";
 import { Button } from "primereact/button";
 import getUnique from "../pages/utils/removeDuplicates";
-import apconfig from "../config/apconfig";
+import { fetchDataCardService } from "../services/services";
 
 export default function Search(props) {
   const dispatch = useDispatch();
@@ -21,9 +21,8 @@ export default function Search(props) {
   const innerTableData = useSelector((state) => state.table.data2);
 
   useEffect(() => {
-    apconfig
-      .post(`dashboard/device/location`)
-      .then((e) => setSearch(e.data))
+    fetchDataCardService(`dashboard/device/location`)
+      .then((e) => setSearch(e))
       .catch((e) => console.log(e));
   }, []);
 
@@ -127,9 +126,9 @@ export default function Search(props) {
         : selectedType.code === "company"
         ? { company: list.name }
         : selectedType.code === "install_id"
-        ? { install_id: list.name}
+        ? { install_id: list.name }
         : null;
-    dispatch(fetchTable("dashboard/device/location", value, [dispatch]));
+    dispatch(fetchTable("dashboard/device/location", value));
   };
 
   useEffect(() => {
@@ -177,7 +176,6 @@ export default function Search(props) {
                   {...props}
                   columns={columns}
                   columns2={columns2}
-                  // columns3={columns3}
                   rowExpander={expander}
                   tableData={data}
                   row={innerTableData}
