@@ -4,7 +4,7 @@ import {
   FETCH_DEVICEDATACARD_SUCCESS,
   FETCH_COMPANYDATACARD_SUCCESS,
 } from "./type";
-import API from "../../config/apconfig";
+import { fetchDataCardService } from "../../services/services";
 
 const fetchDataCardRequest = () => {
   return {
@@ -36,14 +36,13 @@ const fetchDataCardFailure = (error) => {
 export const fetchDataCard = (path, value) => {
   return (dispatch) => {
     dispatch(fetchDataCardRequest);
-    API.post(path)
-      .then(({ data }) => {
+
+    fetchDataCardService(path)
+      .then((e) => {
         value !== "company"
-          ? dispatch(fetchDeviceDataCardSuccess(data))
-          : dispatch(fetchCompanyDataCardSuccess(data));
+          ? dispatch(fetchDeviceDataCardSuccess(e))
+          : dispatch(fetchCompanyDataCardSuccess(e));
       })
-      .catch((err) => {
-        dispatch(fetchDataCardFailure(err.message));
-      });
+      .catch((e) => dispatch(fetchDataCardFailure(e)));
   };
 };

@@ -4,7 +4,7 @@ import {
   FETCH_TABLE_SUCCESS,
   FETCH_INNERTABLE_SUCCESS,
 } from "./type";
-import API from "../../config/apconfig";
+import { fetchTableService } from "../../services/services";
 
 const fetchTableRequest = () => {
   return {
@@ -34,17 +34,17 @@ const fetchTableFailure = (error) => {
 };
 
 export const fetchTable = (path, value) => {
-  console.log(path, value);
   return (dispatch) => {
     dispatch(fetchTableRequest);
-    API.post(path, value)
-      .then(({ data }) => {
+
+    fetchTableService(path, value)
+      .then((data) => {
         path !== "dashboard/device/history"
           ? dispatch(fetchTableSuccess(data))
           : dispatch(fetchInnerTableSuccess(data));
       })
       .catch((err) => {
-        dispatch(fetchTableFailure(err.message));
+        dispatch(fetchTableFailure(err));
       });
   };
 };
