@@ -70,8 +70,7 @@ body {
   .p-sidebar {
     background-image: linear-gradient(
       to top,
-      #000000 90%,
-      #29313a 10%
+      #000000 100%,
     ) !important;
   }
 }
@@ -254,13 +253,38 @@ hr.divider-line {
   padding: 0rem !important;
 }
 
-.p-scrollpanel {
-  width: 1230px !important;
+/* .p-scrollpanel {
+  width: 1400px !important;
+} */
+
+/* 90 */
+@media only screen and (min-width: 1473px) {
+  .p-scrollpanel {
+    width: 1400px !important;
+  }
+}
+/* 100 */
+@media only screen and (max-width: 1673px) {
+  .p-scrollpanel {
+    width: 1230px !important;
+  }
 }
 
-@media only screen and (max-width: 1300px) {
+@media only screen and (max-width: 1400px) {
+  .p-scrollpanel {
+    width: 1095px !important;
+  }
+}
+
+@media only screen and (max-width: 1250px) {
   .p-scrollpanel {
     width: 925px !important;
+  }
+}
+
+@media only screen and (max-width: 1150px) {
+  .p-scrollpanel {
+    width: 720px !important;
   }
 }
 
