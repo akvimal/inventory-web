@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Table from "../components/table";
-import Band from "../components/band";
+// import Band from "../components/band";
 import { Dropdown } from "primereact/dropdown";
 import { Route, Switch } from "react-router-dom";
 import { Column } from "primereact/column";

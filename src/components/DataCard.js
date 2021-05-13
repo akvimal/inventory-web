@@ -59,7 +59,7 @@ export default function DataCard(props) {
                               }
                             : {
                                 company: name,
-                                status: e.name,
+                                device: e.name,
                               };
                         return (
                           <div
