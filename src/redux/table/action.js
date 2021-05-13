@@ -34,7 +34,7 @@ const fetchTableFailure = (error) => {
 };
 
 export const fetchTable = (path, value) => {
-  console.log(path, value);
+  // console.log(path, value);
   return (dispatch) => {
     dispatch(fetchTableRequest);
     API.post(path, value)

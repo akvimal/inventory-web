@@ -22,7 +22,7 @@ export default function Nav(props) {
 
   return (
     <>
-      <Menubar start={"Inventory Management"} end={end} />
+      <Menubar start={"Inventory Management"} className="menu-nav" />
     </>
   );
 }

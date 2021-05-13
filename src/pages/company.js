@@ -41,6 +41,11 @@ export default function Company(props) {
     setClocation("ALL");
     setCstatus("ALL");
   };
+    const backClick = () => {
+      setCname("ALL");
+      setClocation("ALL");
+      setCstatus("ALL");
+    };
   const history = useHistory();
   const dispatch = useDispatch();
   useEffect(() => {
@@ -188,6 +193,7 @@ export default function Company(props) {
             selectedLocation={clocation}
             selectedStatus={cstatus}
             url="dashboard/device/status"
+            backButton={backClick}
           />
           <Switch>
             <Route

@@ -42,6 +42,12 @@ export default function Device(props) {
     setDstatus("ALL");
   };
 
+  const backClick = () =>{
+     setDname("ALL");
+     setDlocation("ALL");
+     setDstatus("ALL");
+  }
+
   const dispatch = useDispatch();
   const history = useHistory();
   const locate = useLocation();
@@ -194,6 +200,7 @@ export default function Device(props) {
             selectedLocation={dlocation}
             selectedStatus={dstatus}
             url="dashboard/company/status"
+            backButton={backClick}
           />
           <Switch>
             <Route

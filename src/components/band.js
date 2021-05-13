@@ -14,6 +14,7 @@ export default function Band(props) {
   const handleRoute = (e) => {
     dispatch(fetchTable(props.url, props.id));
     history.goBack();
+    props.backButton()
   };
 
   return (

@@ -17,10 +17,9 @@ export default function SideNav(props) {
       <Sidebar visible={true} onHide={() => true} showCloseIcon={false}>
         <div className="logo">
           <img
-            style={{ height: "4vmax", marginTop:"-5px" }}
             src="\assests\Porklogic-logo-white.png"
             alt="Porklogic logo"
-            className="ml-5"
+            className="ml-5 logo-img"
           />
         </div>
         <div>

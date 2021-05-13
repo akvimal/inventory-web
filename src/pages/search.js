@@ -141,7 +141,9 @@ export default function Search(props) {
   return (
     <>
       <div id="scroll-cards">
-        <div className=" search-text mt-3 ml-4 mr-4">
+        <p className="title ml-4 ">SEARCH</p>
+        <hr className="search-divider-line ml-4 mr-4" />
+        <div className=" search-text mt-4 ml-4 mr-4">
           {" "}
           Search By <br />
           <Dropdown
@@ -168,7 +170,7 @@ export default function Search(props) {
       </div>
       <div id="table">
         <div className=" mt-3 ml-4 mr-4">
-          <Band name="Company Name" location="location" status="status" />
+          {/* <Band name="Company Name" location="location" status="status" /> */}
           <Switch>
             <Route
               path="/search"
