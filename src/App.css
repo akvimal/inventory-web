@@ -194,10 +194,10 @@ hr.search-divider-line{
   height: 8px;
 }
 ::-webkit-scrollbar-track {
-  background: #20272e;
+  background: #29313a;
 }
 ::-webkit-scrollbar-thumb {
-  background: #29313a;
+  background: #545a61;
 }
 
 /* .p-scrollpanel-bar-x{

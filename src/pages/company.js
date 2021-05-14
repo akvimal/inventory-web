@@ -67,6 +67,7 @@ export default function Company(props) {
       .post("dashboard/device/status", { company: pathItems[2] })
       .then((e) => setFilterData(e.data))
       .catch((e) => console.log(e));
+    // eslint-disable-next-line
   }, [pathItems[2]]);
   const uniqueName = getUnique(filterData, "name");
   const uniqueLoc = getUnique(filterData, "location");

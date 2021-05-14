@@ -42,16 +42,17 @@ export default function Device(props) {
     setDstatus("ALL");
   };
 
-  const backClick = () =>{
-     setDname("ALL");
-     setDlocation("ALL");
-     setDstatus("ALL");
-  }
+  const backClick = () => {
+    setDname("ALL");
+    setDlocation("ALL");
+    setDstatus("ALL");
+  };
 
   const dispatch = useDispatch();
   const history = useHistory();
   const locate = useLocation();
   const pathItems = locate.pathname.split("/");
+  
   useEffect(() => {
     dispatch(fetchDataCard("dashboard/device/inventory", "device"));
   }, [dispatch]);
@@ -66,12 +67,11 @@ export default function Device(props) {
     }
   }, [device, dispatch, history]);
   useEffect(() => {
-    
-      apconfig
-        .post("dashboard/company/status", { device: pathItems[2] })
-        .then((e) => setFilterData(e.data))
-        .catch((e) => console.log(e));
-    
+    apconfig
+      .post("dashboard/company/status", { device: pathItems[2] })
+      .then((e) => setFilterData(e.data))
+      .catch((e) => console.log(e));
+    // eslint-disable-next-line
   }, [pathItems[2]]);
   const uniqueName = getUnique(filterData, "name");
   const uniqueLoc = getUnique(filterData, "location");
