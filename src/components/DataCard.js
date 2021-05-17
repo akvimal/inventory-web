@@ -2,22 +2,23 @@ import React from "react";
 import { Card } from "primereact/card";
 import { ScrollPanel } from "primereact/scrollpanel";
 import { useDispatch } from "react-redux";
-import { Link, useLocation, useRouteMatch } from "react-router-dom";
+import { Link, useHistory, useLocation, useRouteMatch } from "react-router-dom";
 import { fetchTable } from "../redux/action";
 
 export default function DataCard(props) {
   const dispatch = useDispatch();
 
   let match = useRouteMatch();
+  const history = useHistory();
   const location = useLocation();
   const pathItems = location.pathname.split("/");
   const currentCard = pathItems.length ? pathItems[2] : "";
-
   const handleClick = (e, check) => {
     e.preventDefault();
     e.stopPropagation();
     dispatch(fetchTable(props.url, check));
     props.click();
+    return pathItems.length === 4 ? history.goBack() : null;
   };
   return (
     <>
@@ -64,7 +65,11 @@ export default function DataCard(props) {
                         return (
                           <div
                             className="inner-content mr-2 mt-3"
-                            onClick={(v) => handleClick(v, check1)}
+                            onClick={(v) =>
+                              name === pathItems[2]
+                                ? handleClick(v, check1)
+                                : null
+                            }
                             key={e.name}
                           >
                             <p className="inner-content-title m-0">{e.name}</p>
