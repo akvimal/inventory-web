@@ -268,13 +268,13 @@ hr.search-divider-line{
 /* 90 */
 @media only screen and (min-width: 1473px) {
   .p-scrollpanel {
-    width: 1400px !important;
+    width: 82vmax !important;
   }
 }
 /* 100 */
 @media only screen and (max-width: 1673px) {
   .p-scrollpanel {
-    width: 1230px !important;
+    width: 80vmax !important;
   }
 }
 
@@ -296,6 +296,11 @@ hr.search-divider-line{
   }
 }
 
+@media only screen and (min-width: 1850px) {
+  .p-scrollpanel {
+    width: 84vmax !important;
+  }
+}
 .p-scrollpanel:hover .p-scrollpanel-bar,
 .p-scrollpanel:active .p-scrollpanel-bar {
   opacity: none !important;
