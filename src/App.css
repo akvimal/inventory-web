@@ -424,6 +424,7 @@ hr.search-divider-line{
   margin-left: 50px !important;
   outline: #3ac47d !important;
   color: var(--unnamed-color-f7b924) !important;
+  text-transform: uppercase !important;
 }
 .maintable .p-datatable-tbody > tr > td[colspan] {
   background: var(--unnamed-color-29313a) 0% 0% no-repeat padding-box !important;
@@ -639,7 +640,7 @@ hr.search-divider-line{
   text-align: left !important;
   color: #ffffff !important;
   opacity: 1px !important;
-  text-transform: uppercase !important;
+  /* text-transform: uppercase !important; */
 }
 .inner-table {
   border-right: 1px solid white !important;
@@ -652,7 +653,7 @@ hr.search-divider-line{
   text-align: left !important;
   border: none !important;
   color: #ffffff !important;
-  text-transform: uppercase !important;
+  /* text-transform: uppercase !important; */
 }
 .test {
   margin: 0% !important;
