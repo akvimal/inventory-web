@@ -12,21 +12,30 @@ import {
 import Device from "./pages/device";
 import Company from "./pages/company";
 import Search from "./pages/search";
+import { Login } from "./pages/Login";
+import { useSelector } from "react-redux";
+import {ProtectedRoute} from "./components/ProtectedRoute"
 
 export default function App() {
+  const isLogged = useSelector((state) => state.authReducer.isAuth);
   return (
     <Router>
-      <div className="app-container">
-        <HomePage />
-        <Switch>
-          <Route exact path="/">
+      <Switch>
+      {isLogged ? (
+        <div className="app-container">
+          <HomePage />
             <Redirect to="/device" />
-          </Route>
-          <Route path="/device" component={Device} />
-          <Route path="/company" component={Company} />
-          <Route path="/search" component={Search} />
-        </Switch>
-      </div>
+            <ProtectedRoute path="/device" component={Device} />
+            <ProtectedRoute path="/company" component={Company} />
+            <ProtectedRoute path="/search" component={Search} />
+        </div>
+      ) : (
+        <>
+            <Redirect to="/login" />
+            <Route path="/" component={Login} />
+        </>
+      )}
+      </Switch>
     </Router>
   );
 }

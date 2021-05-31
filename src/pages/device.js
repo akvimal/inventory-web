@@ -60,15 +60,35 @@ export default function Device(props) {
     if (_.isEmpty(device)) {
     } else {
       dispatch(
-        fetchTable("dashboard/company/status", { device: device[0].name })
+        fetchTable(
+          "dashboard/company/status",
+          { device: device[0].name },
+          {
+            headers: {
+              Accept: "application/json",
+              "auth-token": getTokenFromStorage(),
+            },
+          }
+        )
       );
       setTraceBackId(device[0].name);
       history.push(`/device/${device[0].name}`);
     }
   }, [device, dispatch, history]);
+  
+  const getTokenFromStorage = () => localStorage.getItem("token");
   useEffect(() => {
     apconfig
-      .post("dashboard/company/status", { device: pathItems[2] })
+      .post(
+        "dashboard/company/status",
+        { device: pathItems[2] },
+        {
+          headers: {
+            Accept: "application/json",
+            "auth-token": getTokenFromStorage(),
+          },
+        }
+      )
       .then((e) => setFilterData(e.data))
       .catch((e) => console.log(e));
     // eslint-disable-next-line

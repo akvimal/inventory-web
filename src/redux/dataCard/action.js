@@ -6,6 +6,7 @@ import {
 } from "./type";
 import API from "../../config/apconfig";
 
+const getTokenFromStorage = () => localStorage.getItem("token");
 const fetchDataCardRequest = () => {
   return {
     type: FETCH_DATACARD_REQUEST,
@@ -36,7 +37,12 @@ const fetchDataCardFailure = (error) => {
 export const fetchDataCard = (path, value) => {
   return (dispatch) => {
     dispatch(fetchDataCardRequest);
-    API.post(path)
+    API.post(path, null, {
+      headers: {
+        Accept: "application/json",
+        "auth-token": getTokenFromStorage(),
+      },
+    })
       .then(({ data }) => {
         value !== "company"
           ? dispatch(fetchDeviceDataCardSuccess(data))

@@ -6,11 +6,21 @@ import axios from "axios";
 export const InnerTable = (props) => {
   const [state, setstate] = useState([]);
 
+  const getTokenFromStorage = () => localStorage.getItem("token");
   useEffect(() => {
     axios
-      .post(`${process.env.REACT_APP_API_URL}/dashboard/device/history`, {
-        machine: props.machine,
-      })
+      .post(
+        `${process.env.REACT_APP_API_URL}/dashboard/device/history`,
+        {
+          machine: props.machine,
+        },
+        {
+          headers: {
+            Accept: "application/json",
+            "auth-token": getTokenFromStorage(),
+          },
+        }
+      )
       .then((e) => setstate(e.data))
       .catch((e) => console.log(e));
   }, [props.machine]);

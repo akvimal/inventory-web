@@ -1,89 +1,86 @@
-import React, { useState } from 'react';
-import {
-  Button,
-  Form,
-  FormGroup,
-  FormText,
-  Label,
-  Input,
-  Alert,
-  Container,
-  Row,
-  Col,
-} from 'reactstrap';
+import React, { useState } from "react";
+import { FormGroup } from "reactstrap";
+import Card from "@material-ui/core/Card";
+import Button from "@material-ui/core/Button";
+import { useDispatch } from "react-redux";
+import { fetchAuthLogin } from "../redux/auth/authAction";
+import { TextField } from "@material-ui/core";
+import ArrowForwardOutlinedIcon from "@material-ui/icons/ArrowForwardOutlined";
 
-import { connect } from 'react-redux';
-import { login } from '../actions/auth';
+export const Login = () => {
+  const dispatch = useDispatch();
 
-export default connect(null, { login })((props) => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [error, setError] = useState('');
+  const [user, setUser] = useState({ email: "", password: "" });
 
   const submitForm = () => {
-    if (email === '' || password === '') {
-      setError('Fields are required');
-      return;
-    }
-    props.login({ email, password });
+    dispatch(fetchAuthLogin({ email: user.email, password: user.password }));
   };
 
   return (
-    <Container className="login-wrapper">
-      <Row className="login">
-        <Col className="col-6">
-          <div className="logo-img-container col-9">
-            <img
-              src="https://static.wixstatic.com/media/764061_e885453d985b4d2fad8f18ae9af8918e~mv2.jpg/v1/crop/x_3,y_0,w_154,h_120/fill/w_72,h_56,al_c,q_80,usm_0.66_1.00_0.01/Porklogic%20Logo.webp"
-              alt="porklogic-logo"
-              className="logo-img"
+    <Card
+      style={{ backgroundImage: "url(/assests/pigbg.png)" }}
+      className="login-card1"
+    >
+      <div style={{ margin: "auto" }}>
+        <div className="div-logo">
+          <img
+            src="\assests\Porklogic logo.svg"
+            alt="PIG Logo"
+            className="porklogic-logo"
+          />
+        </div>
+        <Card className="login-card">
+          <FormGroup>
+            <TextField
+              id="standard-basic"
+              label="Email"
+              className="form"
+              value={user.email}
+              onChange={(e) => setUser({ ...user, email: e.target.value })}
             />
-          </div>
-        </Col>
-        <Col className="col-6 login-form">
-          <h3 className="login-title col-12">Login</h3>
-          <div className="loginform">
-            <Form>
-              {error && <Alert color="warning">{props.error || error}</Alert>}
-              <FormGroup className="col-12">
-                <Label for="email">Login ID</Label>
-                <Input
-                  type="text"
-                  name="email"
-                  id="email"
-                  className="form-input"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                />
-              </FormGroup>
-              <FormGroup className="col-12">
-                <Label for="password">Password</Label>
-                <Input
-                  type="password"
-                  name="password"
-                  id="password"
-                  className="form-input"
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                />
-              </FormGroup>
-              <FormText color="muted" className="col-12">
-                <a href="#" className="forget-password-link">
-                  Forget Password?
-                </a>
-              </FormText>
-              <FormGroup className="col-12 text-center">
-                <Button
-                  className="form-input col-11 mt-3"
-                  size="large"
-                  onClick={submitForm}>
-                  Login
-                </Button>
-              </FormGroup>
-            </Form>
-          </div>
-        </Col>
-      </Row>
-    </Container>
+            <TextField
+              id="standard-basic"
+              label="Password"
+              type="password"
+              className="form"
+              value={user.password}
+              onChange={(e) => setUser({ ...user, password: e.target.value })}
+            />
+            <Button className="form-button" size="large" onClick={submitForm}>
+              Login
+              <ArrowForwardOutlinedIcon style={{ marginLeft: "210px" }} />
+            </Button>
+          </FormGroup>
+        </Card>
+        <p
+          style={{
+            color: "#f7b924",
+            float: "right",
+            fontSize: "14px",
+            marginTop: "10px",
+          }}
+        >
+          Forgot Password?
+        </p>
+      </div>
+      <div>
+        <p
+          style={{
+            color: "#ffffff",
+            textAlign: "center",
+            fontSize: "14px",
+          }}
+        >
+          By signing up, you agree with our
+          <span
+            style={{
+              color: "#f7b924",
+            }}
+          >
+            Terms and Conditions
+          </span>
+        </p>
+      </div>
+    </Card>
   );
-});
+};

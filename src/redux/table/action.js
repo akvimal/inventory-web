@@ -5,7 +5,7 @@ import {
   FETCH_INNERTABLE_SUCCESS,
 } from "./type";
 import API from "../../config/apconfig";
-
+const getTokenFromStorage = () => localStorage.getItem("token");
 const fetchTableRequest = () => {
   return {
     type: FETCH_TABLE_REQUEST,
@@ -37,7 +37,10 @@ export const fetchTable = (path, value) => {
   // console.log(path, value);
   return (dispatch) => {
     dispatch(fetchTableRequest);
-    API.post(path, value)
+    API.post(path, value, {headers: {
+      Accept: "application/json",
+      "auth-token": getTokenFromStorage(),
+    }})
       .then(({ data }) => {
         path !== "dashboard/device/history"
           ? dispatch(fetchTableSuccess(data))
