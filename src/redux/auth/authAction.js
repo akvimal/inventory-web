@@ -44,7 +44,7 @@ export const fetchAuthLogin = (user) => {
           response.data.isLogged === false,
           response.data.error === "Only Admin")
         ) {
-          return alert("Only Admin");
+          return alert("Only Admin can login");
         } else {
           localStorage.setItem("token", response.data.token);
           dispatch(fetchAuthLoginSuccess(response.data));
