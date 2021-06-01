@@ -7,6 +7,7 @@
     "@material-ui/icons": "^4.11.2",
     "axios": "^0.21.1",
     "bootstrap": "^4.5.3",
+    "caniuse-lite": "^1.0.30001232",
     "lodash": "^4.17.20",
     "primeflex": "^2.0.0",
     "primeicons": "^4.1.0",
