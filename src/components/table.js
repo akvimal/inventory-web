@@ -44,7 +44,7 @@ export default function Table(props) {
       />
     );
   };
-
+  const getTokenFromStorage = () => localStorage.getItem("token");
   const onRowSelect = (e) => {
     history.push(`${props.match.url}/${e.data.name}`);
     const pathItems = location.pathname.split("/");
@@ -60,7 +60,14 @@ export default function Table(props) {
             status: e.data.status,
             device: e.data.name,
           };
-    dispatch(fetchTable("dashboard/device/location", value));
+    dispatch(
+      fetchTable("dashboard/device/location", value, {
+        headers: {
+          Accept: "application/json",
+          "auth-token": getTokenFromStorage(),
+        },
+      })
+    );
     props.select(e);
   };
 
