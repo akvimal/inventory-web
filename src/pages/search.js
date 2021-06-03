@@ -19,10 +19,16 @@ export default function Search(props) {
   const [search, setSearch] = useState([]);
 
   const innerTableData = useSelector((state) => state.table.data2);
+  const getTokenFromStorage = () => localStorage.getItem("token");
 
   useEffect(() => {
     apconfig
-      .post(`dashboard/device/location`)
+      .post(`dashboard/device/location`, null, {
+        headers: {
+          Accept: "application/json",
+          "auth-token": getTokenFromStorage(),
+        },
+      })
       .then((e) => setSearch(e.data))
       .catch((e) => console.log(e));
   }, []);
@@ -117,7 +123,6 @@ export default function Search(props) {
       : selectedType.code === "install_id"
       ? installOps
       : null;
-
   const onSearchClick = () => {
     const value =
       selectedType.code === "machine"
@@ -129,11 +134,29 @@ export default function Search(props) {
         : selectedType.code === "install_id"
         ? { install_id: list.name}
         : null;
-    dispatch(fetchTable("dashboard/device/location", value, [dispatch]));
+    dispatch(
+      fetchTable(
+        "dashboard/device/location",
+        value,
+        {
+          headers: {
+            Accept: "application/json",
+            "auth-token": getTokenFromStorage(),
+          },
+        }, [dispatch]
+      )
+    );
   };
 
   useEffect(() => {
-    dispatch(fetchTable("dashboard/device/location"));
+    dispatch(
+      fetchTable("dashboard/device/location", null, {
+        headers: {
+          Accept: "application/json",
+          "auth-token": getTokenFromStorage(),
+        },
+      })
+    );
   }, [dispatch]);
 
   const expander = <Column expander style={{ width: "3em" }} />;

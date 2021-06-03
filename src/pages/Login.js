@@ -24,7 +24,7 @@ export const Login = () => {
       <div style={{ margin: "auto" }}>
         <div className="div-logo">
           <img
-            src="\assests\Porklogic logo.svg"
+            src="\assests\Porklogic-logo-white.png"
             alt="PIG Logo"
             className="porklogic-logo"
           />
