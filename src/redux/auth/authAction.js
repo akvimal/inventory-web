@@ -6,6 +6,7 @@ import {
   LOGOUT,
 } from "./authType";
 import API from "../../config/apconfig";
+import { toUpper } from "lodash";
 
 const fetchAuthLoginRequest = () => {
   return {
@@ -39,12 +40,8 @@ export const fetchAuthLogin = (user) => {
     dispatch(fetchAuthLoginRequest());
     API.post(`/auth/login`, user)
       .then((response) => {
-        if (
-          (response.data.token === null,
-          response.data.isLogged === false,
-          response.data.error === "Only Admin")
-        ) {
-          return alert("Only Admin can login");
+        if (response.data.isLogged === false) {
+          return alert(toUpper(response.data.error));
         } else {
           localStorage.setItem("token", response.data.token);
           dispatch(fetchAuthLoginSuccess(response.data));
