@@ -41,32 +41,34 @@ export default function SideNav(props) {
         <div>
           <Link to="/search" className="link">
             <Button label="Search" className={active[2]} />
-          </Link>          
+          </Link>
         </div>
         <div>
-        <Dropdown className={active[3]}>
-              <label
-                className="SideNav"
-                style={{
-                 
-                 
-                }}
-              >
-                SETUP
-              </label>
-              <Dropdown.Toggle split className="SideNav" id="dropdown-basic" />
+          <Dropdown className={active[3]}>
+            <label
+              className="SideNav"
+            >
+              SETUP
+            </label>
+            <Dropdown.Toggle split className="SideNav" style={{
+              "background": "#000",
+              "border": "0",
+              "color": "#f7b924",
+              "margin-bottom": "13px"
 
-              <Dropdown.Menu className="dropdown-menu">
-                <Link to="/master/location" style={{ textDecoration: "none" }}>
-                  <Button className={setupActive[0]}>Master</Button>
-                </Link>
-                <Link to="/farm" style={{ textDecoration: "none" }}>
-                  <p>
-                    <Button className={setupActive[1]} >Farm</Button>
-                  </p>
-                </Link>
-              </Dropdown.Menu>
-            </Dropdown>
+            }} id="dropdown-basic" />
+
+            <Dropdown.Menu className="dropdown-menu">
+              <Link to="/master/location" style={{ textDecoration: "none" }}>
+                <Button className={setupActive[0]}>Master</Button>
+              </Link>
+              <Link to="/farm" style={{ textDecoration: "none" }}>
+                <p>
+                  <Button className={setupActive[1]} >Farm</Button>
+                </p>
+              </Link>
+            </Dropdown.Menu>
+          </Dropdown>
         </div>
       </Sidebar>
     </>
